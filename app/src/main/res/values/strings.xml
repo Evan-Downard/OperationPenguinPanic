@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Operation Penguin Panic</string>
+    <string name="title_activity_display_select_menu">DisplaySelect</string>
+</resources>
