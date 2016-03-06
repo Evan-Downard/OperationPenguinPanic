@@ -24,9 +24,11 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
     }
     public void sendOption(View view){
+
         setContentView(R.layout.activity_main_menu);
     }
     public void sendScore(View view){
+
         setContentView(R.layout.activity_main_menu);
     }
 
@@ -39,6 +41,9 @@ public class MainMenu extends AppCompatActivity {
     }
     public void sendAsteroids(View view){
         setContentView(new GamePanel(this));
+    }
+    public void sendBack(View view){
+        setContentView(R.layout.activity_main_menu);
     }
 }
 
