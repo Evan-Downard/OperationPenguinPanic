@@ -19,6 +19,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="63dp" />
 
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/panicpenguin"
+        android:layout_alignBottom="@+id/backbutton1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <Button
         android:id="@+id/angry_btn"
         android:text="Racing"

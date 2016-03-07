@@ -7,116 +7,115 @@
     tools:context="com.test.operationpenguinpanic.MainMenu">
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_toEndOf="@+id/imageView2"
-        android:layout_toRightOf="@+id/imageView2"
-        android:text="Operation"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="70sp"
-        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/secondtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView"
-        android:layout_marginLeft="5dp"
-        android:text="Penguin Nova"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+
+
 
     <Button
         android:id="@+id/startgame"
         android:layout_width="175dp"
         android:layout_height="50dp"
-        android:layout_below="@id/secondtitle"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="55dp"
         android:background="@drawable/buttonshape"
         android:onClick="sendGame"
         android:text="Start Game"
         android:textColor="#FFFFFF"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_above="@+id/button3"
+        android:layout_alignLeft="@+id/secondtitle"
+        android:layout_alignStart="@+id/secondtitle"
+        android:layout_marginBottom="10dp" />
 
 
     <Button
         android:id="@+id/button"
         android:layout_width="175dp"
         android:layout_height="55dp"
-        android:layout_below="@id/startgame"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="20dp"
         android:background="@drawable/buttonshape"
         android:onClick="sendCustom"
         android:text="Customization"
         android:textColor="#FFFFFF"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_below="@+id/button3"
+        android:layout_toLeftOf="@+id/imageView"
+        android:layout_toStartOf="@+id/imageView"
+        android:layout_marginBottom="10dp" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="175dp"
         android:layout_height="55dp"
-        android:layout_below="@+id/button"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="20dp"
         android:background="@drawable/buttonshape"
         android:onClick="sendOption"
         android:text="Options"
         android:textColor="#FFFFFF"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_below="@+id/button"
+        android:layout_toLeftOf="@+id/imageView"
+        android:layout_toStartOf="@+id/imageView"
+        android:layout_marginBottom="10dp" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="175dp"
         android:layout_height="55dp"
-        android:layout_below="@+id/button2"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="20dp"
         android:background="@drawable/buttonshape"
         android:onClick="sendScore"
         android:text="Score"
         android:textColor="#FFFFFF"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/imageView"
+        android:layout_toStartOf="@+id/imageView"
+        android:layout_marginBottom="10dp" />
 
     <ImageView
         android:layout_width="210dp"
         android:layout_height="250dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/startgame"
-        android:src="@drawable/flotingpenguin" />
+        android:src="@drawable/flotingpenguin"
+        android:id="@+id/imageView"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/startgame"
+        android:layout_toEndOf="@+id/startgame" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="50dp"
         android:layout_height="55dp"
+        android:src="@drawable/happyholdrevs"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp"
-        android:src="@drawable/penguinsign" />
+        android:layout_marginTop="47dp" />
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="55dp"
-        android:layout_marginTop="96dp"
-        android:layout_toEndOf="@id/secondtitle"
-        android:layout_toRightOf="@id/secondtitle"
-        android:src="@drawable/penguinsign"
-        android:id="@+id/imageView3" />
-
+        android:src="@drawable/happyhold"
+        android:id="@+id/imageView3"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    <TextView
+        android:id="@+id/secondtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Penguin Nova"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:layout_above="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp" />
     <Button
         android:id="@+id/web"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:background="@drawable/buttonshape"
         android:text="Web"
-        android:textSize="20sp"
-        android:layout_below="@+id/button3"
-        android:layout_alignRight="@+id/imageView3"
-        android:layout_alignEnd="@+id/imageView3" />
+        android:textSize="15sp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp" />
 </RelativeLayout>
