@@ -21,15 +21,17 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.game_select);
     }
     public void sendCustom(View view){
-        setContentView(R.layout.activity_main_menu);
+
+        setContentView(R.layout.customization_menu);
     }
+
     public void sendOption(View view){
 
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.options_screen);
     }
     public void sendScore(View view){
 
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.score_menu);
     }
 
     public void sendRacing(View view){
@@ -39,10 +41,12 @@ public class MainMenu extends AppCompatActivity {
     public void sendMarathon(View view){
         setContentView(new GamePanel(this));
     }
+
     public void sendAsteroids(View view){
         setContentView(new GamePanel(this));
     }
-    public void sendBack(View view){
+
+    public void sendMain(View view){
         setContentView(R.layout.activity_main_menu);
     }
 }

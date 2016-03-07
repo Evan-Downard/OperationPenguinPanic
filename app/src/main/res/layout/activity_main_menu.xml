@@ -6,11 +6,6 @@
     android:background="@drawable/spacenew"
     tools:context="com.test.operationpenguinpanic.MainMenu">
 
-
-
-
-
-
     <Button
         android:id="@+id/startgame"
         android:layout_width="175dp"
@@ -24,7 +19,6 @@
         android:layout_alignLeft="@+id/secondtitle"
         android:layout_alignStart="@+id/secondtitle"
         android:layout_marginBottom="10dp" />
-
 
     <Button
         android:id="@+id/button"
@@ -95,6 +89,7 @@
         android:layout_alignTop="@+id/imageView2"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
     <TextView
         android:id="@+id/secondtitle"
         android:layout_width="wrap_content"
@@ -106,10 +101,11 @@
         android:layout_above="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="25dp" />
+
     <Button
         android:id="@+id/web"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:background="@drawable/buttonshape"
         android:text="Web"
         android:textSize="15sp"
@@ -118,4 +114,5 @@
         android:layout_alignEnd="@+id/imageView"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp" />
+
 </RelativeLayout>

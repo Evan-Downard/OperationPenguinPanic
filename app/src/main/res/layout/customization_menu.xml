@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/spacenew">
+
+    <TextView
+        android:id="@+id/customtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ship Design"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="63dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:background="@drawable/backbuttonshape"
+        android:layout_below="@id/customtitle"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="7dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:background="@drawable/backbuttonshape"
+        android:layout_below="@id/customtitle"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="7dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:background="@drawable/backbuttonshape"
+        android:layout_alignTop="@+id/bottomRight"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="7dp"/>
+
+    <Button
+        android:id="@+id/bottomRight"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:background="@drawable/backbuttonshape"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="105dp"
+        android:layout_marginRight="7dp"/>
+
+    <Button
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:background="@drawable/backbuttonshape"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="5dp"
+        android:text="Back"
+        android:textSize="15sp"
+        android:onClick="sendMain"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ship"
+        android:layout_below="@+id/customtitle"
+        android:layout_centerHorizontal="true"
+        android:textSize="45dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Color"
+        android:textSize="45dp"
+        android:layout_alignBottom="@+id/bottomRight"
+        android:layout_centerHorizontal="true"
+        />
+
+</RelativeLayout>

@@ -74,11 +74,9 @@
         android:layout_alignParentLeft="true"
         android:layout_margin="5dp"
         android:background="@drawable/backbuttonshape"
-        android:textSize="25sp"
-        android:onClick="sendBack"
-
-
-    />
+        android:text="Back"
+        android:textSize="15sp"
+        android:onClick="sendMain" />
 
 
 
