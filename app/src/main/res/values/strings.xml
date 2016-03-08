@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Operation Penguin Panic</string>
     <string name="title_activity_display_select_menu">DisplaySelect</string>
+    <string name="Difficulty">Select Difficulty</string>
+    <string name="Easy_d">Easy</string>
+    <string name="normal_d">Normal</string>
+    <string name="hard_d">Hard</string>
+    <string name="uber_d">Uber</string>
 </resources>
