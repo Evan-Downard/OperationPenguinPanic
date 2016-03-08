@@ -75,7 +75,7 @@
         android:background="@drawable/backbuttonshape"
         android:text="Back"
         android:textSize="15sp"
-        android:onClick="sendMain" />
+        android:onClick="sendGame" />
 
     <Button
         android:layout_width="250dp"
