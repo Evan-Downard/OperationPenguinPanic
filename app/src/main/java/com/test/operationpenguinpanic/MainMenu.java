@@ -39,7 +39,10 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.difficulty_screen);
     }
 
-    public void sendDifficulty(View view) { setContentView(new GamePanel(this)); }
+    public void sendDifficulty(View view) {
+        setContentView(new GamePanel(this));
+
+    }
 
     public void sendMarathon(View view){
         setContentView(new GamePanel(this));

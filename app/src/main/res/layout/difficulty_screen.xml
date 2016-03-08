@@ -11,7 +11,7 @@
         android:text="@string/Difficulty"
         android:textStyle="bold"
         android:textSize="50sp"
-        android:id="@+id/textView2"
+        android:id="@+id/difficultyTitle"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="63dp" />
@@ -20,13 +20,13 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/panicpenguin"
-        android:layout_alignBottom="@+id/backbutton1"
+        android:layout_alignBottom="@+id/backbuttonD"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/imageView4" />
 
     <Button
-        android:id="@+id/angry_btn"
+        android:id="@+id/easybtn"
         android:text="@string/Easy_d"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
@@ -34,38 +34,39 @@
         android:layout_height="55dp"
         android:background="@drawable/buttonshape"
         android:onClick="sendDifficulty"
-        android:layout_below="@+id/textView2"
-        android:layout_toRightOf="@+id/backbutton1"
-        android:layout_toEndOf="@+id/backbutton1" />
+        android:layout_margin="20dp"
+        android:layout_below="@+id/difficultyTitle"
+        android:layout_centerHorizontal="true"
+ />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/normalbtn"
         android:text="@string/normal_d"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:layout_width="250dp"
         android:layout_height="55dp"
         android:background="@drawable/buttonshape"
-        android:layout_below="@+id/angry_btn"
-        android:layout_margin="35dp"
+        android:layout_below="@+id/easybtn"
+        android:layout_margin="20dp"
         android:layout_centerHorizontal="true"
         android:onClick="sendDifficulty"/>
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/hardbtn"
         android:text="@string/hard_d"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:layout_width="250dp"
         android:layout_height="55dp"
         android:background="@drawable/buttonshape"
-        android:layout_below="@+id/button4"
-        android:layout_margin="10dp"
+        android:layout_below="@+id/normalbtn"
+        android:layout_marginTop="25dp"
         android:layout_centerHorizontal="true"
         android:onClick="sendDifficulty"/>
 
     <Button
-        android:id="@+id/backbutton1"
+        android:id="@+id/backbuttonD"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_alignParentBottom="true"
@@ -84,7 +85,7 @@
         android:textSize="20sp"
         android:layout_above="@+id/imageView4"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/buttonshape"
         android:onClick="sendDifficulty"/>/>
 
