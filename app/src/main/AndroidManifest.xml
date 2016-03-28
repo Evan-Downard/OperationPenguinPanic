@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.test.operationpenguinpanic">
+    package="com.test.operationpenguinpanic" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/normalpenguin"
+        android:label="Penguin Nova"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainMenu">
+        android:theme="@style/AppTheme" >
+        <activity android:name=".MainMenu" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,7 +20,7 @@
         <activity
             android:name=".DisplaySelectMenu"
             android:label="@string/title_activity_display_select_menu"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
