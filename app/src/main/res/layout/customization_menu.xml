@@ -20,40 +20,55 @@
         />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
+        android:id="@+id/Topleftbutton"
+        android:layout_width="75dp"
+        android:layout_height="45dp"
         android:background="@drawable/backbuttonshape"
         android:layout_below="@id/customtitle"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="7dp"/>
+        android:layout_marginLeft="7dp"
+        android:text="&lt;"
+        android:textSize="35dp"
+        android:textStyle="bold"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
+        android:id="@+id/Toprightbutton"
+        android:layout_width="75dp"
+        android:layout_height="45dp"
         android:background="@drawable/backbuttonshape"
         android:layout_below="@id/customtitle"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="7dp" />
+        android:layout_marginRight="7dp"
+        android:text="&gt;"
+        android:textSize="35dp"
+        android:textStyle="bold"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
+        android:layout_width="75dp"
+        android:layout_height="45dp"
         android:background="@drawable/backbuttonshape"
         android:layout_alignTop="@+id/bottomRight"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="7dp"/>
+        android:layout_marginLeft="7dp"
+        android:text="&lt;"
+        android:textSize="35dp"
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/bottomRight"
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
+        android:layout_width="75dp"
+        android:layout_height="45dp"
         android:background="@drawable/backbuttonshape"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="105dp"
-        android:layout_marginRight="7dp"/>
+        android:layout_marginRight="7dp"
+        android:text="&gt;"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        />
 
     <Button
         android:layout_width="55dp"
@@ -67,20 +82,54 @@
         android:onClick="sendMain"/>
 
     <TextView
+        android:id="@+id/Shiptxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ship"
         android:layout_below="@+id/customtitle"
         android:layout_centerHorizontal="true"
-        android:textSize="45dp"/>
+        android:textSize="35dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Color"
-        android:textSize="45dp"
+        android:text="Penguin"
+        android:textSize="35dp"
         android:layout_alignBottom="@+id/bottomRight"
         android:layout_centerHorizontal="true"
+        />
+
+    <Button
+        android:layout_width="75dp"
+        android:layout_height="45dp"
+        android:background="@drawable/backbuttonshape"
+        android:layout_below="@id/Topleftbutton"
+        android:layout_margin="7dp"
+        android:text="&lt;"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:layout_width="75dp"
+        android:layout_height="45dp"
+        android:background="@drawable/backbuttonshape"
+        android:layout_below="@id/Toprightbutton"
+        android:layout_margin="7dp"
+        android:text="&gt;"
+        android:textSize="35dp"
+        android:layout_alignParentRight="true"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Shiptxt"
+        android:layout_centerInParent="true"
+        android:textSize="35dp"
+        android:layout_marginTop="11dp"
+        android:text="Color"
         />
 
 </RelativeLayout>

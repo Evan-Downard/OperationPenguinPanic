@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/spacenew">
+    android:background="@drawable/spacenew"
+    tools:context="com.test.operationpenguinpanic.OptionsPage">
 
     <TextView
         android:id="@+id/optionsTitle"
@@ -16,6 +18,67 @@
         android:textSize="50dp"
         android:textStyle="bold"
         />
+
+    <TableLayout
+        android:id="@+id/OptionsTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/optionsTitle"
+        android:stretchColumns="0,1,2">
+
+        <TableRow
+            android:layout_marginTop="25dp">
+            <TextView
+                android:text="Sounds"
+                android:textSize="25dp"/>
+
+            <CheckBox
+                android:id="@+id/soundY"
+                android:text="Yes"
+                android:checked="true"/>
+            <CheckBox
+                android:id="@+id/soundN"
+                android:text="No"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="25dp">
+            <TextView
+                android:text="Button Visability"
+                android:textSize="25dp"/>
+            <CheckBox
+                android:id="@+id/ButtonY"
+                android:text="Yes"
+                android:checked="true" />
+            <CheckBox
+                android:id="@+id/ButtonN"
+                android:text="No"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="25dp">
+            <TextView
+                android:text="Game Music"
+                android:textSize="25dp"/>
+            <CheckBox
+                android:id="@+id/MusicY"
+                android:text="Yes"
+                android:checked="true" />
+            <CheckBox
+                android:id="@+id/MusicN"
+                android:text="No" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/OptionsTable"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="15dp"
+        android:textSize="15dp"
+        android:text="If no is checked then you can listen your own music."/>
 
     <Button
         android:layout_width="55dp"
