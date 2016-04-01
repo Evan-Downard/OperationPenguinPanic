@@ -6,17 +6,22 @@ import android.graphics.Canvas;
 public class Player extends GameObject{
     private Bitmap spritesheet;
     private int score;
-    private double dya;
-    private boolean up;
+
+    //acceleration
+    private double dxa;
+    private boolean left;
+    private boolean right;
+    private boolean stopped;
+
     private boolean playing;
     private Animation animation = new Animation();
     private long startTime;
 
     public Player(Bitmap res, int w, int h, int numFrames) {
 
-        x = 100;
-        y = GamePanel.HEIGHT / 2;
-        dy = 0;
+        x = GamePanel.WIDTH / 2;
+        y = GamePanel.HEIGHT - 100;
+        dx = 0;
         score = 0;
         height = h;
         width = w;
@@ -34,8 +39,9 @@ public class Player extends GameObject{
         startTime = System.nanoTime();
 
     }
-
-    public void setUp(boolean b){up = b;}
+    public void setLeft(boolean b){left = b;}
+    public void setRight(boolean c){right = c;}
+    public void setStop(boolean d){stopped = d;}
 
     public void update()
     {
@@ -47,29 +53,33 @@ public class Player extends GameObject{
         }
         animation.update();
 
-        if(up){
-            dy = (int)(dya-=1.1);
-
+        if(left && x > 0){
+            x -=4;
         }
-        else{
-            dy = (int)(dya+=1.1);
+        if(right && x < GamePanel.WIDTH){
+            x +=4;
+
+        }else{
+            x +=0;
         }
 
-        if(dy>14)dy = 14;
-        if(dy<-14)dy = -14;
-
-        y += dy*2;
-        dy = 0;
+        if(dx>14)dx = 14;
+        if(dx<-14)dx = -14;
+        //if(x > 0 && x < GamePanel.WIDTH/2){
+        //x += dx;
+        //}
+        //x += 0;
     }
 
     public void draw(Canvas canvas)
     {
+
         canvas.drawBitmap(animation.getImage(),x,y,null);
     }
     public int getScore(){return score;}
     public boolean getPlaying(){return playing;}
     public void setPlaying(boolean b){playing = b;}
-    public void resetDYA(){dya = 0;}
+    public void resetDXA(){dxa = 0;}
     public void resetScore(){score = 0;}
 }
 
