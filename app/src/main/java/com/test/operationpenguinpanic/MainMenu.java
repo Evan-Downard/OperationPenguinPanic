@@ -52,8 +52,7 @@ public class MainMenu extends AppCompatActivity {
         setContentView(new GamePanel(this));
     }
 
-    public void sendMain(View view){
-        setContentView(R.layout.activity_main_menu);
+    public void sendMain(View view){setContentView(R.layout.activity_main_menu);
     }
 }
 

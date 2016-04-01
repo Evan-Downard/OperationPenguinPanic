@@ -24,6 +24,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     private long asteroidStartTime;
     private MainThread thread;
     private Background bg;
+    private Control leftControl;
+    private Control rightControl;
     private Player player;
     private ArrayList<Asteroid> asteroids;
     private Random rand = new Random();
@@ -79,11 +81,13 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         //Create background
         bg = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.spacesky));
         //Create left control
-
+        leftControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.leftcontrol),GamePanel.WIDTH/4 ,GamePanel.HEIGHT-50, 40, 40);
         //Create right control
-
+        rightControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.rightcontrol), (GamePanel.WIDTH - GamePanel.WIDTH/4) ,GamePanel.HEIGHT-50, 40, 40);
         //Create player
         player = new Player(BitmapFactory.decodeResource(getResources(), R.drawable.spaceship), 40, 40, 1);
+
+
 
         asteroids = new ArrayList<Asteroid>();
         asteroidStartTime = System.nanoTime();
@@ -224,6 +228,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
             canvas.scale(scaleFactorX, scaleFactorY);
             bg.draw(canvas);
             player.draw(canvas);
+            leftControl.draw(canvas);
+            rightControl.draw(canvas);
 
             //draw asteroids
             for(Asteroid m: asteroids)

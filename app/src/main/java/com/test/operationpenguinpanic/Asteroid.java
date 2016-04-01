@@ -3,7 +3,6 @@ package com.test.operationpenguinpanic;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-
 import java.util.Random;
 
 public class Asteroid extends GameObject{
@@ -36,7 +35,7 @@ public class Asteroid extends GameObject{
         }
 
         animation.setFrames(image);
-        animation.setDelay(100-speed);
+        animation.setDelay(100 - speed);
 
     }
     public void update()
