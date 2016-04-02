@@ -6,20 +6,33 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
-import android.widget.Toast;
+import android.widget.RadioButton;
+
 
 /**
  * Created by johnny on 3/28/16.
  */
-public class OptionsPage {
+public class OptionsPage extends MainMenu {
 
-/*    final CheckBox soundY = (CheckBox) findViewById(R.id.soundY);
-    final CheckBox soundN = (CheckBox) findViewById(R.id.soundN);
-    final CheckBox buttonY = (CheckBox) findViewById(R.id.ButtonY);
-    final CheckBox buttonN = (CheckBox) findViewById(R.id.ButtonN);
-    final CheckBox musicY = (CheckBox) findViewById(R.id.MusicY);
-    final CheckBox musicN = (CheckBox) findViewById(R.id.MusicN);
-    */
+    MainMenu menu = new MainMenu();
+/*
+    // for check boxes
+    CheckBox buttonYes = menu.getButtonY();
+    CheckBox buttonNo = menu.getButtonN();
+    CheckBox musicYes = menu.getMusicY();
+    CheckBox musicNo = menu.getMusicN();
+    CheckBox soundYes = menu.getSoundY();
+    CheckBox soundNo = menu.getSoundN();
+
+    // for radio buttons
+    RadioButton buttonYes = menu.getButtonY();
+    RadioButton buttonNo = menu.getButtonN();
+    RadioButton musicYes = menu.getMusicY();
+    RadioButton musicNo = menu.getMusicN();
+    RadioButton soundYes = menu.getSoundY();
+    RadioButton soundNo = menu.getSoundN();
+*/
+
     public void checkChanged(){
 
     }

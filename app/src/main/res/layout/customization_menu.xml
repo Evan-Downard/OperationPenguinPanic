@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/spacenew">
+    android:background="@drawable/spacenew"
+    tools:context="com.test.operationpenguinpanic.CustomizationMenu">
 
     <TextView
         android:id="@+id/customtitle"
@@ -14,10 +16,41 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="63dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="10dp"
         android:textSize="50dp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold"/>
+
+    <ImageSwitcher
+        android:id="@+id/Shipchanger"
+        android:layout_width="145dp"
+        android:layout_height="160dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="230dp"
+        >
+
+        <ImageView
+            android:id="@+id/changeableShip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/spaceship"
+            />
+
+    </ImageSwitcher>
+
+    <ImageSwitcher
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/Shipchanger"
+        android:layout_marginTop="248dp">
+
+        <ImageView
+            android:id="@+id/changeablePenguin"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:src="@drawable/normalpenguin"
+            />
+
+    </ImageSwitcher>
 
     <Button
         android:id="@+id/Topleftbutton"
@@ -29,7 +62,8 @@
         android:layout_marginLeft="7dp"
         android:text="&lt;"
         android:textSize="35dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:onClick="sendShipleft" />
 
     <Button
         android:id="@+id/Toprightbutton"
@@ -41,7 +75,8 @@
         android:layout_marginRight="7dp"
         android:text="&gt;"
         android:textSize="35dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:onClick="sendShipRight" />
 
     <Button
         android:layout_width="75dp"
@@ -53,7 +88,10 @@
         android:layout_marginLeft="7dp"
         android:text="&lt;"
         android:textSize="35dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:id="@+id/button7"
+        android:onClick="sendPenguinLeft"
+        />
 
     <Button
         android:id="@+id/bottomRight"
@@ -63,11 +101,12 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="105dp"
+        android:layout_marginBottom="85dp"
         android:layout_marginRight="7dp"
         android:text="&gt;"
         android:textSize="35dp"
         android:textStyle="bold"
+        android:onClick="sendPenguinRight"
         />
 
     <Button
@@ -100,36 +139,38 @@
         />
 
     <Button
+        android:id="@+id/colorButtonTop"
         android:layout_width="75dp"
         android:layout_height="45dp"
         android:background="@drawable/backbuttonshape"
-        android:layout_below="@id/Topleftbutton"
-        android:layout_margin="7dp"
-        android:text="&lt;"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        />
+        android:layout_below="@id/Toprightbutton"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="7dp"
+        android:layout_marginRight="7dp"
+        android:text="Up"
+        android:onClick="sendColorUp"/>
 
     <Button
         android:layout_width="75dp"
         android:layout_height="45dp"
         android:background="@drawable/backbuttonshape"
-        android:layout_below="@id/Toprightbutton"
-        android:layout_margin="7dp"
-        android:text="&gt;"
-        android:textSize="35dp"
+        android:layout_above="@id/bottomRight"
         android:layout_alignParentRight="true"
-        android:textStyle="bold"
-        />
+        android:layout_marginRight="7dp"
+        android:layout_marginBottom="7dp"
+        android:text="Down"
+        android:id="@+id/colorButtonBottom"
+        android:onClick="sendColorDown"/>
 
     <TextView
+        android:id="@+id/colorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Shiptxt"
-        android:layout_centerInParent="true"
-        android:textSize="35dp"
-        android:layout_marginTop="11dp"
-        android:text="Color"
-        />
+        android:text="C\no\nl\no\nr"
+        android:textSize="25dp"
+        android:layout_above="@+id/colorButtonBottom"
+        android:layout_toRightOf="@+id/customtitle"
+        android:layout_toEndOf="@+id/customtitle"
+        android:layout_marginBottom="7dp" />
 
 </RelativeLayout>
