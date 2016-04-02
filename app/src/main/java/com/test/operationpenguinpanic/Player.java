@@ -1,11 +1,14 @@
 package com.test.operationpenguinpanic;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.util.DisplayMetrics;
 
 public class Player extends GameObject{
     private Bitmap spritesheet;
     private int score;
+    private Context context;
 
     //acceleration
     private double dxa;
@@ -17,10 +20,11 @@ public class Player extends GameObject{
     private Animation animation = new Animation();
     private long startTime;
 
-    public Player(Bitmap res, int w, int h, int numFrames) {
 
-        x = GamePanel.WIDTH / 2;
-        y = GamePanel.HEIGHT - 100;
+    public Player(Bitmap res, int x, int y, int w, int h, int numFrames) {
+
+        super.x = x;
+        super.y = y;
         dx = 0;
         score = 0;
         height = h;
@@ -56,7 +60,7 @@ public class Player extends GameObject{
         if(left && x > 0){
             x -=4;
         }
-        if(right && x < GamePanel.WIDTH){
+        if(right && x < (GamePanel.WIDTH-40)){
             x +=4;
 
         }else{
