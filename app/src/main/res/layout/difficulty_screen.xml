@@ -1,93 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/spacenew">
+    android:background="@drawable/spacenew"
+    android:orientation="vertical">
 
     <TextView
+        android:id="@+id/difficultyTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/Difficulty"
-        android:textStyle="bold"
-        android:textSize="50sp"
-        android:id="@+id/difficultyTitle"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="63dp" />
+        android:layout_marginTop="63dp"
+        android:text="@string/Difficulty"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="50sp"
+        android:textStyle="bold" />
 
     <ImageView
+        android:id="@+id/imageView4"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:src="@drawable/panicpenguin"
-        android:layout_alignBottom="@+id/backbuttonD"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/imageView4" />
+        android:layout_alignParentRight="true"
+        android:src="@drawable/panicpenguin" />
 
     <Button
         android:id="@+id/easybtn"
-        android:text="@string/Easy_d"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
         android:layout_width="250dp"
         android:layout_height="55dp"
-        android:background="@drawable/buttonshape"
-        android:onClick="sendDifficulty"
-        android:layout_margin="20dp"
         android:layout_below="@+id/difficultyTitle"
         android:layout_centerHorizontal="true"
- />
+        android:layout_margin="20dp"
+        android:background="@drawable/buttonshape"
+        android:onClick="sendDifficulty"
+        android:text="@string/Easy_d"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/normalbtn"
-        android:text="@string/normal_d"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
         android:layout_width="250dp"
         android:layout_height="55dp"
-        android:background="@drawable/buttonshape"
         android:layout_below="@+id/easybtn"
-        android:layout_margin="20dp"
         android:layout_centerHorizontal="true"
-        android:onClick="sendDifficulty"/>
+        android:layout_margin="20dp"
+        android:background="@drawable/buttonshape"
+        android:onClick="sendDifficulty"
+        android:text="@string/normal_d"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/hardbtn"
-        android:text="@string/hard_d"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
         android:layout_width="250dp"
         android:layout_height="55dp"
-        android:background="@drawable/buttonshape"
         android:layout_below="@+id/normalbtn"
-        android:layout_marginTop="25dp"
         android:layout_centerHorizontal="true"
-        android:onClick="sendDifficulty"/>
+        android:layout_marginTop="25dp"
+        android:background="@drawable/buttonshape"
+        android:onClick="sendDifficulty"
+        android:text="@string/hard_d"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/backbuttonD"
-        android:layout_width="55dp"
+        android:layout_width="80dp"
         android:layout_height="55dp"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_margin="5dp"
-        android:background="@drawable/backbuttonshape"
-        android:text="&lt; Back"
-        android:textSize="15sp"
-        android:onClick="sendGame" />
+        android:background="@drawable/arrowleft"
+        android:onClick="sendGame"
+        android:textSize="15sp" />
 
     <Button
+        android:id="@+id/uberbtn"
         android:layout_width="250dp"
         android:layout_height="55dp"
-        android:text="@string/uber_d"
-        android:id="@+id/button6"
-        android:textSize="20sp"
-        android:layout_above="@+id/imageView4"
+        android:layout_below="@id/hardbtn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:background="@drawable/buttonshape"
-        android:onClick="sendDifficulty"/>/>
-
+        android:onClick="sendDifficulty"
+        android:text="@string/uber_d"
+        android:textSize="20sp" />
 
 </RelativeLayout>

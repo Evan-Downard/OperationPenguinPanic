@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/spacenew"
+    android:orientation="vertical"
     tools:context="com.test.operationpenguinpanic.OptionsPage">
 
     <TextView
         android:id="@+id/optionsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Options"
-        android:layout_marginTop="63dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="63dp"
+        android:text="Options"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="50dp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <TableLayout
         android:id="@+id/OptionsTable"
@@ -26,29 +25,30 @@
         android:layout_below="@id/optionsTitle"
         android:stretchColumns="0,1">
 
-        <TableRow
-            android:layout_marginTop="25dp">
+        <TableRow android:layout_marginTop="25dp">
+
             <TextView
                 android:text="Sounds"
-                android:textSize="25dp"/>
+                android:textSize="25dp" />
+
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <RadioButton
                     android:id="@+id/SoundY"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Yes"
                     android:checked="true"
-                    />
+                    android:text="Yes" />
+
                 <RadioButton
                     android:id="@+id/SoundN"
-                    android:layout_marginLeft="25dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="No"
-                    />
+                    android:layout_marginLeft="25dp"
+                    android:text="No" />
 
             </RadioGroup>
 
@@ -61,11 +61,12 @@
                     android:text="No"/>-->
         </TableRow>
 
-        <TableRow
-            android:layout_marginTop="25dp">
+        <TableRow android:layout_marginTop="25dp">
+
             <TextView
                 android:text="Button Visability"
-                android:textSize="25dp"/>
+                android:textSize="25dp" />
+
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,16 +76,15 @@
                     android:id="@+id/ButtonY"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Yes"
                     android:checked="true"
-                    />
+                    android:text="Yes" />
+
                 <RadioButton
                     android:id="@+id/ButtonN"
-                    android:layout_marginLeft="25dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="No"
-                    />
+                    android:layout_marginLeft="25dp"
+                    android:text="No" />
 
             </RadioGroup>
 
@@ -97,11 +97,12 @@
                            android:text="No"/>-->
         </TableRow>
 
-        <TableRow
-            android:layout_marginTop="25dp">
+        <TableRow android:layout_marginTop="25dp">
+
             <TextView
                 android:text="Game Music"
-                android:textSize="25dp"/>
+                android:textSize="25dp" />
+
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,16 +112,15 @@
                     android:id="@+id/MusicY"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Yes"
                     android:checked="true"
-                    />
+                    android:text="Yes" />
+
                 <RadioButton
                     android:id="@+id/MusicN"
-                    android:layout_marginLeft="25dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="No"
-                    />
+                    android:layout_marginLeft="25dp"
+                    android:text="No" />
 
             </RadioGroup>
 
@@ -131,7 +131,7 @@
                         <CheckBox
                             android:id="@+id/MusicN"
                             android:text="No" />-->
-    </TableRow>
+        </TableRow>
 
     </TableLayout>
 
@@ -141,18 +141,17 @@
         android:layout_below="@id/OptionsTable"
         android:layout_centerHorizontal="true"
         android:layout_margin="15dp"
-        android:textSize="15dp"
-        android:text="If no is checked then you can listen your own music."/>
+        android:text="If no is checked then you can listen your own music."
+        android:textSize="15dp" />
 
     <Button
-        android:layout_width="55dp"
+        android:layout_width="80dp"
         android:layout_height="55dp"
-        android:background="@drawable/backbuttonshape"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_margin="5dp"
-        android:text="&lt; Back"
-        android:textSize="15sp"
-        android:onClick="sendMain"/>
+        android:background="@drawable/arrowleft"
+        android:onClick="sendMain"
+        android:textSize="15sp" />
 
 </RelativeLayout>

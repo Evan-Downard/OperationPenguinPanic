@@ -109,13 +109,12 @@
         <!--android:onClick="sendPenguinRight" -->
 
     <Button
-        android:layout_width="55dp"
+        android:layout_width="80dp"
         android:layout_height="55dp"
-        android:background="@drawable/backbuttonshape"
-        android:layout_alignParentBottom="true"
+        android:background="@drawable/arrowleft"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_margin="5dp"
-        android:text="&lt; Back"
         android:textSize="15sp"
         android:onClick="sendMain"/>
 

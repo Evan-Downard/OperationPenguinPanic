@@ -1,84 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/spacenew"
-    >
+    android:orientation="vertical">
 
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Select Mode"
-        android:textStyle="bold"
-        android:textSize="50dp"
-        android:id="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="63dp" />
+        android:layout_marginTop="63dp"
+        android:text="Select Mode"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="50dp"
+        android:textStyle="bold" />
 
     <ImageView
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:src="@drawable/panicpenguin"
-        android:layout_alignBottom="@+id/backbutton1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:src="@drawable/panicpenguin" />
 
     <Button
         android:id="@+id/angry_btn"
-        android:text="Racing"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
         android:layout_width="250dp"
         android:layout_height="55dp"
-        android:background="@drawable/buttonshape"
         android:layout_below="@+id/textView2"
-        android:layout_margin="35dp"
         android:layout_centerHorizontal="true"
-        android:onClick="sendRacing"/>
+        android:layout_margin="35dp"
+        android:background="@drawable/buttonshape"
+        android:onClick="sendRacing"
+        android:text="Racing"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/button4"
-        android:text="Marathon"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
         android:layout_width="250dp"
         android:layout_height="55dp"
-        android:background="@drawable/buttonshape"
         android:layout_below="@+id/angry_btn"
-        android:layout_margin="35dp"
         android:layout_centerHorizontal="true"
-        android:onClick="sendMarathon"/>
+        android:layout_margin="35dp"
+        android:background="@drawable/buttonshape"
+        android:onClick="sendMarathon"
+        android:text="Marathon"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/button5"
-        android:text="Asteroids"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
         android:layout_width="250dp"
         android:layout_height="55dp"
-        android:background="@drawable/buttonshape"
         android:layout_below="@+id/button4"
-        android:layout_margin="35dp"
         android:layout_centerHorizontal="true"
-        android:onClick="sendAsteroids"/>
+        android:layout_margin="35dp"
+        android:background="@drawable/buttonshape"
+        android:onClick="sendAsteroids"
+        android:text="Asteroids"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/backbutton1"
-        android:layout_width="55dp"
+        android:layout_width="80dp"
         android:layout_height="55dp"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_margin="5dp"
-        android:background="@drawable/backbuttonshape"
-        android:text="&lt; Back"
-        android:textSize="15sp"
-        android:onClick="sendMain" />
-
-
+        android:background="@drawable/arrowleft"
+        android:onClick="sendMain"
+        android:textSize="15sp" />
 
 
 </RelativeLayout>
