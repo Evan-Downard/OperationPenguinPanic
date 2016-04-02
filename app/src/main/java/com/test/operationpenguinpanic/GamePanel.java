@@ -4,8 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.MotionEvent;
@@ -87,11 +90,11 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         //Create background
         bg = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.spacesky));
         //Create left control
-        leftControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.leftcontrol), screenWidth / 16, GamePanel.HEIGHT - 50, 40, 40);
+        leftControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowleft), (GamePanel.WIDTH/4)-65, GamePanel.HEIGHT - 75, 140, 69);
         //Create right control
-        rightControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.rightcontrol), (screenWidth / 4 - screenWidth / 16), GamePanel.HEIGHT - 50, 40, 40);
+        rightControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowright), (GamePanel.WIDTH - GamePanel.WIDTH/4)-65, GamePanel.HEIGHT - 75, 140, 69);
         //Create player
-        player = new Player(BitmapFactory.decodeResource(getResources(), R.drawable.spaceship), screenWidth / 8, GamePanel.HEIGHT - 100, 40, 40, 1);
+        player = new Player(BitmapFactory.decodeResource(getResources(), R.drawable.gameship), screenWidth / 8, GamePanel.HEIGHT - 150, 45, 58, 1);
 
 
         asteroids = new ArrayList<Asteroid>();
@@ -183,7 +186,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                             (int) (rand.nextDouble() * (screenWidth / 4)), -20, 86, 62, player.getScore(), 1));
                 } else {
                     asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid1),
-                            (int) (rand.nextDouble() * (screenWidth / 4)), -20, 40, 40, player.getScore(), 1));
+                            (int) (rand.nextDouble() * (screenWidth / 4)), -20, 60, 60, player.getScore(), 1));
                 }
 
                 asteroidStartTime = System.nanoTime();
@@ -234,7 +237,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                 m.draw(canvas);
             }
 
-
+            drawText(canvas);
             canvas.restoreToCount(savedState);
         }
     }
@@ -249,6 +252,13 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         newGameCreated = true;
 
 
+    }
+    public void drawText(Canvas canvas) {
+        Paint paint = new Paint();
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(30);
+        paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+        canvas.drawText("Score: " + (player.getScore() * 3), 10, HEIGHT - HEIGHT + 25, paint);
     }
 
 }

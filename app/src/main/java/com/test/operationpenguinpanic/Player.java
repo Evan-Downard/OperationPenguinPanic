@@ -50,6 +50,7 @@ public class Player extends GameObject{
     public void update()
     {
         long elapsed = (System.nanoTime()-startTime)/1000000;
+        //Score counter
         if(elapsed>100)
         {
             score++;
@@ -57,22 +58,16 @@ public class Player extends GameObject{
         }
         animation.update();
 
+        //Left and right movement
         if(left && x > 0){
-            x -=4;
+            x -=8;
         }
         if(right && x < (GamePanel.WIDTH-40)){
-            x +=4;
+            x +=8;
 
         }else{
             x +=0;
         }
-
-        if(dx>14)dx = 14;
-        if(dx<-14)dx = -14;
-        //if(x > 0 && x < GamePanel.WIDTH/2){
-        //x += dx;
-        //}
-        //x += 0;
     }
 
     public void draw(Canvas canvas)
