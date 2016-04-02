@@ -22,9 +22,9 @@
 
     <ImageSwitcher
         android:id="@+id/Shipchanger"
-        android:layout_width="145dp"
+        android:layout_width="160dp"
         android:layout_height="160dp"
-        android:layout_marginLeft="22dp"
+        android:layout_marginLeft="45dp"
         android:layout_marginTop="230dp"
         >
 
@@ -32,7 +32,7 @@
             android:id="@+id/changeableShip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/spaceship"
+            android:src="@drawable/mach1"
             />
 
     </ImageSwitcher>
@@ -62,8 +62,8 @@
         android:layout_marginLeft="7dp"
         android:text="&lt;"
         android:textSize="35dp"
-        android:textStyle="bold"
-        android:onClick="sendShipleft" />
+        android:textStyle="bold" />
+       <!-- android:onClick="sendShipleft" -->
 
     <Button
         android:id="@+id/Toprightbutton"
@@ -75,8 +75,8 @@
         android:layout_marginRight="7dp"
         android:text="&gt;"
         android:textSize="35dp"
-        android:textStyle="bold"
-        android:onClick="sendShipRight" />
+        android:textStyle="bold" />
+        <!-- android:onClick="sendShipRight" -->
 
     <Button
         android:layout_width="75dp"
@@ -89,9 +89,9 @@
         android:text="&lt;"
         android:textSize="35dp"
         android:textStyle="bold"
-        android:id="@+id/button7"
-        android:onClick="sendPenguinLeft"
-        />
+        android:id="@+id/button7" />
+        <!-- android:onClick="sendPenguinLeft" -->
+
 
     <Button
         android:id="@+id/bottomRight"
@@ -105,9 +105,8 @@
         android:layout_marginRight="7dp"
         android:text="&gt;"
         android:textSize="35dp"
-        android:textStyle="bold"
-        android:onClick="sendPenguinRight"
-        />
+        android:textStyle="bold" />
+        <!--android:onClick="sendPenguinRight" -->
 
     <Button
         android:layout_width="55dp"
@@ -138,7 +137,7 @@
         android:layout_centerHorizontal="true"
         />
 
-    <Button
+<!--    <Button
         android:id="@+id/colorButtonTop"
         android:layout_width="75dp"
         android:layout_height="45dp"
@@ -171,6 +170,6 @@
         android:layout_above="@+id/colorButtonBottom"
         android:layout_toRightOf="@+id/customtitle"
         android:layout_toEndOf="@+id/customtitle"
-        android:layout_marginBottom="7dp" />
+        android:layout_marginBottom="7dp" />-->
 
 </RelativeLayout>

@@ -37,7 +37,7 @@ public class MainMenu extends AppCompatActivity {
 
 
         // setting ids to variables
-        color = (TextView) custom.findViewById (R.id.colorText);
+        //color = (TextView) custom.findViewById (R.id.colorText);
 
 /*      // for check boxes
         soundY = (CheckBox) options.findViewById(R.id.SoundY);

@@ -29,4 +29,80 @@
         android:textSize="15sp"
         android:onClick="sendMain"/>
 
+    <Button
+        android:layout_toLeftOf="@id/MarathonScores"
+        android:layout_below="@id/scoresTitle"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonshape"
+        android:text="Racing"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        />
+    <Button
+        android:id="@+id/MarathonScores"
+        android:layout_below="@id/scoresTitle"
+        android:layout_centerInParent="true"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonshape"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
+        android:text= "Marathon"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        />
+    <Button
+        android:layout_below="@id/scoresTitle"
+        android:layout_toRightOf="@id/MarathonScores"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonshape"
+        android:text= "Asteroids"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        />
+    <TextView
+        android:id="@+id/RacingTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="Racing"
+        android:textSize="30dp"
+        android:layout_below="@id/MarathonScores"
+        android:layout_centerInParent="true"
+
+        />
+
+    <TableLayout
+        android:layout_below="@id/RacingTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1,2,3"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="14dp"
+        android:background="#666655"
+        >
+        <TableRow>
+            <TextView
+                android:text="Rank"
+                android:textSize="28dp"/>
+            <TextView
+                android:text="Name"
+                android:textSize="28dp"
+                />
+            <TextView
+                android:text="Time"
+                android:textSize="28dp"
+                />
+            <TextView
+                android:text="Penguin"
+                android:textSize="28dp"
+                />
+        </TableRow>
+
+
+    </TableLayout>
+
 </RelativeLayout>
+
