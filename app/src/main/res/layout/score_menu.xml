@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/spacenew">
+    android:background="@drawable/spacenew"
+    tools:context="com.test.operationpenguinpanic.MainMenu">
 
     <TextView
         android:id="@+id/scoresTitle"
@@ -37,7 +39,9 @@
         android:layout_marginRight="9dp"
         android:text= "Marathon"
         android:textStyle="bold"
-        android:textSize="18dp" />
+        android:textSize="18dp"
+        android:onClick="sendMarathonScores"
+        />
 
     <Button
         android:layout_toLeftOf="@id/MarathonScores"
@@ -57,7 +61,9 @@
         android:background="@drawable/buttonshape"
         android:text= "Asteroids"
         android:textStyle="bold"
-        android:textSize="18dp" />
+        android:textSize="18dp"
+        android:onClick="sendAsteroidScores"
+        />
     <TextView
         android:id="@+id/RacingTxt"
         android:layout_width="wrap_content"
@@ -79,21 +85,21 @@
         <TableRow>
             <TextView
                 android:text="Rank"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"/>
             <TextView
                 android:text="Name"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
                 />
             <TextView
                 android:text="Time"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
                 />
             <TextView
                 android:text="Penguin"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
                 />
         </TableRow>
@@ -102,43 +108,47 @@
             android:background="#F7B12F">
             <TextView
                 android:text="1."
-                android:textSize="28dp"
-                android:textAlignment="center"/>
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textColor="#000000"/>
             <TextView
                 android:text="Jack"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 />
             <TextView
                 android:text="1:00"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 />
             <TextView
                 android:text="SSP"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 />
         </TableRow>
 
         <TableRow>
             <TextView
                 android:text="2."
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"/>
             <TextView
                 android:text="Jill"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
                 />
             <TextView
                 android:text="1:05"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
                 />
             <TextView
                 android:text="Lady"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
                 />
         </TableRow>
@@ -147,43 +157,47 @@
             android:background="#F7B12F">
             <TextView
                 android:text="3."
-                android:textSize="28dp"
-                android:textAlignment="center"/>
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textColor="#000000"/>
             <TextView
                 android:text="Steve"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 />
             <TextView
                 android:text="1:10"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 />
             <TextView
                 android:text="Super"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 />
         </TableRow>
 
         <TableRow>
             <TextView
                 android:text="4."
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"/>
             <TextView
                 android:text="Bobby"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
                 />
             <TextView
                 android:text="1:12"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
                 />
             <TextView
                 android:text="Ninja"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
                 />
         </TableRow>
@@ -192,43 +206,47 @@
             android:background="#F7B12F">
             <TextView
                 android:text="5."
-                android:textSize="28dp"
-                android:textAlignment="center"/>
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textColor="#000000"/>
             <TextView
                 android:text="Jane"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 />
             <TextView
                 android:text="1:15"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 />
             <TextView
                 android:text="Doot"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
+                android:textColor="#000000"
                 />
         </TableRow>
 
         <TableRow>
             <TextView
                 android:text="6."
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"/>
             <TextView
                 android:text="Rick"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
                 />
             <TextView
                 android:text="1:20"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
                 />
             <TextView
                 android:text="Robot"
-                android:textSize="28dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
                 />
         </TableRow>

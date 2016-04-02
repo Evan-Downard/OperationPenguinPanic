@@ -95,7 +95,8 @@ public class MainMenu extends AppCompatActivity {
         setContentView(new GamePanel(this));
     }
 
-    public void sendMain(View view){setContentView(R.layout.activity_main_menu);
+    public void sendMain(View view){
+        setContentView(R.layout.activity_main_menu);
     }
 
     // sending the ids of the object to be changed
@@ -147,6 +148,16 @@ public class MainMenu extends AppCompatActivity {
     }
 
 */
+    public void sendRacingScores(View view){
+        setContentView(R.layout.score_menu);
+    }
 
+    public void sendMarathonScores(View view){
+        setContentView(R.layout.scores_marathon_menu);
+    }
+
+    public void sendAsteroidScores(View view){
+        setContentView(R.layout.scores_asteroid_menu);
+    }
 }
 

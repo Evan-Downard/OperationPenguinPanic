@@ -1,7 +1,256 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/spacenew">
+    android:background="@drawable/spacenew"
+    tools:context="com.test.operationpenguinpanic.MainMenu">
+
+    <TextView
+        android:id="@+id/scoresTitle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="High Scores"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="63dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="50dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="55dp"
+        android:background="@drawable/arrowleft"
+        android:layout_margin="5dp"
+        android:textSize="15sp"
+        android:onClick="sendMain"/>
+
+    <Button
+        android:id="@+id/MarathonScores1"
+        android:layout_below="@id/scoresTitle1"
+        android:layout_centerInParent="true"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonshape"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
+        android:text= "Marathon"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:onClick="sendMarathonScores"
+        />
+
+    <Button
+        android:layout_toLeftOf="@id/MarathonScores1"
+        android:layout_below="@id/scoresTitle1"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonshape"
+        android:text="Racing"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:onClick="sendRacingScores"/>
+
+    <Button
+        android:layout_below="@id/scoresTitle1"
+        android:layout_toRightOf="@id/MarathonScores1"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonshape"
+        android:text= "Asteroids"
+        android:textStyle="bold"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/asteroidTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="Asteroid"
+        android:textSize="30dp"
+        android:layout_below="@id/MarathonScores1"
+        android:layout_centerInParent="true" />
+
+    <TableLayout
+        android:layout_below="@id/asteroidTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1,2,3"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/tableshape">
+        <TableRow>
+            <TextView
+                android:text="Rank"
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+            <TextView
+                android:text="Name"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                />
+            <TextView
+                android:text="Score"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                />
+            <TextView
+                android:text="Penguin"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                />
+        </TableRow>
+
+        <TableRow
+            android:background="#F7B12F">
+            <TextView
+                android:text="1."
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textColor="#000000"/>
+            <TextView
+                android:text="James"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                />
+            <TextView
+                android:text="100,000"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                />
+            <TextView
+                android:text="Santa"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="2."
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+            <TextView
+                android:text="Jill"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                />
+            <TextView
+                android:text="85,000"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                />
+            <TextView
+                android:text="Lady"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                />
+        </TableRow>
+
+        <TableRow
+            android:background="#F7B12F">
+            <TextView
+                android:text="3."
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textColor="#000000"/>
+            <TextView
+                android:text="Jane"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                />
+            <TextView
+                android:text="75,500"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                />
+            <TextView
+                android:text="Normal"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="4."
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+            <TextView
+                android:text="Rick"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                />
+            <TextView
+                android:text="62,750"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                />
+            <TextView
+                android:text="Ninja"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                />
+        </TableRow>
+
+        <TableRow
+            android:background="#F7B12F">
+            <TextView
+                android:text="5."
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textColor="#000000"/>
+            <TextView
+                android:text="Steve"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                />
+            <TextView
+                android:text="55,000"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                />
+            <TextView
+                android:text="Doot"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="6."
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+            <TextView
+                android:text="Steve"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                />
+            <TextView
+                android:text="25,000"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                />
+            <TextView
+                android:text="SSP"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                />
+        </TableRow>
+
+    </TableLayout>
 
 </RelativeLayout>
