@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
@@ -30,6 +31,9 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 
         // inflating the xml pages
         View custom = getLayoutInflater().inflate(R.layout.customization_menu, null, false);
@@ -83,7 +87,7 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void sendDifficulty(View view) {
-        setContentView(new GamePanel(this));
+        setContentView(new GamePanelRacing(this));
 
     }
 

@@ -9,6 +9,7 @@ public abstract class GameObject {
     protected int dx;
     protected int width;
     protected int height;
+    protected float acceleration;
 
     public void setX(int x)
     {
