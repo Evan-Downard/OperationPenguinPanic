@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/spacenew"
-    tools:context="com.test.operationpenguinpanic.CustomizationMenu">
+    tools:context="com.test.operationpenguinpanic.MainMenu">
 
     <TextView
         android:id="@+id/customtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ship Design"
+        android:text="Customize"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -20,37 +19,23 @@
         android:textSize="50dp"
         android:textStyle="bold"/>
 
-    <ImageSwitcher
-        android:id="@+id/Shipchanger"
+    <ImageView
+        android:id="@+id/changeShip"
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="230dp"
-        >
+        android:src="@drawable/mach1"
+        android:layout_marginLeft="35dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true" />
 
-        <ImageView
-            android:id="@+id/changeableShip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/mach1"
-            />
-
-    </ImageSwitcher>
-
-    <ImageSwitcher
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/Shipchanger"
-        android:layout_marginTop="248dp">
-
-        <ImageView
-            android:id="@+id/changeablePenguin"
-            android:layout_width="125dp"
-            android:layout_height="125dp"
-            android:src="@drawable/normalpenguin"
-            />
-
-    </ImageSwitcher>
+    <ImageView
+        android:id="@+id/changePenguin"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:src="@drawable/normalpenguin"
+        android:layout_marginRight="35dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"/>
 
     <Button
         android:id="@+id/Topleftbutton"
@@ -62,8 +47,8 @@
         android:layout_marginLeft="7dp"
         android:text="&lt;"
         android:textSize="35dp"
-        android:textStyle="bold" />
-       <!-- android:onClick="sendShipleft" -->
+        android:textStyle="bold"
+        android:onClick="sendShipleft" />
 
     <Button
         android:id="@+id/Toprightbutton"
@@ -75,8 +60,8 @@
         android:layout_marginRight="7dp"
         android:text="&gt;"
         android:textSize="35dp"
-        android:textStyle="bold" />
-        <!-- android:onClick="sendShipRight" -->
+        android:textStyle="bold"
+        android:onClick="sendShipRight"/>
 
     <Button
         android:layout_width="75dp"
@@ -89,9 +74,8 @@
         android:text="&lt;"
         android:textSize="35dp"
         android:textStyle="bold"
-        android:id="@+id/button7" />
-        <!-- android:onClick="sendPenguinLeft" -->
-
+        android:id="@+id/button7"
+        android:onClick="sendPenguinLeft"/>
 
     <Button
         android:id="@+id/bottomRight"
@@ -105,8 +89,8 @@
         android:layout_marginRight="7dp"
         android:text="&gt;"
         android:textSize="35dp"
-        android:textStyle="bold" />
-        <!--android:onClick="sendPenguinRight" -->
+        android:textStyle="bold"
+        android:onClick="sendPenguinRight"/>
 
     <Button
         android:layout_width="80dp"
