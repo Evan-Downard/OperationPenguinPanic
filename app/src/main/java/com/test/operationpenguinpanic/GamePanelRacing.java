@@ -51,7 +51,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
         // create new background
         background = new BackgroundRacing(BitmapFactory.decodeResource(getResources(), R.drawable.spacesky));
         // create player's spaceship
-        player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), R.drawable.gameship_));
+        player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), R.drawable.gameship));
         // create opponents
         opponentsEasy = new OpponentsEasy(BitmapFactory.decodeResource(getResources(), R.drawable.enemyship));
 
