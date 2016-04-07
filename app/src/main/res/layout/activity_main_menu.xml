@@ -109,6 +109,7 @@
         android:background="@drawable/buttonshape"
         android:text="Web"
         android:textSize="15sp"
+        android:onClick="openWeb"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/imageView"
         android:layout_alignEnd="@+id/imageView"

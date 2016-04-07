@@ -1,6 +1,7 @@
 package com.test.operationpenguinpanic;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,18 +19,18 @@ public class MainMenu extends AppCompatActivity {
     int i = 0; int j = 0;
     // int array of ship list
     int shipImages[] = {R.drawable.mach1,R.drawable.mach1blue,R.drawable.mach1green,
-            R.drawable.mach1back,R.drawable.mach1silver,R.drawable.mach1gold};
+            R.drawable.mach1black,R.drawable.mach1silver,R.drawable.mach1gold,R.drawable.mach1white};
     // in array of penguin list
     int penguinImages[] = {R.drawable.normalpenguin,R.drawable.ladypenguin,
             R.drawable.mechanicpenguin,
             R.drawable.superpenguin,R.drawable.ninjapenguin,
             R.drawable.dootdootpenguin,R.drawable.ssp};
-/*
-    // for radio buttons
-    RadioButton soundY;    RadioButton soundN;
-    RadioButton buttonY;   RadioButton buttonN;
-    RadioButton musicY;    RadioButton musicN;
-*/
+    /*
+        // for radio buttons
+        RadioButton soundY;    RadioButton soundN;
+        RadioButton buttonY;   RadioButton buttonN;
+        RadioButton musicY;    RadioButton musicN;
+    */
     // for image views
     ImageView ship; ImageView penguin;
     //public TextView color;
@@ -126,10 +127,15 @@ public class MainMenu extends AppCompatActivity {
     // Customization page
     //
     // on click scrolls through the ships list from the left
+    public void openWeb(View view){
+        Uri uri = Uri.parse("http://csprofessionalcarl.github.io/OperationPenguinWeb/");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
     public void sendShipleft(View view){
         ship = (ImageView) findViewById(R.id.changeShip);
         if(i==0) {
-            i = 5;
+            i = 6;
             if (ship != null) {
                 ship.setImageResource(shipImages[i]);
             }
@@ -143,7 +149,7 @@ public class MainMenu extends AppCompatActivity {
     // on click scrolls through the ships list from the right
     public void sendShipRight(View view){
         ship = (ImageView) findViewById(R.id.changeShip);
-        if(i==5){
+        if(i==6){
             i = 0;
             if (ship != null) {
                 ship.setImageResource(shipImages[i]);
