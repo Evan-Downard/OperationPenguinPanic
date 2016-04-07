@@ -51,7 +51,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
         // create new background
         background = new BackgroundRacing(BitmapFactory.decodeResource(getResources(), R.drawable.spacesky));
         // create player's spaceship
-        player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), R.drawable.enemyship));
+        player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), R.drawable.gameship_));
         // create opponents
         opponentsEasy = new OpponentsEasy(BitmapFactory.decodeResource(getResources(), R.drawable.enemyship));
 
@@ -124,7 +124,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
             long raceTime = (System.nanoTime() - raceStartTimer) / 1000000000;
             if((elapsed >= 10) &&(i < 5)){
                 opponentsEasy.setY(-1000);
-                opponentsEasy.setX(random.nextInt(GamePanelRacing.WIDTH * 2) / 2);
+                opponentsEasy.setX(random.nextInt(400) + 50);
                 i++;
                 opponentStartTimer = System.nanoTime();
             }
@@ -152,7 +152,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
 
         if (canvas != null) {
             final int savedState = canvas.save();           // save the state(size) of the image before scale
-            canvas.scale(scaleFactorX,scaleFactorY);        // scale the image to fit FS
+            canvas.scale(scaleFactorX, scaleFactorY);        // scale the image to fit FS
             background.draw(canvas);
             player.draw(canvas);
             opponentsEasy.draw(canvas);
