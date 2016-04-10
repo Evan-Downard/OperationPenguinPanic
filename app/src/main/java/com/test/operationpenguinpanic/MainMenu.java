@@ -92,11 +92,11 @@ public class MainMenu extends AppCompatActivity {
     }
     // on click starts Marathon game
     public void sendMarathon(View view){
-        setContentView(new GamePanel(this));
+        setContentView(new MarathonGP(this));
     }
     // on click starts Asteroids game
     public void sendAsteroids(View view){
-        setContentView(new GamePanel(this));
+        setContentView(new MarathonGP(this));
     }
 
     //===========================================

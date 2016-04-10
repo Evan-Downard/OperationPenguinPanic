@@ -7,6 +7,7 @@ import android.graphics.Paint;
 
 import java.util.Random;
 
+//Oswald
 public class OpponentsEasy extends GameObject {
 
     private Bitmap sprite;

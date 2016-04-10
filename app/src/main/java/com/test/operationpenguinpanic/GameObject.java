@@ -2,6 +2,7 @@ package com.test.operationpenguinpanic;
 
 import android.graphics.Rect;
 
+//Evan
 public abstract class GameObject {
     protected int x;
     protected int y;
@@ -19,6 +20,7 @@ public abstract class GameObject {
     {
         this.y = y;
     }
+    //Temporary
     public int getX()
     {
         return x;

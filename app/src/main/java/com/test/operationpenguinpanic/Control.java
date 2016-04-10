@@ -3,7 +3,7 @@ package com.test.operationpenguinpanic;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-
+//Evan
 public class Control extends GameObject{
 
     private Bitmap image;

@@ -6,21 +6,20 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.WindowManager;
+
 
 import java.util.ArrayList;
 import java.util.Random;
 
-
-public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
+//Most of this code of from Evan
+//This is the main controller for the marathon mode of the game
+public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
 
     //Assuming portrait layout
     public static final int WIDTH = 480;
@@ -29,13 +28,13 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     public static final int MOVESPEED = -5;
 
 
-    private long asteroidStartTime;
+    private long projectileStartTime;
     private MainThread thread;
-    private Background bg;
+    private BackgroundMarathon bg;
     private Control leftControl;
     private Control rightControl;
-    private Player player;
-    private ArrayList<Asteroid> asteroids;
+    private PlayerMarathon player;
+    private ArrayList<Projectile> projectiles;
     private Random rand = new Random();
     private boolean newGameCreated;
 
@@ -49,7 +48,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     final int screenWidth = display.heightPixels;
     final int screenHeight = display.widthPixels;
 
-    public GamePanel(Context context) {
+    public MarathonGP(Context context) {
         super(context);
 
 
@@ -88,17 +87,17 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     public void surfaceCreated(SurfaceHolder holder) {
 
         //Create background
-        bg = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.spacesky));
+        bg = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.spacesky));
         //Create left control
-        leftControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowleft), (GamePanel.WIDTH/4)-65, GamePanel.HEIGHT - 75, 140, 69);
+        leftControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowleft), (MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
         //Create right control
-        rightControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowright), (GamePanel.WIDTH - GamePanel.WIDTH/4)-65, GamePanel.HEIGHT - 75, 140, 69);
+        rightControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowright), (MarathonGP.WIDTH - MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
         //Create player
-        player = new Player(BitmapFactory.decodeResource(getResources(), R.drawable.gameship), screenWidth / 8, GamePanel.HEIGHT - 150, 45, 58, 1);
+        player = new PlayerMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.gameship), screenWidth / 8, MarathonGP.HEIGHT - 150, 45, 58, 1);
 
 
-        asteroids = new ArrayList<Asteroid>();
-        asteroidStartTime = System.nanoTime();
+        projectiles = new ArrayList<Projectile>();
+        projectileStartTime = System.nanoTime();
 
         thread = new MainThread(getHolder(), this);
         //start the game loop
@@ -162,66 +161,66 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             bg.update();
             player.update();
 
-            long asteroidElapsed = (System.nanoTime() - asteroidStartTime) / 1000000;
+            long projectileElapsed = (System.nanoTime() - projectileStartTime) / 1000000;
 
-            if (asteroidElapsed > (2000 - player.getScore() / 4)) {
-                System.out.println("creating asteroid");
+            if (projectileElapsed > (2000 - player.getScore() / 4)) {
+                System.out.println("creating projectile");
 
                 //Projectile Spawning
                 //first asteroid goes down the center of the screen forcing the player to move
-                if (asteroids.size() == 0) {
-                    asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.
+                if (projectiles.size() == 0) {
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.
                             asteroid), HEIGHT, -20, 40, 40, player.getScore(), 1));
                 } else if (rand.nextDouble() <= 0.1) {
-                    asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid),
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid),
                             (int) (rand.nextDouble() * (screenWidth / 4)), -20, 40, 40, player.getScore(), 1));
                 } else if (rand.nextDouble() <= 0.2 && rand.nextDouble() > 0.1) {
-                    asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid8),
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid8),
                             (int) (rand.nextDouble() * (screenWidth / 4)), -20, 39, 30, player.getScore(), 1));
                 } else if (rand.nextDouble() <= 0.3 && rand.nextDouble() > 0.2) {
-                    asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid3),
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid3),
                             (int) (rand.nextDouble() * (screenWidth / 4)), -20, 60, 51, player.getScore(), 1));
                 } else if (rand.nextDouble() <= 0.4 && rand.nextDouble() > 0.3) {
-                    asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid2),
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid2),
                             (int) (rand.nextDouble() * (screenWidth / 4)), -20, 65, 65, player.getScore(), 1));
                 } else if (rand.nextDouble() <= 0.5 && rand.nextDouble() > 0.4) {
-                    asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.spacej6),
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej6),
                             (int) (rand.nextDouble() * (screenWidth / 4)), -20, 87, 87, player.getScore(), 1));
                 } else if (rand.nextDouble() <= 0.6 && rand.nextDouble() > 0.5) {
-                    asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.spacej5),
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej5),
                             (int) (rand.nextDouble() * (screenWidth / 4)), -20, 114, 121, player.getScore(), 1));
                 } else if (rand.nextDouble() <= 0.7 && rand.nextDouble() > 0.6) {
-                    asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.spacej4),
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej4),
                             (int) (rand.nextDouble() * (screenWidth / 4)), -20, 43, 21, player.getScore(), 1));
                 } else if (rand.nextDouble() <= 0.8 && rand.nextDouble() > 0.7) {
-                    asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.spacej3),
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej3),
                             (int) (rand.nextDouble() * (screenWidth / 4)), -20, 39, 160, player.getScore(), 1));
                 } else if (rand.nextDouble() <= 0.9 && rand.nextDouble() > 0.8) {
-                    asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.spacej2),
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej2),
                             (int) (rand.nextDouble() * (screenWidth / 4)), -20, 87, 100, player.getScore(), 1));
                 } else if (rand.nextDouble() > 0.9) {
-                    asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.spacej1),
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej1),
                             (int) (rand.nextDouble() * (screenWidth / 4)), -20, 65, 65, player.getScore(), 1));
                 } else {
-                    asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid1),
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid1),
                             (int) (rand.nextDouble() * (screenWidth / 4)), -20, 60, 60, player.getScore(), 1));
                 }
 
-                asteroidStartTime = System.nanoTime();
+                projectileStartTime = System.nanoTime();
             }
             //loop through every asteroid and check collision and remove
-            for (int i = 0; i < asteroids.size(); i++) {
+            for (int i = 0; i < projectiles.size(); i++) {
                 //update asteroid
-                asteroids.get(i).update();
+                projectiles.get(i).update();
 
-                if (collision(asteroids.get(i), player)) {
-                    asteroids.remove(i);
+                if (collision(projectiles.get(i), player)) {
+                    projectiles.remove(i);
                     player.setPlaying(false);
                     break;
                 }
                 //remove asteroid if it is way off the screen
-                if (asteroids.get(i).getY() < -100) {
-                    asteroids.remove(i);
+                if (projectiles.get(i).getY() < -100) {
+                    projectiles.remove(i);
                     break;
                 }
             }
@@ -251,7 +250,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             rightControl.draw(canvas);
 
             //draw asteroids
-            for (Asteroid m : asteroids) {
+            for (Projectile m : projectiles) {
                 m.draw(canvas);
             }
 
@@ -261,7 +260,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void newGame() {
-        asteroids.clear();
+        projectiles.clear();
 
         //player.resetDY();
         player.resetScore();

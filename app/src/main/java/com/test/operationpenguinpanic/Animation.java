@@ -2,6 +2,7 @@ package com.test.operationpenguinpanic;
 
 import android.graphics.Bitmap;
 
+//Evan
 public class Animation {
     private Bitmap[] frames;
     private int currentFrame;

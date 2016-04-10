@@ -7,15 +7,15 @@ public class MainThread extends Thread{
         private int FPS = 30;
         private double averageFPS;
         private SurfaceHolder surfaceHolder;
-        private GamePanel gamePanel;
+        private MarathonGP marathonGP;
         private boolean running;
         public static Canvas canvas;
 
-        public MainThread(SurfaceHolder surfaceHolder, GamePanel gamePanel)
+        public MainThread(SurfaceHolder surfaceHolder, MarathonGP marathonGP)
         {
             super();
             this.surfaceHolder = surfaceHolder;
-            this.gamePanel = gamePanel;
+            this.marathonGP = marathonGP;
         }
         @Override
         public void run()
@@ -35,8 +35,8 @@ public class MainThread extends Thread{
                 try {
                     canvas = this.surfaceHolder.lockCanvas();
                     synchronized (surfaceHolder) {
-                        this.gamePanel.update();
-                        this.gamePanel.draw(canvas);
+                        this.marathonGP.update();
+                        this.marathonGP.draw(canvas);
                     }
                 } catch (Exception e) {
                 }

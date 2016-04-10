@@ -5,7 +5,8 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.util.DisplayMetrics;
 
-public class Player extends GameObject{
+//Evan
+public class PlayerMarathon extends GameObject{
     private Bitmap spritesheet;
     private int score;
     private Context context;
@@ -21,7 +22,7 @@ public class Player extends GameObject{
     private long startTime;
 
 
-    public Player(Bitmap res, int x, int y, int w, int h, int numFrames) {
+    public PlayerMarathon(Bitmap res, int x, int y, int w, int h, int numFrames) {
 
         super.x = x;
         super.y = y;
@@ -62,7 +63,7 @@ public class Player extends GameObject{
         if(left && x > 0){
             x -=8;
         }
-        if(right && x < (GamePanel.WIDTH-40)){
+        if(right && x < (MarathonGP.WIDTH-40)){
             x +=8;
 
         }else{
