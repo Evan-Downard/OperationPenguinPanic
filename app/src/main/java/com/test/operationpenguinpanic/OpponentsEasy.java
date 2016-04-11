@@ -1,5 +1,6 @@
 package com.test.operationpenguinpanic;
 
+/*** Edited by Oswald ***/
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -7,13 +8,13 @@ import android.graphics.Paint;
 
 import java.util.Random;
 
-//Oswald
 public class OpponentsEasy extends GameObject {
 
     private Bitmap sprite;
+    Random random = new Random();
 
     public OpponentsEasy(Bitmap image){
-        Random random = new Random();
+
         sprite = image;
         x = GamePanelRacing.WIDTH / (random.nextInt(5) + 1);
         y = -1000;
@@ -22,6 +23,11 @@ public class OpponentsEasy extends GameObject {
         acceleration = 15.0f;
 
 
+    }
+
+    public void resetPosition() {
+        setY(-1000);
+        setX(random.nextInt(GamePanelRacing.WIDTH) / 1);
     }
 
     public void update (){
