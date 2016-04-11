@@ -1,5 +1,6 @@
 package com.test.operationpenguinpanic;
 
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.BitmapFactory;
@@ -17,9 +18,8 @@ import android.view.SurfaceView;
 import java.util.ArrayList;
 import java.util.Random;
 
-//Most of this code of from Evan
-//This is the main controller for the marathon mode of the game
-public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
+//Asteroids mode controller
+public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
 
     //Assuming portrait layout
     public static final int WIDTH = 480;
@@ -29,11 +29,11 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
 
 
     private long projectileStartTime;
-    private MarathonThread thread;
-    private BackgroundMarathon bg;
+    private AsteroidsThread thread;
+    private BackgroundAsteroids bg;
     private Control leftControl;
     private Control rightControl;
-    private PlayerMarathon player;
+    private PlayerAsteroids player;
     private ArrayList<Projectile> projectiles;
     private Random rand = new Random();
     private boolean newGameCreated;
@@ -48,7 +48,7 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
     final int screenWidth = display.heightPixels;
     final int screenHeight = display.widthPixels;
 
-    public MarathonGP(Context context) {
+    public AsteroidsGP(Context context) {
         super(context);
 
 
@@ -87,19 +87,19 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
     public void surfaceCreated(SurfaceHolder holder) {
 
         //Create background
-        bg = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.spacesky));
+        bg = new BackgroundAsteroids(BitmapFactory.decodeResource(getResources(), R.drawable.spacesky));
         //Create left control
-        leftControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowleft), (MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
+        leftControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowleft), (AsteroidsGP.WIDTH/4)-65, AsteroidsGP.HEIGHT - 75, 140, 69);
         //Create right control
-        rightControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowright), (MarathonGP.WIDTH - MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
+        rightControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowright), (AsteroidsGP.WIDTH - AsteroidsGP.WIDTH/4)-65, AsteroidsGP.HEIGHT - 75, 140, 69);
         //Create player
-        player = new PlayerMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.gameship), screenWidth / 8, MarathonGP.HEIGHT - 150, 45, 58, 1);
+        player = new PlayerAsteroids(BitmapFactory.decodeResource(getResources(), R.drawable.gameship), screenWidth / 8, AsteroidsGP.HEIGHT - 150, 45, 58, 1);
 
 
         projectiles = new ArrayList<Projectile>();
         projectileStartTime = System.nanoTime();
 
-        thread = new MarathonThread(getHolder(), this);
+        thread = new AsteroidsThread(getHolder(), this);
         //start the game loop
         thread.setRunning(true);
         thread.start();

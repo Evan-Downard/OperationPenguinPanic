@@ -95,9 +95,7 @@ public class MainMenu extends AppCompatActivity {
         setContentView(new MarathonGP(this));
     }
     // on click starts Asteroids game
-    public void sendAsteroids(View view){
-        setContentView(new MarathonGP(this));
-    }
+    public void sendAsteroids(View view){ setContentView(new AsteroidsGP(this)); }
 
     //===========================================
     // for back buttons

@@ -3,7 +3,7 @@ package com.test.operationpenguinpanic;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
-public class MainThread extends Thread{
+public class MarathonThread extends Thread{
         private int FPS = 30;
         private double averageFPS;
         private SurfaceHolder surfaceHolder;
@@ -11,7 +11,7 @@ public class MainThread extends Thread{
         private boolean running;
         public static Canvas canvas;
 
-        public MainThread(SurfaceHolder surfaceHolder, MarathonGP marathonGP)
+        public MarathonThread(SurfaceHolder surfaceHolder, MarathonGP marathonGP)
         {
             super();
             this.surfaceHolder = surfaceHolder;
