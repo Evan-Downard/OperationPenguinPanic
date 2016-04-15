@@ -16,10 +16,13 @@ import android.widget.RadioButton;
 
 public class MainMenu extends AppCompatActivity {
     // initialization of variables
-    int i = 0; int j = 0;
+    int i = 0; int j = 0; int k = 0;
     // int array of ship list
-    int shipImages[] = {R.drawable.mach1,R.drawable.mach1blue,R.drawable.mach1green,
-            R.drawable.mach1black,R.drawable.mach1silver,R.drawable.mach1gold,R.drawable.mach1white};
+    int shipImages[][] = {{R.drawable.mach1,R.drawable.mach1blue,R.drawable.mach1green,
+                    R.drawable.mach1black,R.drawable.mach1white,R.drawable.mach1silver,
+                    R.drawable.mach1gold},{R.drawable.mach3_red, R.drawable.mach3_blue,
+                    R.drawable.mach3_green,R.drawable.mach3_black, R.drawable.mach3_white,
+                    R.drawable.mach3_silver,R.drawable.mach3_gold}};
     // in array of penguin list
     int penguinImages[] = {R.drawable.normalpenguin,R.drawable.ladypenguin,
             R.drawable.mechanicpenguin,
@@ -61,7 +64,7 @@ public class MainMenu extends AppCompatActivity {
     //===============================================
     // Menu screens
     //
-    // on click sneds user to game list screen
+    // on click sends user to game list screen
     public void sendGame(View view){
         //Intent intent = new Intent(this, DisplayGame.class);
         setContentView(R.layout.game_select);
@@ -97,6 +100,13 @@ public class MainMenu extends AppCompatActivity {
     // on click starts Asteroids game
     public void sendAsteroids(View view){ setContentView(new AsteroidsGP(this)); }
 
+    // on click open up web page
+    public void openWeb(View view){
+        Uri uri = Uri.parse("http://csprofessionalcarl.github.io/OperationPenguinWeb/");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
+
     //===========================================
     // for back buttons
     //
@@ -125,41 +135,36 @@ public class MainMenu extends AppCompatActivity {
     // Customization page
     //
     // on click scrolls through the ships list from the left
-    public void openWeb(View view){
-        Uri uri = Uri.parse("http://csprofessionalcarl.github.io/OperationPenguinWeb/");
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        startActivity(intent);
-    }
     public void sendShipleft(View view){
         ship = (ImageView) findViewById(R.id.changeShip);
         if(i==0) {
-            i = 6;
+            i = 1;
             if (ship != null) {
-                ship.setImageResource(shipImages[i]);
+                ship.setImageResource(shipImages[i][k]);
             }
         }else{
             i = i-1;
             if (ship != null) {
-                ship.setImageResource(shipImages[i]);
+                ship.setImageResource(shipImages[i][k]);
             }
         }
     }
     // on click scrolls through the ships list from the right
     public void sendShipRight(View view){
         ship = (ImageView) findViewById(R.id.changeShip);
-        if(i==6){
+        if(i==1){
             i = 0;
             if (ship != null) {
-                ship.setImageResource(shipImages[i]);
+                ship.setImageResource(shipImages[i][k]);
             }
         }else{
             i = i +1;
             if (ship != null) {
-                ship.setImageResource(shipImages[i]);
+                ship.setImageResource(shipImages[i][k]);
             }
         }
     }
-    // on click crolls through the penguin list from the left
+    // on click scrolls through the penguin list from the left
     public void sendPenguinLeft(View view){
         penguin = (ImageView) findViewById(R.id.changePenguin);
         if(j==0){
@@ -189,6 +194,35 @@ public class MainMenu extends AppCompatActivity {
             }
         }
     }
-
+    // on click scrolls through the colors for that ship down the list
+    public void sendColorDown(View view){
+        ship = (ImageView) findViewById(R.id.changeShip);
+        if(k==0){
+            k = 6;
+            if(ship != null){
+                ship.setImageResource(shipImages[i][k]);
+            }
+        }else{
+            k = k - 1;
+            if(ship != null){
+                ship.setImageResource(shipImages[i][k]);
+            }
+        }
+    }
+    // on click scrolls through the colors for that ship up the list
+    public void sendColorUp(View veiw){
+        ship = (ImageView) findViewById(R.id.changeShip);
+        if(k==6){
+            k = 0;
+            if(ship != null){
+                ship.setImageResource(shipImages[i][k]);
+            }
+        }else{
+            k = k + 1;
+            if(ship != null){
+                ship.setImageResource(shipImages[i][k]);
+            }
+        }
+    }
 }
 
