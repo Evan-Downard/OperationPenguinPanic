@@ -93,7 +93,7 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
         //Create right control
         rightControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowright), (MarathonGP.WIDTH - MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
         //Create player
-        player = new PlayerMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.gameship), screenWidth / 8, MarathonGP.HEIGHT - 150, 45, 58, 1);
+        player = new PlayerMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.animship), screenWidth / 8, MarathonGP.HEIGHT - 150, 51, 58, 6);
 
 
         projectiles = new ArrayList<Projectile>();
@@ -162,7 +162,7 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
             player.update();
 
             long projectileElapsed = (System.nanoTime() - projectileStartTime) / 1000000;
-
+            //Projectile spawns based on player score
             if (projectileElapsed > (2000 - player.getScore() / 4)) {
                 System.out.println("creating projectile");
 
@@ -213,6 +213,7 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
                 //update asteroid
                 projectiles.get(i).update();
 
+                //if player and object collide stop playing
                 if (collision(projectiles.get(i), player)) {
                     projectiles.remove(i);
                     player.setPlaying(false);
@@ -275,6 +276,8 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
         paint.setColor(Color.WHITE);
         paint.setTextSize(30);
         paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+        //canvas.drawText("Tap to start", screenWidth / 8, screenHeight / 4, paint);
+        //canvas.drawText("PAUSE", screenWidth / 8, screenHeight / 4, paint);
         canvas.drawText("Score: " + (player.getScore() * 3), 10, HEIGHT - HEIGHT + 25, paint);
     }
 
