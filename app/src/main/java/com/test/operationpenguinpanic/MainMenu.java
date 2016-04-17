@@ -11,12 +11,16 @@ import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
+import com.test.operationpenguinpanic.PlayerSave;
 
 
 
 public class MainMenu extends AppCompatActivity {
     // initialization of variables
     int i = 0; int j = 0; int k = 0;
+    boolean music; boolean sound;
+    // initialization of players save information
+    PlayerSave save = new PlayerSave();
     // int array of ship list
     int shipImages[][] = {{R.drawable.mach1,R.drawable.mach1blue,R.drawable.mach1green,
                     R.drawable.mach1black,R.drawable.mach1white,R.drawable.mach1silver,
@@ -28,12 +32,11 @@ public class MainMenu extends AppCompatActivity {
             R.drawable.mechanicpenguin,
             R.drawable.superpenguin,R.drawable.ninjapenguin,
             R.drawable.dootdootpenguin,R.drawable.ssp};
-    /*
-        // for radio buttons
-        RadioButton soundY;    RadioButton soundN;
-        RadioButton buttonY;   RadioButton buttonN;
-        RadioButton musicY;    RadioButton musicN;
-    */
+
+    // for radio buttons
+    RadioButton soundY;    RadioButton soundN;
+    RadioButton musicY;    RadioButton musicN;
+
     // for image views
     ImageView ship; ImageView penguin;
     //public TextView color;
@@ -45,11 +48,6 @@ public class MainMenu extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        // inflating the xml pages
-        //View custom = getLayoutInflater().inflate(R.layout.customization_menu, null, false);
-        //View options = getLayoutInflater().inflate(R.layout.options_screen, null, false);
-        // setting ids to variables
-        //color = (TextView) custom.findViewById (R.id.colorText);
         /*
         // for radio button
         soundY = (RadioButton) options.findViewById(R.id.SoundY);
@@ -72,10 +70,40 @@ public class MainMenu extends AppCompatActivity {
     // on click sends user to customization page
     public void sendCustom(View view){
         setContentView(R.layout.customization_menu);
+
+        k = save.sendSaveColor();
+        j = save.sendSavePenguin();
+        i = save.sendSaveShip();
+
+        ship = (ImageView) findViewById(R.id.changeShip);
+        penguin = (ImageView) findViewById(R.id.changePenguin);
+
+        ship.setImageResource(shipImages[i][k]);
+        penguin.setImageResource(penguinImages[j]);
     }
     // on click sends user to options page
     public void sendOption(View view){
         setContentView(R.layout.options_screen);
+
+        music = save.sendSaveMusic();
+        sound = save.sendSaveSounds();
+
+        soundY = (RadioButton) findViewById(R.id.SoundY);
+        soundN = (RadioButton) findViewById(R.id.SoundN);
+        musicY = (RadioButton) findViewById(R.id.MusicY);
+        musicN = (RadioButton) findViewById(R.id.MusicN);
+
+        if(music == true){
+            musicY.setChecked(true);
+        }else{
+            musicN.setChecked(true);
+        }
+
+        if(sound == true){
+            soundY.setChecked(true);
+        }else{
+            soundN.setChecked(true);
+        }
     }
     // on click sends user to scores page
     public void sendScore(View view){
@@ -222,6 +250,41 @@ public class MainMenu extends AppCompatActivity {
             if(ship != null){
                 ship.setImageResource(shipImages[i][k]);
             }
+        }
+    }
+
+    //================================================
+    // Saving player information
+    //
+    // on clicking SAVE in customization menu saves the type of ship
+    public void sendSave(View view){
+        ship = (ImageView) findViewById(R.id.changeShip);
+        penguin = (ImageView) findViewById(R.id.changePenguin);
+
+        if(ship != null && penguin != null){
+            save.getSaveShip(i);
+            save.getSaveColor(k);
+            save.getSavePenguin(j);
+        }
+
+    }
+    // on clicking SAVE in the options menu saves the playes infromation of the options
+    public void sendSaveOptions(View view){
+        soundY = (RadioButton) findViewById(R.id.SoundY);
+        soundN = (RadioButton) findViewById(R.id.SoundN);
+        musicY = (RadioButton) findViewById(R.id.MusicY);
+        musicN = (RadioButton) findViewById(R.id.MusicN);
+
+        if(soundY.isChecked() == true && soundN.isChecked() == false){
+            save.getSaveSounds(true);
+        }else if(soundN.isChecked() == true && soundY.isChecked() == false){
+            save.getSaveSounds(false);
+        }
+
+        if(musicY.isChecked() == true && musicN.isChecked() == false){
+            save.getSaveMusic(true);
+        }else if(musicN.isChecked() == true && musicY.isChecked() == false){
+            save.getSaveMusic(false);
         }
     }
 }

@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="63dp"
         android:layout_marginBottom="10dp"
-        android:textSize="50dp"
+        android:textSize="45sp"
         android:textStyle="bold"/>
 
 
@@ -64,7 +64,6 @@
         android:id="@+id/changeShip"
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:src="@drawable/mach1"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="50dp"
         android:layout_below="@id/Topleftbutton"
@@ -74,7 +73,6 @@
         android:id="@+id/changePenguin"
         android:layout_width="125dp"
         android:layout_height="125dp"
-        android:src="@drawable/normalpenguin"
         android:layout_marginRight="80dp"
         android:layout_marginTop="75dp"
         android:layout_below="@id/Toprightbutton"
@@ -161,5 +159,18 @@
         android:layout_toRightOf="@+id/customtitle"
         android:layout_toEndOf="@+id/customtitle"
         android:layout_marginBottom="7dp" />
+
+    <Button
+        android:layout_width="175dp"
+        android:layout_height="55dp"
+        android:background="@drawable/buttonshape"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:text = "SAVE"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:onClick="sendSave"
+        />
 
 </RelativeLayout>

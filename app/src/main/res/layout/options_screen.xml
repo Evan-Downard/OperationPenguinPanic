@@ -40,7 +40,6 @@
                     android:id="@+id/SoundY"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="Yes" />
 
                 <RadioButton
@@ -51,50 +50,6 @@
                     android:text="No" />
 
             </RadioGroup>
-
-            <!-- <CheckBox
-                    android:id="@+id/soundY"
-                    android:text="Yes"
-                    android:checked="true"/>
-                 <CheckBox
-                    android:id="@+id/SoundN"
-                    android:text="No"/>-->
-        </TableRow>
-
-        <TableRow android:layout_marginTop="25dp">
-
-            <TextView
-                android:text="Button Visability"
-                android:textSize="25dp" />
-
-            <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/ButtonY"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:text="Yes" />
-
-                <RadioButton
-                    android:id="@+id/ButtonN"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:text="No" />
-
-            </RadioGroup>
-
-            <!--           <CheckBox
-                           android:id="@+id/ButtonY"
-                           android:text="Yes"
-                           android:checked="true" />
-                       <CheckBox
-                           android:id="@+id/ButtonN"
-                           android:text="No"/>-->
         </TableRow>
 
         <TableRow android:layout_marginTop="25dp">
@@ -112,7 +67,6 @@
                     android:id="@+id/MusicY"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="Yes" />
 
                 <RadioButton
@@ -124,25 +78,19 @@
 
             </RadioGroup>
 
-            <!--            <CheckBox
-                            android:id="@+id/MusicY"
-                            android:text="Yes"
-                            android:checked="true" />
-                        <CheckBox
-                            android:id="@+id/MusicN"
-                            android:text="No" />-->
         </TableRow>
 
     </TableLayout>
 
     <TextView
+        android:id="@+id/musicTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/OptionsTable"
         android:layout_centerHorizontal="true"
         android:layout_margin="15dp"
         android:text="If no is checked then you can listen your own music."
-        android:textSize="15dp" />
+        android:textSize="15sp" />
 
     <Button
         android:layout_width="80dp"
@@ -152,6 +100,19 @@
         android:layout_margin="5dp"
         android:background="@drawable/arrowleft"
         android:onClick="sendMain"
-        android:textSize="15sp" />
+        />
+
+    <Button
+        android:layout_width="175dp"
+        android:layout_height="55dp"
+        android:background="@drawable/buttonshape"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/musicTxt"
+        android:layout_marginTop="14dp"
+        android:text="SAVE"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:onClick="sendSaveOptions"
+        />
 
 </RelativeLayout>
