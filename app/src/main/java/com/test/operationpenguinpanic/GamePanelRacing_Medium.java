@@ -1,7 +1,5 @@
 package com.test.operationpenguinpanic;
 
-/*** Edited by Oswald ***/
-
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -13,31 +11,33 @@ import android.view.SurfaceView;
 import java.util.ArrayList;
 import java.util.Random;
 
-
-public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callback {
-
+/**
+ * Created by Oswald on 4/11/2016.
+ */
+public class GamePanelRacing_Medium extends SurfaceView implements SurfaceHolder.Callback {
     public static final int WIDTH = 500;
     public static final int HEIGHT = 800;
     public static final int MOVESPEED = 25;
 
-    private MainThreadRacing thread;
+    private MainThread_Medium thread;
     private BackgroundRacing background;
     private PlayerRacing player;
-    private OpponentsEasy opponentsEasy;
+    private OpponentsMedium opponentsMedium;
     private ArrayList<Projectile> asteroids;
     private long raceStartTimer;
     private long asteroidStartTime;
+    private long opponentTimer;
     private Random random;
     private int i;
 
 
-    public GamePanelRacing(Context context) {
+    public GamePanelRacing_Medium(Context context) {
         super(context);
 
         // add callback to the surfaceholder to intercept events such as touches of the screen
         getHolder().addCallback(this);
 
-        thread = new MainThreadRacing(getHolder(), this);
+        thread = new MainThread_Medium(getHolder(), this);
 
         random = new Random();
 
@@ -57,7 +57,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
         // create player's spaceship
         player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), R.drawable.gameship));
         // create opponents
-        opponentsEasy = new OpponentsEasy(BitmapFactory.decodeResource(getResources(), R.drawable.enemyship));
+        opponentsMedium = new OpponentsMedium(BitmapFactory.decodeResource(getResources(), R.drawable.enemyship));
         // Initialize asteroids array list
         asteroids = new ArrayList<Projectile>();
 
@@ -66,6 +66,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
         // timers for race and asteroids
         raceStartTimer = System.nanoTime();
         asteroidStartTime = System.nanoTime();
+        opponentTimer = System.nanoTime();
 
 
 
@@ -123,7 +124,16 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
         if (player.getPlaying()) {      // when the player touches the screen we begin updating
             background.update();
             player.update();
-            opponentsEasy.update();
+            opponentsMedium.update_y();
+
+            long delay = (System.nanoTime() - opponentTimer) / 100000000;
+            if (((opponentsMedium.getX() - player.getX()) < 10) && (delay >= 1)) {
+                opponentsMedium.update_xRight();
+                opponentTimer = System.nanoTime();
+            } else if (((opponentsMedium.getX() - player.getX()) > 10) && (delay >= 1)) {
+                opponentsMedium.update_xLeft();
+                opponentTimer = System.nanoTime();
+            }
 
             long asteroidElapsed = (System.nanoTime() - asteroidStartTime) / 1000000000;
 
@@ -156,7 +166,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
                     break;
                 }
 
-                if (collision(asteroids.get(i), opponentsEasy)){
+                if (collision(asteroids.get(i), opponentsMedium)){
                     asteroids.remove(i);
                 }
 
@@ -168,12 +178,12 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
             }
 
             long raceTime = (System.nanoTime() - raceStartTimer) / 1000000000;
-            if ((opponentsEasy.getY() >= 2000) && (i < 4)) {        // if the opponent's y = 2000 and you haven't passed it 5 times
-                opponentsEasy.resetPosition();                      // its position is reset
+            if ((opponentsMedium.getY() >= 2000) && (i < 4)) {        // if the opponent's y = 2000 and you haven't passed it 5 times
+                opponentsMedium.resetPosition();                      // its position is reset
                 i++;
             }
 
-            if (collision(opponentsEasy, player)) {             // if the player collides with an opponent the game is over
+            if (collision(opponentsMedium, player)) {             // if the player collides with an opponent the game is over
                 player.setPlaying(false);
             }
 
@@ -202,7 +212,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
             canvas.scale(scaleFactorX, scaleFactorY);        // scale the image to fit FS
             background.draw(canvas);
             player.draw(canvas);
-            opponentsEasy.draw(canvas);
+            opponentsMedium.draw(canvas);
 
             for (Projectile m : asteroids) {
                 m.draw(canvas);

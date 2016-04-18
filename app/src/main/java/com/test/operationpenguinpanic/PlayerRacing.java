@@ -59,10 +59,4 @@ public class PlayerRacing extends GameObject {
     public Bitmap getSprite(){
         return sprite;
     }
-
-    public int getPosition(){
-        return 2;
-    }
-
-
 }
