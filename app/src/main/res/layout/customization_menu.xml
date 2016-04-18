@@ -16,26 +16,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="63dp"
         android:layout_marginBottom="10dp"
-        android:textSize="50dp"
+        android:textSize="45sp"
         android:textStyle="bold"/>
 
-    <ImageView
-        android:id="@+id/changeShip"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:src="@drawable/mach1"
-        android:layout_marginLeft="35dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true" />
-
-    <ImageView
-        android:id="@+id/changePenguin"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        android:src="@drawable/normalpenguin"
-        android:layout_marginRight="35dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"/>
 
     <Button
         android:id="@+id/Topleftbutton"
@@ -45,8 +28,8 @@
         android:layout_below="@id/customtitle"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="7dp"
-        android:text="&lt;"
-        android:textSize="35dp"
+        android:text="&lt;PREV"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:onClick="sendShipleft" />
 
@@ -58,8 +41,8 @@
         android:layout_below="@id/customtitle"
         android:layout_alignParentRight="true"
         android:layout_marginRight="7dp"
-        android:text="&gt;"
-        android:textSize="35dp"
+        android:text="NEXT&gt;"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:onClick="sendShipRight"/>
 
@@ -71,11 +54,29 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="7dp"
-        android:text="&lt;"
-        android:textSize="35dp"
+        android:text="&lt;PREV"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:id="@+id/button7"
         android:onClick="sendPenguinLeft"/>
+
+    <ImageView
+        android:id="@+id/changeShip"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/Topleftbutton"
+        android:layout_alignParentLeft="true" />
+
+    <ImageView
+        android:id="@+id/changePenguin"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginTop="75dp"
+        android:layout_below="@id/Toprightbutton"
+        android:layout_alignParentRight="true"/>
 
     <Button
         android:id="@+id/bottomRight"
@@ -85,10 +86,10 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="85dp"
+        android:layout_marginBottom="75dp"
         android:layout_marginRight="7dp"
-        android:text="&gt;"
-        android:textSize="35dp"
+        android:text="NEXT&gt;"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:onClick="sendPenguinRight"/>
 
@@ -120,7 +121,7 @@
         android:layout_centerHorizontal="true"
         />
 
-<!--    <Button
+    <Button
         android:id="@+id/colorButtonTop"
         android:layout_width="75dp"
         android:layout_height="45dp"
@@ -130,6 +131,8 @@
         android:layout_marginTop="7dp"
         android:layout_marginRight="7dp"
         android:text="Up"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:onClick="sendColorUp"/>
 
     <Button
@@ -141,6 +144,8 @@
         android:layout_marginRight="7dp"
         android:layout_marginBottom="7dp"
         android:text="Down"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:id="@+id/colorButtonBottom"
         android:onClick="sendColorDown"/>
 
@@ -153,6 +158,19 @@
         android:layout_above="@+id/colorButtonBottom"
         android:layout_toRightOf="@+id/customtitle"
         android:layout_toEndOf="@+id/customtitle"
-        android:layout_marginBottom="7dp" />-->
+        android:layout_marginBottom="7dp" />
+
+    <Button
+        android:layout_width="175dp"
+        android:layout_height="55dp"
+        android:background="@drawable/buttonshape"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:text = "SAVE"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:onClick="sendSave"
+        />
 
 </RelativeLayout>
