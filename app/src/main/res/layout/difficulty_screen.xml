@@ -47,7 +47,7 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
         android:background="@drawable/buttonshape"
-        android:onClick="sendDifficulty"
+        android:onClick="sendDifficultyM"
         android:text="@string/normal_d"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
@@ -60,7 +60,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:background="@drawable/buttonshape"
-        android:onClick="sendDifficulty"
+        android:onClick="sendDifficultyH"
         android:text="@string/hard_d"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
