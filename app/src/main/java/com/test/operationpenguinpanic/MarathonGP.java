@@ -22,8 +22,8 @@ import java.util.Random;
 public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
 
     //Assuming portrait layout
-    public static final int WIDTH = 480;
-    public static final int HEIGHT = 856;
+    public static final int WIDTH = 500;
+    public static final int HEIGHT = 800;
 
     public static final int MOVESPEED = -10;
 
