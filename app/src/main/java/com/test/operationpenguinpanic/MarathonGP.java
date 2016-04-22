@@ -25,7 +25,7 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
     public static final int WIDTH = 480;
     public static final int HEIGHT = 856;
 
-    public static final int MOVESPEED = -5;
+    public static final int MOVESPEED = -10;
 
 
     private long projectileStartTime;
@@ -87,7 +87,7 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
     public void surfaceCreated(SurfaceHolder holder) {
 
         //Create background
-        bg = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.spacesky));
+        bg = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.spacex));
         //Create left control
         leftControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowleft), (MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
         //Create right control
