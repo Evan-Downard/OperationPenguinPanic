@@ -2,6 +2,7 @@ package com.test.operationpenguinpanic;
 
 /*** Edited by Oswald ***/
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -21,7 +22,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
     public static final int MOVESPEED = 25;
 
     private MainThreadRacing thread;
-    private BackgroundRacing background;
+    private BackgroundMarathon background;
     private PlayerRacing player;
     private OpponentsEasy opponentsEasy;
     private ArrayList<Projectile> asteroids;
@@ -53,7 +54,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
     public void surfaceCreated(SurfaceHolder holder) {
 
         // create new background
-        background = new BackgroundRacing(BitmapFactory.decodeResource(getResources(), R.drawable.spacesky));
+        background = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.spacex));
         // create player's spaceship
         player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), R.drawable.gameship));
         // create opponents
@@ -191,6 +192,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
         return false;
     }
 
+    @SuppressLint("MissingSuperCall")
     @Override
     public void draw (Canvas canvas){
 

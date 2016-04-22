@@ -87,7 +87,7 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
     public void surfaceCreated(SurfaceHolder holder) {
 
         //Create background
-        bg = new BackgroundAsteroids(BitmapFactory.decodeResource(getResources(), R.drawable.spacesky));
+        bg = new BackgroundAsteroids(BitmapFactory.decodeResource(getResources(), R.drawable.spacex));
         //Create left control
         leftControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowleft), (AsteroidsGP.WIDTH/4)-65, AsteroidsGP.HEIGHT - 75, 140, 69);
         //Create right control

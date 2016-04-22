@@ -23,7 +23,7 @@ public class BackgroundMarathon {
         if(y > 1){
            //keep this value equal to the location of the y of the
            //initial draw, so the background scrolls all the way
-          y = -3500;
+          y = y-3700;
         }
     }
     public void draw(Canvas canvas)
@@ -32,7 +32,7 @@ public class BackgroundMarathon {
         //is drawn from the bottom instead of the top. Account for
         //drawing location of y it will be a little more than the
         //size of the image
-        canvas.drawBitmap(image, x, y-3500 ,null);
+        canvas.drawBitmap(image, x, y-3700 ,null);
         if(y<0)
         {
            canvas.drawBitmap(image, x, y, null);

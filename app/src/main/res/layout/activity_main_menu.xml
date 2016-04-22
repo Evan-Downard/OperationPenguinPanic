@@ -67,6 +67,7 @@
         android:layout_height="250dp"
         android:src="@drawable/flotingpenguin"
         android:id="@+id/imageView"
+        android:scaleX="-1"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/startgame"
         android:layout_toEndOf="@+id/startgame" />
