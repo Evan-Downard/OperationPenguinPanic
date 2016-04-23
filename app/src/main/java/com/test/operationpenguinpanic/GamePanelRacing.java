@@ -22,7 +22,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
     public static final int MOVESPEED = 25;
 
     private MainThreadRacing thread;
-    private BackgroundMarathon background;
+    private BackgroundMarathon bg;
     private PlayerRacing player;
     private OpponentsEasy opponentsEasy;
     private ArrayList<Projectile> asteroids;
@@ -54,7 +54,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
     public void surfaceCreated(SurfaceHolder holder) {
 
         // create new background
-        background = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.spacex));
+        bg = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.spacex));
         // create player's spaceship
         player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), R.drawable.gameship));
         // create opponents
@@ -122,7 +122,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
     public void update() {
 
         if (player.getPlaying()) {      // when the player touches the screen we begin updating
-            background.update();
+            bg.update1();
             player.update();
             opponentsEasy.update();
 
@@ -202,7 +202,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
         if (canvas != null) {
             final int savedState = canvas.save();           // save the state(size) of the image before scale
             canvas.scale(scaleFactorX, scaleFactorY);        // scale the image to fit FS
-            background.draw(canvas);
+            bg.draw(canvas);
             player.draw(canvas);
             opponentsEasy.draw(canvas);
 

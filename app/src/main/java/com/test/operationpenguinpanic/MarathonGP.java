@@ -25,12 +25,14 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
     public static final int WIDTH = 500;
     public static final int HEIGHT = 800;
 
-    public static final int MOVESPEED = -10;
+    public static final int MOVESPEED = -30;
 
 
     private long projectileStartTime;
     private MarathonThread thread;
     private BackgroundMarathon bg;
+    private BackgroundMarathon l2;
+    private BackgroundMarathon l3;
     private Control leftControl;
     private Control rightControl;
     private PlayerMarathon player;
@@ -87,7 +89,11 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
     public void surfaceCreated(SurfaceHolder holder) {
 
         //Create background
-        bg = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.spacex));
+        bg = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.layer1));
+        //1st Star Layer
+        l2 = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.layer2));
+        //2nd Star Layer
+        l3 = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.layer3));
         //Create left control
         leftControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowleft), (MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
         //Create right control
@@ -158,7 +164,9 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
     public void update() {
         if (player.getPlaying()) {
 
-            bg.update();
+            bg.update1();
+            l2.update2();
+            l3.update3();
             player.update();
 
             long projectileElapsed = (System.nanoTime() - projectileStartTime) / 1000000;
@@ -246,6 +254,8 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
 
             canvas.scale(scaleFactorX, scaleFactorY);
             bg.draw(canvas);
+            l2.draw(canvas);
+            l3.draw(canvas);
             player.draw(canvas);
             leftControl.draw(canvas);
             rightControl.draw(canvas);
