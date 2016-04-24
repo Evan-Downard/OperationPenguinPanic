@@ -17,7 +17,7 @@ import com.test.operationpenguinpanic.PlayerSave;
 
 public class MainMenu extends AppCompatActivity {
     //Player's score
-   // PlayerScore playerScore;
+     PlayerScore playerScore = new PlayerScore();
 
     // initialization of variables
     int i = 0; int j = 0; int k = 0;
@@ -276,7 +276,7 @@ public class MainMenu extends AppCompatActivity {
             save.getSaveShip(i);
             save.getSaveColor(k);
             save.getSavePenguin(j);
-            //playerScore.setPenguin(j);  //sets the saved penguin for player's penguin for score
+            playerScore.setPenguin(j);  //sets the saved penguin for player's penguin for score
         }
 
     }

@@ -224,6 +224,8 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
                 //if player and object collide stop playing
                 if (collision(projectiles.get(i), player)) {
                     projectiles.remove(i);
+                    //saves score
+                    PlayerScore.setScore(player.getScore());
                     player.resetScore();
                     player.resetDXA();
                     player.setPlaying(false);
