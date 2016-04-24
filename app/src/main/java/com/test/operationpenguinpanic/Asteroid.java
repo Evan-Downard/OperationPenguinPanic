@@ -41,7 +41,12 @@ public class Asteroid extends GameObject{
     }
     public void update()
     {
+
         y+=speed;
+        animation.update();
+    }
+    public void updateX(){
+        x+=speed;
         animation.update();
     }
     public void draw(Canvas canvas)
@@ -56,5 +61,4 @@ public class Asteroid extends GameObject{
     {
         return width;
     }
-
 }

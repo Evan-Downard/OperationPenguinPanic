@@ -224,7 +224,10 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
                 //if player and object collide stop playing
                 if (collision(projectiles.get(i), player)) {
                     projectiles.remove(i);
+                    player.resetScore();
+                    player.resetDXA();
                     player.setPlaying(false);
+
                     break;
                 }
                 //remove asteroid if it is way off the screen
@@ -271,6 +274,7 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void newGame() {
+
         projectiles.clear();
 
         //player.resetDY();
@@ -278,7 +282,6 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
         player.setX(WIDTH);
 
         newGameCreated = true;
-
 
     }
     public void drawText(Canvas canvas) {
