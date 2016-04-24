@@ -5,7 +5,7 @@ package com.test.operationpenguinpanic;
  */
 public class PlayerSave {
     int ship = 0;       int color = 0;
-    int penguin = 0;
+    int penguin = 0;    int pit = 0;
     boolean music = true;
     boolean sounds = true;
 
@@ -31,6 +31,14 @@ public class PlayerSave {
 
     int sendSavePenguin(){
         return penguin;
+    }
+
+    void getSavePit(int playerPit){
+        pit = playerPit;
+    }
+
+    int sendSavePit(){
+        return pit;
     }
 
     void getSaveMusic(boolean playerMusic){

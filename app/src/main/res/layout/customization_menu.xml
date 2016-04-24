@@ -19,7 +19,6 @@
         android:textSize="45sp"
         android:textStyle="bold"/>
 
-
     <Button
         android:id="@+id/Topleftbutton"
         android:layout_width="75dp"
@@ -78,6 +77,24 @@
         android:layout_below="@id/Toprightbutton"
         android:layout_alignParentRight="true"/>
 
+    <ImageView
+        android:id="@+id/changePit"
+        android:layout_width="25dp"
+        android:layout_height="42dp"
+        android:layout_below="@id/Topleftbutton"
+        android:layout_marginTop="105dp"
+        android:layout_marginLeft="82dp"
+        />
+
+    <ImageView
+        android:id="@+id/SSP"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_above="@+id/colorButtonBottom"
+        android:layout_alignRight="@+id/textView3"
+        android:layout_alignEnd="@+id/textView3"
+        />
+
     <Button
         android:id="@+id/bottomRight"
         android:layout_width="75dp"
@@ -119,7 +136,7 @@
         android:textSize="35dp"
         android:layout_alignBottom="@+id/bottomRight"
         android:layout_centerHorizontal="true"
-        />
+        android:id="@+id/textView3" />
 
     <Button
         android:id="@+id/colorButtonTop"

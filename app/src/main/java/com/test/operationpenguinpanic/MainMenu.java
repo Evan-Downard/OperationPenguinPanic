@@ -20,7 +20,7 @@ public class MainMenu extends AppCompatActivity {
      PlayerScore playerScore = new PlayerScore();
 
     // initialization of variables
-    int i = 0; int j = 0; int k = 0;
+    int i = 0; int j = 0; int k = 0; int p = 0;
     boolean music; boolean sound;
     // initialization of players save information
     PlayerSave save = new PlayerSave();
@@ -32,9 +32,12 @@ public class MainMenu extends AppCompatActivity {
                     R.drawable.mach3_silver,R.drawable.mach3_gold}};
     // in array of penguin list
     int penguinImages[] = {R.drawable.normalpenguin,R.drawable.ladypenguin,
-            R.drawable.mechanicpenguin,
             R.drawable.superpenguin,R.drawable.ninjapenguin,
             R.drawable.dootdootpenguin,R.drawable.ssp};
+
+    // int array of cockpits of the ships
+    int pitImages[] = {R.drawable.normalpenguin_pit, R.drawable.ladypenguin_pit,
+            R.drawable.superpenguin_pit, R.drawable.ninjapenguin_pit, R.drawable.dootdootpenguin_pit};
 
     // for radio buttons
     RadioButton soundY;    RadioButton soundN;
@@ -42,6 +45,7 @@ public class MainMenu extends AppCompatActivity {
 
     // for image views
     ImageView ship; ImageView penguin;
+    ImageView cockpit; ImageView ssp;
     //public TextView color;
 
     @Override
@@ -77,12 +81,22 @@ public class MainMenu extends AppCompatActivity {
         k = save.sendSaveColor();
         j = save.sendSavePenguin();
         i = save.sendSaveShip();
+        p = save.sendSavePit();
 
         ship = (ImageView) findViewById(R.id.changeShip);
         penguin = (ImageView) findViewById(R.id.changePenguin);
+        cockpit = (ImageView) findViewById(R.id.changePit);
+        ssp = (ImageView) findViewById(R.id.SSP);
 
-        ship.setImageResource(shipImages[i][k]);
-        penguin.setImageResource(penguinImages[j]);
+        if(j == 5){
+            ssp.setImageResource(penguinImages[j]);
+        }
+        else {
+            cockpit.setImageResource(pitImages[p]);
+            ship.setImageResource(shipImages[i][k]);
+            penguin.setImageResource(penguinImages[j]);
+        }
+
     }
     // on click sends user to options page
     public void sendOption(View view){
@@ -176,98 +190,150 @@ public class MainMenu extends AppCompatActivity {
     // on click scrolls through the ships list from the left
     public void sendShipleft(View view){
         ship = (ImageView) findViewById(R.id.changeShip);
-        if(i==0) {
-            i = 1;
-            if (ship != null) {
-                ship.setImageResource(shipImages[i][k]);
+        if(j!=5) {
+            if (i == 0) {
+                i = 1;
+                if (ship != null) {
+                    ship.setImageResource(shipImages[i][k]);
+                }
+            } else {
+                i = i - 1;
+                if (ship != null) {
+                    ship.setImageResource(shipImages[i][k]);
+                }
             }
         }else{
-            i = i-1;
-            if (ship != null) {
-                ship.setImageResource(shipImages[i][k]);
-            }
+           // for displaying error
         }
     }
     // on click scrolls through the ships list from the right
     public void sendShipRight(View view){
         ship = (ImageView) findViewById(R.id.changeShip);
-        if(i==1){
-            i = 0;
-            if (ship != null) {
-                ship.setImageResource(shipImages[i][k]);
+        if(j!=5) {
+            if (i == 1) {
+                i = 0;
+                if (ship != null) {
+                    ship.setImageResource(shipImages[i][k]);
+                }
+            } else {
+                i = i + 1;
+                if (ship != null) {
+                    ship.setImageResource(shipImages[i][k]);
+                }
             }
         }else{
-            i = i +1;
-            if (ship != null) {
-                ship.setImageResource(shipImages[i][k]);
-            }
+            // for displaying error
         }
     }
     // on click scrolls through the penguin list from the left
     public void sendPenguinLeft(View view){
+        ship = (ImageView) findViewById(R.id.changeShip);
         penguin = (ImageView) findViewById(R.id.changePenguin);
+        cockpit = (ImageView) findViewById(R.id.changePit);
+        ssp = (ImageView) findViewById(R.id.SSP);
+
         if(j==0){
-            j = 6;
-            if(penguin != null){
-                penguin.setImageResource(penguinImages[j]);
+            j = 5;
+            p = 4;
+                if(ssp != null){
+                    penguin.setImageResource(android.R.color.transparent);
+                    ship.setImageResource(android.R.color.transparent);
+                    cockpit.setImageResource(android.R.color.transparent);
+                    ssp.setImageResource(penguinImages[j]);
+                }
+        }else if(j==5){
+            j = j -1;
+            if(ssp != null){
+                    ssp.setImageResource(android.R.color.transparent);
+                    ship.setImageResource(shipImages[i][k]);
+                    cockpit.setImageResource(pitImages[p]);
+                    penguin.setImageResource(penguinImages[j]);
             }
         }else{
             j = j -1;
+            p = p - 1;
             if(penguin != null){
                 penguin.setImageResource(penguinImages[j]);
+                cockpit.setImageResource(pitImages[p]);
             }
         }
     }
     // on click scrolls through the penguin list from the right
-    public void sendPenguinRight(View view){
+    public void sendPenguinRight(View view) {
+        ship = (ImageView) findViewById(R.id.changeShip);
         penguin = (ImageView) findViewById(R.id.changePenguin);
-        if(j == 6){
+        cockpit = (ImageView) findViewById(R.id.changePit);
+        ssp = (ImageView) findViewById(R.id.SSP);
+
+        if (j == 5) {
             j = 0;
-            if(penguin != null){
+            p = 0;
+            if (ssp != null) {
+                ssp.setImageResource(android.R.color.transparent);
                 penguin.setImageResource(penguinImages[j]);
+                ship.setImageResource(shipImages[i][k]);
+                cockpit.setImageResource(pitImages[p]);
             }
-        }else{
-            j = j +1;
-            if(penguin != null){
+        } else if (j == 4) {
+            j = j + 1;
+            if (ssp != null) {
+                ssp.setImageResource(penguinImages[j]);
+                penguin.setImageResource(android.R.color.transparent);
+                ship.setImageResource(android.R.color.transparent);
+                cockpit.setImageResource(android.R.color.transparent);
+            }
+        } else {
+            j = j + 1;
+            p = p + 1;
+            if (penguin != null) {
                 penguin.setImageResource(penguinImages[j]);
-            }
-        }
-    }
-    // on click scrolls through the colors for that ship down the list
-    public void sendColorDown(View view){
-        ship = (ImageView) findViewById(R.id.changeShip);
-        if(k==0){
-            k = 6;
-            if(ship != null){
-                ship.setImageResource(shipImages[i][k]);
-            }
-        }else{
-            k = k - 1;
-            if(ship != null){
-                ship.setImageResource(shipImages[i][k]);
-            }
-        }
-    }
-    // on click scrolls through the colors for that ship up the list
-    public void sendColorUp(View veiw){
-        ship = (ImageView) findViewById(R.id.changeShip);
-        if(k==6){
-            k = 0;
-            if(ship != null){
-                ship.setImageResource(shipImages[i][k]);
-            }
-        }else{
-            k = k + 1;
-            if(ship != null){
-                ship.setImageResource(shipImages[i][k]);
+                cockpit.setImageResource(pitImages[p]);
             }
         }
     }
 
+    // on click scrolls through the colors for that ship down the list
+    public void sendColorDown(View view) {
+        ship = (ImageView) findViewById(R.id.changeShip);
+        if (j != 5) {
+            if (k == 0) {
+                k = 6;
+                if (ship != null) {
+                    ship.setImageResource(shipImages[i][k]);
+                }
+            } else {
+                k = k - 1;
+                if (ship != null) {
+                    ship.setImageResource(shipImages[i][k]);
+                }
+            }
+        }else{
+            // display error
+        }
+    }
+    // on click scrolls through the colors for that ship up the list
+    public void sendColorUp(View veiw) {
+        ship = (ImageView) findViewById(R.id.changeShip);
+        if (j != 5) {
+            if (k == 6) {
+                k = 0;
+                if (ship != null) {
+                    ship.setImageResource(shipImages[i][k]);
+                }
+            } else {
+                k = k + 1;
+                if (ship != null) {
+                    ship.setImageResource(shipImages[i][k]);
+                }
+            }
+        }else{
+            // displays error
+        }
+    }
     //================================================
     // Saving player information
     //
-    // on clicking SAVE in customization menu saves the type of ship
+    // on clicking SAVE in customization menu saves the type of ship && penguin
     public void sendSave(View view){
         ship = (ImageView) findViewById(R.id.changeShip);
         penguin = (ImageView) findViewById(R.id.changePenguin);
@@ -276,11 +342,15 @@ public class MainMenu extends AppCompatActivity {
             save.getSaveShip(i);
             save.getSaveColor(k);
             save.getSavePenguin(j);
+            save.getSavePit(p);
             playerScore.setPenguin(j);  //sets the saved penguin for player's penguin for score
+            // displays that system has saved
+        }else{
+            // displays error with saving
         }
 
     }
-    // on clicking SAVE in the options menu saves the playes infromation of the options
+    // on clicking SAVE in the options menu saves the players information of the options
     public void sendSaveOptions(View view){
         soundY = (RadioButton) findViewById(R.id.SoundY);
         soundN = (RadioButton) findViewById(R.id.SoundN);
@@ -289,14 +359,18 @@ public class MainMenu extends AppCompatActivity {
 
         if(soundY.isChecked() == true && soundN.isChecked() == false){
             save.getSaveSounds(true);
+            // display the system had saved
         }else if(soundN.isChecked() == true && soundY.isChecked() == false){
             save.getSaveSounds(false);
+            // display the system has saved
         }
 
         if(musicY.isChecked() == true && musicN.isChecked() == false){
             save.getSaveMusic(true);
+            // display the system has saved
         }else if(musicN.isChecked() == true && musicY.isChecked() == false){
             save.getSaveMusic(false);
+            // display the system has saved
         }
     }
 }
