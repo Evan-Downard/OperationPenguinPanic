@@ -67,7 +67,7 @@ public class GamePanelRacing_Medium extends SurfaceView implements SurfaceHolder
         // create player's spaceship
         player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), R.drawable.gameship));
         // create opponents
-        opponentsMedium = new OpponentsMedium(BitmapFactory.decodeResource(getResources(), R.drawable.enemyship));
+        opponentsMedium = new OpponentsMedium(BitmapFactory.decodeResource(getResources(), R.drawable.a_iship));
         // Initialize asteroids array list
         asteroids = new ArrayList<Projectile>();
 
@@ -112,10 +112,10 @@ public class GamePanelRacing_Medium extends SurfaceView implements SurfaceHolder
                 player.setPlaying(true);
             }
 
-            if((event.getX()) < (WIDTH / 2) && (event.getY() > (HEIGHT - HEIGHT / 3))){           // if the player touches the left of the screen the ship moves left
+            if((event.getX()) < (WIDTH / 2)){           // if the player touches the left of the screen the ship moves left
                 player.setLeft(true);
             }
-            else if ((event.getX()) >= (WIDTH / 2) && (event.getY() > (HEIGHT - HEIGHT / 3))){    // else it moves right
+            else if ((event.getX()) >= (WIDTH / 2)){    // else it moves right
                 player.setRight(true);
             }
             return true;

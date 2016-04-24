@@ -67,7 +67,7 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
         // create player's spaceship
         player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), R.drawable.gameship));
         // create opponents
-        opponentsHard = new OpponentsHard(BitmapFactory.decodeResource(getResources(), R.drawable.enemyship));
+        opponentsHard = new OpponentsHard(BitmapFactory.decodeResource(getResources(), R.drawable. a_iship));
         // Initialize asteroids array list
         asteroids = new ArrayList<Projectile>();
 
@@ -111,11 +111,11 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
             if(!player.getPlaying()){
                 player.setPlaying(true);
             }
-
-            if((event.getX()) < (WIDTH / 2) /*&& (event.getY() > (HEIGHT - HEIGHT / 3))*/){           // if the player touches the left of the screen the ship moves left
+            
+            if((event.getX()) < (WIDTH / 2)){           // if the player touches the left of the screen the ship moves left
                 player.setLeft(true);
             }
-            else if ((event.getX()) >= (WIDTH / 2) /*&& (event.getY() > (HEIGHT - HEIGHT / 3))*/){    // else it moves right
+            else if ((event.getX()) >= (WIDTH / 2)){    // else it moves right
                 player.setRight(true);
             }
             return true;
