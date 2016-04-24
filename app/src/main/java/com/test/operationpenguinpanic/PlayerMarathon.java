@@ -12,7 +12,6 @@ public class PlayerMarathon extends GameObject{
     private Context context;
 
     //acceleration
-    private double dxa;
     private boolean left;
     private boolean right;
     private boolean stopped;
@@ -79,7 +78,6 @@ public class PlayerMarathon extends GameObject{
     public int getScore(){return score;}
     public boolean getPlaying(){return playing;}
     public void setPlaying(boolean b){playing = b;}
-    public void resetDXA(){dxa = 0;}
     public void resetScore(){score = 0;}
 }
 

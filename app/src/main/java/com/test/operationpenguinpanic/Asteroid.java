@@ -39,14 +39,38 @@ public class Asteroid extends GameObject{
         animation.setDelay(100 - speed);
 
     }
+    //Angles that the asteroids spawn
     public void update()
     {
-
         y+=speed;
         animation.update();
     }
-    public void updateX(){
+    public void east(){
         x+=speed;
+        animation.update();
+    }
+    public void west(){
+        x-=speed;
+        animation.update();
+    }
+    public void nw(){
+        x-=speed;
+        y-=speed;
+        animation.update();
+    }
+    public void ne(){
+        x+=speed;
+        y-=speed;
+        animation.update();
+    }
+    public void se(){
+        x+=speed;
+        y+=speed;
+        animation.update();
+    }
+    public void sw(){
+        x-=speed;
+        y+=speed;
         animation.update();
     }
     public void draw(Canvas canvas)

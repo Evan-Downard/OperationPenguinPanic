@@ -227,7 +227,6 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
                     //saves score
                     PlayerScore.setScore(player.getScore());
                     player.resetScore();
-                    player.resetDXA();
                     projectiles.clear();
                     player.setX(screenWidth/8);
                     player.setPlaying(false);
@@ -295,7 +294,7 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
         paint.setTextSize(30);
         paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
         //canvas.drawText("Tap to start", screenWidth / 8, screenHeight / 4, paint);
-        //canvas.drawText("PAUSE", screenWidth / 8, screenHeight / 4, paint);
+        //canvas.drawText("PAUSED: Tap to start", screenWidth / 8, screenHeight / 4, paint);
         canvas.drawText("Score: " + (player.getScore() * 3), 10, HEIGHT - HEIGHT + 25, paint);
     }
 

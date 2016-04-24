@@ -55,8 +55,6 @@ public class Projectile extends GameObject{
     @Override
     public int getWidth()
     {
-
         return width;
     }
-
 }
