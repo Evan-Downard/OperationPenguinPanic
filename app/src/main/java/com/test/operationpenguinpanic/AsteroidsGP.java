@@ -209,14 +209,17 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
                 projectileStartTime = System.nanoTime();
             }
 
-            //if(asteroids.get().getX() < screenWidth/8)
             //loop through every asteroid and check collision and remove
             for (int i = 0; i < asteroids.size(); i++) {
-                //update asteroid
-                asteroids.get(i).update();
+                    asteroids.get(i).update();
 
                 if (collision(asteroids.get(i), player)) {
                     asteroids.remove(i);
+                    //saves score
+                    PlayerScore.setScore(player.getScore());
+                    player.resetScore();
+                    asteroids.clear();
+                    player.setX(screenWidth / 8);
                     player.setPlaying(false);
                     break;
                 }

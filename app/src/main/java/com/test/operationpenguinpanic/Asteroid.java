@@ -49,6 +49,10 @@ public class Asteroid extends GameObject{
         x+=speed;
         animation.update();
     }
+    public void north(){
+        y-=speed;
+        animation.update();
+    }
     public void west(){
         x-=speed;
         animation.update();
