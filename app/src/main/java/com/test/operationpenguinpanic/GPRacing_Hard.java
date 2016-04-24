@@ -164,6 +164,7 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
                 asteroids.get(j).update();
 
                 if (collision(asteroids.get(j), player)) {                // if the player collides with an asteroid game over
+                    PlayerScore.setScore(getPosition());            //saves the player's rank
                     asteroids.remove(j);
                     i = 5;
                     resetGame();
@@ -193,6 +194,7 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
             }
 
             if (collision(opponentsHard, player)) {             // if the player collides with an opponent the game is over
+                PlayerScore.setScore(getPosition());            //saves the player's rank
                 i = 5;
                 resetGame();
             }
