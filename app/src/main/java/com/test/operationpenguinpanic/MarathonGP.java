@@ -228,7 +228,10 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
                     PlayerScore.setScore(player.getScore());
                     player.resetScore();
                     player.resetDXA();
+                    projectiles.clear();
+                    player.setX(screenWidth/8);
                     player.setPlaying(false);
+
 
                     break;
                 }
