@@ -163,8 +163,8 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
                 asteroids.get(i).update();
 
                 if (collision(asteroids.get(i), player)) {                // if the player collides with an asteroid game over
+                    i = 5;
                     resetGame();
-                    //player.setPlaying(false);
                     break;
                 }
 
@@ -182,6 +182,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
             }
 
             if (collision(opponentsEasy, player)) {             // if the player collides with an opponent the game is over
+                i = 5;
                 resetGame();
             }
 
@@ -242,7 +243,6 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
         surfaceCreated(getHolder());
         player.setPlaying(false);
         raceStartTimer = System.nanoTime();
-        i = 5;
     }
 
 }

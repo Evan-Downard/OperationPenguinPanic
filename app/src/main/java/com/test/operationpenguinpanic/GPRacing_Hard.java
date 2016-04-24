@@ -165,6 +165,7 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
 
                 if (collision(asteroids.get(j), player)) {                // if the player collides with an asteroid game over
                     asteroids.remove(j);
+                    i = 5;
                     resetGame();
                     break;
                 }
@@ -192,6 +193,7 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
             }
 
             if (collision(opponentsHard, player)) {             // if the player collides with an opponent the game is over
+                i = 5;
                 resetGame();
             }
 
@@ -225,7 +227,6 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
         surfaceCreated(getHolder());
         player.setPlaying(false);
         raceStartTimer = System.nanoTime();
-        i = 5;
     }
 
     @Override
