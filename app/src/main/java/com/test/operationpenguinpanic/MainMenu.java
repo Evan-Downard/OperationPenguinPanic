@@ -130,7 +130,7 @@ public class MainMenu extends AppCompatActivity {
     }
     // on click starts Racing game on hard mode
     public void sendDifficultyH(View view){
-        setContentView(new GamePanelRacing_Medium(this));
+        setContentView(new GPRacing_Hard(this));
     }
     // on click starts Marathon game
     public void sendMarathon(View view){
