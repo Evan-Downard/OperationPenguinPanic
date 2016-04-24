@@ -163,6 +163,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
                 asteroids.get(i).update();
 
                 if (collision(asteroids.get(i), player)) {                // if the player collides with an asteroid game over
+                    PlayerScore.setScore(getPosition());            //saves the player's rank
                     i = 5;
                     resetGame();
                     break;
@@ -182,6 +183,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
             }
 
             if (collision(opponentsEasy, player)) {             // if the player collides with an opponent the game is over
+                PlayerScore.setScore(getPosition());            //saves the player's rank
                 i = 5;
                 resetGame();
             }

@@ -164,6 +164,7 @@ public class GamePanelRacing_Medium extends SurfaceView implements SurfaceHolder
                 asteroids.get(j).update();
 
                 if (collision(asteroids.get(j), player)) {                // if the player collides with an asteroid game over
+                    PlayerScore.setScore(getPosition());            //saves the player's rank
                     i = 5;
                     resetGame();
                     break;
@@ -192,6 +193,7 @@ public class GamePanelRacing_Medium extends SurfaceView implements SurfaceHolder
             }
 
             if (collision(opponentsMedium, player)) {             // if the player collides with an opponent the game is over
+                PlayerScore.setScore(getPosition());            //saves the player's rank
                 i = 5;
                 resetGame();
             }
