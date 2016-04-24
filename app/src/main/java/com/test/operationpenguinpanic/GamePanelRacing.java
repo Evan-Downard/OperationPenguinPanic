@@ -163,13 +163,9 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
                 asteroids.get(i).update();
 
                 if (collision(asteroids.get(i), player)) {                // if the player collides with an asteroid game over
-                    asteroids.remove(i);
-                    player.setPlaying(false);
+                    resetGame();
+                    //player.setPlaying(false);
                     break;
-                }
-
-                if (collision(asteroids.get(i), opponentsEasy)){
-                    asteroids.remove(i);
                 }
 
                 //remove asteroid if it is way off the screen
@@ -186,7 +182,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
             }
 
             if (collision(opponentsEasy, player)) {             // if the player collides with an opponent the game is over
-                player.setPlaying(false);
+                resetGame();
             }
 
             if (raceTime == 70) {                               // the race lasts 70 seconds
@@ -230,11 +226,23 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
         }
     }
 
+    public int getPosition() {
+        return (i + 1);
+    }
+
     public void drawText(Canvas canvas) {
         Paint paint = new Paint();
         paint.setColor(Color.WHITE);
         paint.setTextSize(30);
         paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-        canvas.drawText("Rank: " + (i + 1), 10, HEIGHT - HEIGHT + 25, paint);
+        canvas.drawText("Rank: " + getPosition(), 10, HEIGHT - HEIGHT + 25, paint);
     }
+
+    public void resetGame() {
+        surfaceCreated(getHolder());
+        player.setPlaying(false);
+        raceStartTimer = System.nanoTime();
+        i = 5;
+    }
+
 }

@@ -73,7 +73,7 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
 
 //        opponentStartTimer = System.nanoTime();
 
-        // timers for race and asteroids
+        // timers for race, asteroids and opponent
         raceStartTimer = System.nanoTime();
         asteroidStartTime = System.nanoTime();
         opponentTimer = System.nanoTime();
@@ -112,10 +112,10 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
                 player.setPlaying(true);
             }
 
-            if((event.getX()) < (WIDTH / 2) && (event.getY() > (HEIGHT - HEIGHT / 3))){           // if the player touches the left of the screen the ship moves left
+            if((event.getX()) < (WIDTH / 2) /*&& (event.getY() > (HEIGHT - HEIGHT / 3))*/){           // if the player touches the left of the screen the ship moves left
                 player.setLeft(true);
             }
-            else if ((event.getX()) >= (WIDTH / 2) && (event.getY() > (HEIGHT - HEIGHT / 3))){    // else it moves right
+            else if ((event.getX()) >= (WIDTH / 2) /*&& (event.getY() > (HEIGHT - HEIGHT / 3))*/){    // else it moves right
                 player.setRight(true);
             }
             return true;
@@ -165,14 +165,10 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
 
                 if (collision(asteroids.get(j), player)) {                // if the player collides with an asteroid game over
                     asteroids.remove(j);
-                    player.setPlaying(false);
+                    resetGame();
                     break;
                 }
 
-              /*  if (collision(asteroids.get(j), opponentsHard)){
-                    asteroids.remove(j);
-                }
-*/
                 //remove asteroid if it is way off the screen
                 if (asteroids.get(j).getY() < -100) {
                     asteroids.remove(j);
@@ -196,7 +192,7 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
             }
 
             if (collision(opponentsHard, player)) {             // if the player collides with an opponent the game is over
-                player.setPlaying(false);
+                resetGame();
             }
 
             if (raceTime == 70) {                               // the race lasts 70 seconds
@@ -211,6 +207,25 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
             return true;
         }
         return false;
+    }
+
+    public int getPosition() {
+        return (i + 1);
+    }
+
+    public void drawText(Canvas canvas) {
+        Paint paint = new Paint();
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(30);
+        paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+        canvas.drawText("Rank: " + getPosition(), 10, 25, paint);
+    }
+
+    public void resetGame() {
+        surfaceCreated(getHolder());
+        player.setPlaying(false);
+        raceStartTimer = System.nanoTime();
+        i = 5;
     }
 
     @Override
@@ -239,11 +254,4 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
         }
     }
 
-    public void drawText(Canvas canvas) {
-        Paint paint = new Paint();
-        paint.setColor(Color.WHITE);
-        paint.setTextSize(30);
-        paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-        canvas.drawText("Rank: " + (i + 1), 10, HEIGHT - HEIGHT + 25, paint);
-    }
 }
