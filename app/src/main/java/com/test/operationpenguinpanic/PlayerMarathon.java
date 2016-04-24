@@ -60,10 +60,10 @@ public class PlayerMarathon extends GameObject{
 
         //Left and right movement
         if(left && x > 0){
-            x -=8;
+            x -=10;
         }
         if(right && x < (MarathonGP.WIDTH-40)){
-            x +=8;
+            x +=10;
 
         }else{
             x +=0;
