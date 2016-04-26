@@ -170,7 +170,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
                 }
 
                 //remove asteroid if it is way off the screen
-                if (asteroids.get(i).getY() < -100) {
+                if (asteroids.get(i).getY() < -25) {
                     asteroids.remove(i);
                     break;
                 }
