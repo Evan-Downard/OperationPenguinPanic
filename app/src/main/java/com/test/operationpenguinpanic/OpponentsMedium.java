@@ -53,7 +53,7 @@ public class OpponentsMedium extends GameObject{
         if((y < 0) || (y > GamePanelRacing.HEIGHT)) {
             y += acceleration;
         }
-        y += acceleration - 3;
+        y += acceleration - 5;
     }
 
     public void draw (Canvas canvas){

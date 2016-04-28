@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -35,6 +36,11 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
     private long opponentTimer;
     private Random random;
     private int i;
+
+    //Getting screen size
+    DisplayMetrics display = this.getResources().getDisplayMetrics();
+    final int screenWidth = display.heightPixels;
+    final int screenHeight = display.widthPixels;
 
 
     public GPRacing_Hard(Context context) {
@@ -107,15 +113,18 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+
+        int x = (int) event.getX();
+
         if (event.getAction() == MotionEvent.ACTION_DOWN){      // the first time the player touched the screen the game begins
             if(!player.getPlaying()){
                 player.setPlaying(true);
             }
-            
-            if((event.getX()) < (WIDTH / 2)){           // if the player touches the left of the screen the ship moves left
+
+            if (x <= (screenWidth/4) - (screenWidth/16)) {// if the player touches the left of the screen the ship moves left
                 player.setLeft(true);
             }
-            else if ((event.getX()) >= (WIDTH / 2)){    // else it moves right
+            else if (x >= (screenWidth/4) + (screenWidth / 6)) {    // else it moves right
                 player.setRight(true);
             }
             return true;
@@ -140,20 +149,20 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
 
             double asteroidElapsed = (System.nanoTime() - asteroidStartTime) / 1000000000;
 
-            if (asteroidElapsed > 0.5) {            // a new asteroid is added every 1/2 sec
+            if (asteroidElapsed > 0.7) {            // a new asteroid is added every 1/2 sec
 
                 // adding asteroids to the array list
                 // the type of asteroid added depends on the size of the array list
 
                 if ((asteroids.size() % 3) == 0) {
                     asteroids.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.
-                            asteroid), random.nextInt(400) + 50, -20, 40, 40, 0, 1));
+                            asteroid), random.nextInt(500), -20, 40, 40, 0, 1));
                 } else if ((asteroids.size() % 3) == 1) {
                     asteroids.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid2),
-                            (random.nextInt(400) + 50), -20, 65, 65, 0, 1));
+                            (random.nextInt(500)), -20, 65, 65, 0, 1));
                 } else {
                     asteroids.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid1),
-                            (random.nextInt(400) + 50), -20, 60, 60, 0, 1));
+                            (random.nextInt(500)), -20, 60, 60, 0, 1));
                 }
 
                 asteroidStartTime = System.nanoTime();
@@ -168,11 +177,10 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
                     asteroids.remove(j);
                     i = 5;
                     resetGame();
-                    break;
                 }
 
                 //remove asteroid if it is way off the screen
-                if (asteroids.get(j).getY() < -100) {
+                if (asteroids.get(j).getY() < -25) {
                     asteroids.remove(j);
                     break;
                 }
@@ -199,7 +207,7 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
                 resetGame();
             }
 
-            if (raceTime == 70) {                               // the race lasts 70 seconds
+            if (raceTime == 120) {                               // the race lasts 120 seconds
                 player.setPlaying(false);
             }
         }

@@ -17,16 +17,16 @@ public class OpponentsEasy extends GameObject {
 
         sprite = image;
         x = GamePanelRacing.WIDTH / (random.nextInt(5) + 1);
-        y = -1000;
+        y = -1500;
         height = sprite.getHeight();
         width = sprite.getWidth();
-        acceleration = 15.0f;
+        acceleration = 10.0f ;
 
 
     }
 
     public void resetPosition() {
-        setY(-1000);
+        setY(-1500);
         setX(random.nextInt(400) + 50);
     }
 
@@ -34,9 +34,7 @@ public class OpponentsEasy extends GameObject {
         if((y < 0) || (y > GamePanelRacing.HEIGHT)) {
             y += acceleration;
         }
-        else{
-            y += acceleration - 5;
-        }
+        y += acceleration - 5;
     }
 
     public void draw (Canvas canvas){

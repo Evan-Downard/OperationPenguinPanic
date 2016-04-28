@@ -56,7 +56,4 @@ public class PlayerRacing extends GameObject {
         playing = b;
     }
 
-    public Bitmap getSprite(){
-        return sprite;
-    }
 }
