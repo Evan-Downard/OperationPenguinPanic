@@ -18,7 +18,7 @@ public class OpponentsHard extends GameObject{
     public OpponentsHard(Bitmap image){
 
         sprite = image;
-        x = GamePanelRacing.WIDTH / (random.nextInt(5) + 1);
+        x = GPRacing_Hard.WIDTH / (random.nextInt(5) + 1);
         y = -1500;
         height = sprite.getHeight();
         width = sprite.getWidth();
@@ -50,7 +50,7 @@ public class OpponentsHard extends GameObject{
     }
 
     public void update_y (){
-        if((y < 0) || (y > GamePanelRacing.HEIGHT)) {
+        if((y < (GPRacing_Hard.HEIGHT/4)) || (y > GamePanelRacing.HEIGHT)) {
             y += acceleration;
         }
         y += acceleration - 5;

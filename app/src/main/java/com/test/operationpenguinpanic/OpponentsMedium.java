@@ -18,7 +18,7 @@ public class OpponentsMedium extends GameObject{
     public OpponentsMedium(Bitmap image){
 
         sprite = image;
-        x = GamePanelRacing.WIDTH / (random.nextInt(5) + 1);
+        x = GamePanelRacing_Medium.WIDTH / (random.nextInt(5) + 1);
         y = -1500;
         height = sprite.getHeight();
         width = sprite.getWidth();
@@ -50,7 +50,7 @@ public class OpponentsMedium extends GameObject{
     }
 
     public void update_y (){
-        if((y < 0) || (y > GamePanelRacing.HEIGHT)) {
+        if((y < (GamePanelRacing_Medium.HEIGHT/4)) || (y > GamePanelRacing.HEIGHT)) {
             y += acceleration;
         }
         y += acceleration - 5;

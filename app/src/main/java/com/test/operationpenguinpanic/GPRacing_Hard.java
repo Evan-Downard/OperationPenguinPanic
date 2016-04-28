@@ -28,6 +28,8 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
     private BackgroundMarathon bg;
     private BackgroundMarathon l2;
     private BackgroundMarathon l3;
+    private Control leftControl;
+    private Control rightControl;
     private PlayerRacing player;
     private OpponentsHard opponentsHard;
     private ArrayList<Projectile> asteroids;
@@ -70,6 +72,10 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
         l2 = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.layer2));
         //2nd Star Layer
         l3 = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.layer3));
+        //Create left control
+        leftControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowleft), (MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
+        //Create right control
+        rightControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowright), (MarathonGP.WIDTH - MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
         // create player's spaceship
         player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), R.drawable.gameship));
         // create opponents
@@ -145,11 +151,36 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
             l2.update2();
             l3.update3();
             player.update();
-            opponentsHard.update_y();
+
+            if ((Math.abs(opponentsHard.getX() - player.getX()) >= 20) ||
+                    (opponentsHard.getY() <= (HEIGHT - HEIGHT / 2))) {
+                opponentsHard.update_y();
+
+                if ((opponentsHard.getY() >= (HEIGHT - HEIGHT / 2))
+                        && (opponentsHard.getY() < player.getY())) {
+                    moveOpponent();
+                }
+            }
+
+            long raceTime = (System.nanoTime() - raceStartTimer) / 1000000000;
+            if ((opponentsHard.getY() >= 2000) && (i > 0)) {        // if the opponent's y = 2000 and you haven't passed it 5 times
+                opponentsHard.resetPosition();                      // its position is reset
+                i--;
+            }
+
+            if (collision(opponentsHard, player)) {             // if the player collides with an opponent the game is over
+                PlayerScore.setScore(getPosition());            //saves the player's rank
+                i = 5;
+                resetGame();
+            }
+
+            if (raceTime == 120) {                               // the race lasts 120 seconds
+                player.setPlaying(false);
+            }
 
             double asteroidElapsed = (System.nanoTime() - asteroidStartTime) / 1000000000;
 
-            if (asteroidElapsed > 0.7) {            // a new asteroid is added every 1/2 sec
+            if (asteroidElapsed > 0.6) {            // a new asteroid is added every 1/2 sec
 
                 // adding asteroids to the array list
                 // the type of asteroid added depends on the size of the array list
@@ -185,31 +216,6 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
                     break;
                 }
             }
-
-            double delay = (System.nanoTime() - opponentTimer) / 100000000;
-            if (((opponentsHard.getX() - player.getX()) < 10) && (delay >=0.5)){  //
-                opponentsHard.update_xRight();
-                opponentTimer = System.nanoTime();
-            } else if (((opponentsHard.getX() - player.getX()) > 10) && (delay >= 0.5)) {
-                opponentsHard.update_xLeft();
-                opponentTimer = System.nanoTime();
-            }
-
-            long raceTime = (System.nanoTime() - raceStartTimer) / 1000000000;
-            if ((opponentsHard.getY() >= 2000) && (i > 0)) {        // if the opponent's y = 2000 and you haven't passed it 5 times
-                opponentsHard.resetPosition();                      // its position is reset
-                i--;
-            }
-
-            if (collision(opponentsHard, player)) {             // if the player collides with an opponent the game is over
-                PlayerScore.setScore(getPosition());            //saves the player's rank
-                i = 5;
-                resetGame();
-            }
-
-            if (raceTime == 120) {                               // the race lasts 120 seconds
-                player.setPlaying(false);
-            }
         }
     }
 
@@ -236,7 +242,6 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
     public void resetGame() {
         surfaceCreated(getHolder());
         player.setPlaying(false);
-        raceStartTimer = System.nanoTime();
     }
 
     @Override
@@ -252,6 +257,8 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
             bg.draw(canvas);
             l2.draw(canvas);
             l3.draw(canvas);
+            leftControl.draw(canvas);
+            rightControl.draw(canvas);
             player.draw(canvas);
             opponentsHard.draw(canvas);
 
@@ -262,6 +269,18 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
             drawText(canvas);
             canvas.restoreToCount(savedState);              // restore the image after drawing it to original size
             // To prevent image to be scaled out of bond.
+        }
+    }
+
+    // makes the opponent move in front of the player in order to prevent him from passing
+    public void moveOpponent() {
+        long delay = (System.nanoTime() - opponentTimer) / 100000000;
+        if (((opponentsHard.getX() - player.getX()) < 10) && (delay >= 1)) {
+            opponentsHard.update_xRight();
+            opponentTimer = System.nanoTime();
+        } else if (((opponentsHard.getX() - player.getX()) > 10) && (delay >= 1)) {
+            opponentsHard.update_xLeft();
+            opponentTimer = System.nanoTime();
         }
     }
 

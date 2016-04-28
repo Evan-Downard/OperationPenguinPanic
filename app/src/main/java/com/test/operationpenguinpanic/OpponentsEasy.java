@@ -31,10 +31,10 @@ public class OpponentsEasy extends GameObject {
     }
 
     public void update (){
-        if((y < 0) || (y > GamePanelRacing.HEIGHT)) {
+        if((y < (GamePanelRacing.HEIGHT/4)) || (y > GamePanelRacing.HEIGHT)) {
             y += acceleration;
         }
-        y += acceleration - 5;
+        y += acceleration - 2;
     }
 
     public void draw (Canvas canvas){
