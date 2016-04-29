@@ -72,18 +72,17 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
         //2nd Star Layer
         l3 = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.layer3));
         //Create left control
-        leftControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowleft), (MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
+        leftControl = new Control(BitmapFactory.decodeResource(getResources(),
+                R.drawable.arrowleft), (MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
         //Create right control
-        rightControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowright), (MarathonGP.WIDTH - MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
+        rightControl = new Control(BitmapFactory.decodeResource(getResources(),
+                R.drawable.arrowright), (MarathonGP.WIDTH - MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
         // create player's spaceship
         player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), R.drawable.gameship));
         // create opponents
         opponentsEasy = new OpponentsEasy(BitmapFactory.decodeResource(getResources(), R.drawable.a_iship));
         // Initialize asteroids array list
         asteroids = new ArrayList<Projectile>();
-
-        opponentsEasy.acceleration *=
-//        opponentStartTimer = System.nanoTime();
 
         // timers for race and asteroids
         raceStartTimer = System.nanoTime();
@@ -152,6 +151,22 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
             player.update();
             opponentsEasy.update();
 
+            long raceTime = (System.nanoTime() - raceStartTimer) / 1000000000;
+            if ((opponentsEasy.getY() >= 2000) && (i > 0)) {        // if the opponent's y = 2000 and you haven't passed 5 spaceships
+                i--;
+                opponentsEasy.resetPosition();                      // its position is reset
+            }
+
+            if (collision(opponentsEasy, player)) {             // if the player collides with an opponent the game is over
+                PlayerScore.setScore(getPosition());            //saves the player's rank
+                i = 5;
+                resetGame();
+            }
+
+            if (raceTime == 120) {                               // the race lasts 120 seconds
+                player.setPlaying(false);
+            }
+
             long asteroidElapsed = (System.nanoTime() - asteroidStartTime) / 1000000000;
 
             if (asteroidElapsed > 1.8) {            // a new asteroid is added every sec
@@ -187,22 +202,6 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
                 if (asteroids.get(j).getY() < -25) {
                     asteroids.remove(j);
                 }
-            }
-
-            long raceTime = (System.nanoTime() - raceStartTimer) / 1000000000;
-            if ((opponentsEasy.getY() >= 2000) && (i > 0)) {        // if the opponent's y = 2000 and you haven't passed 5 spaceships
-                i--;
-                opponentsEasy.resetPosition();                      // its position is reset
-            }
-
-            if (collision(opponentsEasy, player)) {             // if the player collides with an opponent the game is over
-                PlayerScore.setScore(getPosition());            //saves the player's rank
-                i = 5;
-                resetGame();
-            }
-
-            if (raceTime == 120) {                               // the race lasts 120 seconds
-                player.setPlaying(false);
             }
         }
     }
@@ -240,7 +239,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
             drawText(canvas);
 
             canvas.restoreToCount(savedState);              // restore the image after drawing it to original size
-            // To prevent image to be scaled out of bond.
+                                                            // To prevent image to be scaled out of bond.
         }
     }
 

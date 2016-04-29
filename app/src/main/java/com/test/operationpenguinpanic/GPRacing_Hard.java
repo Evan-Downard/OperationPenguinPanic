@@ -274,11 +274,11 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
 
     // makes the opponent move in front of the player in order to prevent him from passing
     public void moveOpponent() {
-        long delay = (System.nanoTime() - opponentTimer) / 100000000;
-        if (((opponentsHard.getX() - player.getX()) < 10) && (delay >= 1)) {
+        double delay = (System.nanoTime() - opponentTimer) / 100000000;
+        if (((opponentsHard.getX() - player.getX()) < 10) && (delay >= 0.5)) {
             opponentsHard.update_xRight();
             opponentTimer = System.nanoTime();
-        } else if (((opponentsHard.getX() - player.getX()) > 10) && (delay >= 1)) {
+        } else if (((opponentsHard.getX() - player.getX()) > 10) && (delay >= 0.5)) {
             opponentsHard.update_xLeft();
             opponentTimer = System.nanoTime();
         }
