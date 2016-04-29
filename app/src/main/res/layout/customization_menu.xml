@@ -127,13 +127,13 @@
         android:text="Ship"
         android:layout_below="@+id/customtitle"
         android:layout_centerHorizontal="true"
-        android:textSize="35dp"/>
+        android:textSize="35sp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Penguin"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:layout_alignBottom="@+id/bottomRight"
         android:layout_centerHorizontal="true"
         android:id="@+id/textView3" />
@@ -170,12 +170,11 @@
         android:id="@+id/colorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="C\no\nl\no\nr"
-        android:textSize="25dp"
-        android:layout_above="@+id/colorButtonBottom"
-        android:layout_toRightOf="@+id/customtitle"
-        android:layout_toEndOf="@+id/customtitle"
-        android:layout_marginBottom="7dp" />
+        android:text="Color"
+        android:textSize="30sp"
+        android:layout_alignBottom="@+id/changePit"
+        android:layout_alignLeft="@+id/colorButtonBottom"
+        android:layout_alignStart="@+id/colorButtonBottom" />
 
     <Button
         android:layout_width="175dp"

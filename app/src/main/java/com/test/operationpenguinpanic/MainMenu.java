@@ -55,7 +55,8 @@ public class MainMenu extends AppCompatActivity {
     // for image views
     ImageView ship; ImageView penguin;
     ImageView cockpit; ImageView ssp;
-    //public TextView color;
+    // for text views
+    TextView color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +97,9 @@ public class MainMenu extends AppCompatActivity {
         penguin = (ImageView) findViewById(R.id.changePenguin);
         cockpit = (ImageView) findViewById(R.id.changePit);
         ssp = (ImageView) findViewById(R.id.SSP);
+        color = (TextView) findViewById(R.id.colorText);
+
+        color.setRotation(90);
 
         if(j == 5){
             ssp.setImageResource(penguinImages[j]);
