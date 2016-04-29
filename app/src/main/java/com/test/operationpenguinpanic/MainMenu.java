@@ -1,9 +1,11 @@
 package com.test.operationpenguinpanic;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
+import android.widget.Toast;
 import com.test.operationpenguinpanic.PlayerSave;
 
 
@@ -22,14 +25,20 @@ public class MainMenu extends AppCompatActivity {
     // initialization of variables
     int i = 0; int j = 0; int k = 0; int p = 0;
     boolean music; boolean sound;
+
+    Context context;
+    Toast toast; CharSequence text; CharSequence error;
+    int duration = Toast.LENGTH_SHORT;
     // initialization of players save information
     PlayerSave save = new PlayerSave();
+
     // int array of ship list
     int shipImages[][] = {{R.drawable.mach1,R.drawable.mach1blue,R.drawable.mach1green,
                     R.drawable.mach1black,R.drawable.mach1white,R.drawable.mach1silver,
                     R.drawable.mach1gold},{R.drawable.mach3_red, R.drawable.mach3_blue,
                     R.drawable.mach3_green,R.drawable.mach3_black, R.drawable.mach3_white,
                     R.drawable.mach3_silver,R.drawable.mach3_gold}};
+
     // in array of penguin list
     int penguinImages[] = {R.drawable.normalpenguin,R.drawable.ladypenguin,
             R.drawable.superpenguin,R.drawable.ninjapenguin,
@@ -190,6 +199,8 @@ public class MainMenu extends AppCompatActivity {
     // on click scrolls through the ships list from the left
     public void sendShipleft(View view){
         ship = (ImageView) findViewById(R.id.changeShip);
+        error = "Super Saiyan Penguin is the ship.";
+        context = getApplicationContext();
         if(j!=5) {
             if (i == 0) {
                 i = 1;
@@ -204,11 +215,16 @@ public class MainMenu extends AppCompatActivity {
             }
         }else{
            // for displaying error
+            toast = Toast.makeText(context, error, duration);
+            toast.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 0);
+            toast.show();
         }
     }
     // on click scrolls through the ships list from the right
     public void sendShipRight(View view){
         ship = (ImageView) findViewById(R.id.changeShip);
+        error = "Super Saiyan Penguin is the ship.";
+        context = getApplicationContext();
         if(j!=5) {
             if (i == 1) {
                 i = 0;
@@ -223,6 +239,9 @@ public class MainMenu extends AppCompatActivity {
             }
         }else{
             // for displaying error
+            toast = Toast.makeText(context, error, duration);
+            toast.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 0);
+            toast.show();
         }
     }
     // on click scrolls through the penguin list from the left
@@ -295,6 +314,8 @@ public class MainMenu extends AppCompatActivity {
     // on click scrolls through the colors for that ship down the list
     public void sendColorDown(View view) {
         ship = (ImageView) findViewById(R.id.changeShip);
+        error = "Super Saiyan Penguin does not have color options.";
+        context = getApplicationContext();
         if (j != 5) {
             if (k == 0) {
                 k = 6;
@@ -309,11 +330,16 @@ public class MainMenu extends AppCompatActivity {
             }
         }else{
             // display error
+            toast = Toast.makeText(context, error, duration);
+            toast.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 0);
+            toast.show();
         }
     }
     // on click scrolls through the colors for that ship up the list
     public void sendColorUp(View veiw) {
         ship = (ImageView) findViewById(R.id.changeShip);
+        error = "Super Saiyan Penguin does not have color options.";
+        context = getApplicationContext();
         if (j != 5) {
             if (k == 6) {
                 k = 0;
@@ -328,6 +354,9 @@ public class MainMenu extends AppCompatActivity {
             }
         }else{
             // displays error
+            toast = Toast.makeText(context, error, duration);
+            toast.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 0);
+            toast.show();
         }
     }
     //================================================
@@ -337,6 +366,9 @@ public class MainMenu extends AppCompatActivity {
     public void sendSave(View view){
         ship = (ImageView) findViewById(R.id.changeShip);
         penguin = (ImageView) findViewById(R.id.changePenguin);
+        text = "The selected layout has been saved successfully.";
+        error = "An error has occured while saving.";
+        context = getApplicationContext();
 
         if(ship != null && penguin != null){
             save.getSaveShip(i);
@@ -345,8 +377,14 @@ public class MainMenu extends AppCompatActivity {
             save.getSavePit(p);
             playerScore.setPenguin(j);  //sets the saved penguin for player's penguin for score
             // displays that system has saved
+            toast = Toast.makeText(context, text, duration);
+            toast.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 0);
+            toast.show();
         }else{
             // displays error with saving
+            toast = Toast.makeText(context, error, duration);
+            toast.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 0);
+            toast.show();
         }
 
     }
@@ -356,21 +394,31 @@ public class MainMenu extends AppCompatActivity {
         soundN = (RadioButton) findViewById(R.id.SoundN);
         musicY = (RadioButton) findViewById(R.id.MusicY);
         musicN = (RadioButton) findViewById(R.id.MusicN);
+        text = "The options selected has successfully been saved.";
+        context = getApplicationContext();
 
         if(soundY.isChecked() == true && soundN.isChecked() == false){
             save.getSaveSounds(true);
             // display the system had saved
+            toast = Toast.makeText(context, text, duration);
+            toast.show();
         }else if(soundN.isChecked() == true && soundY.isChecked() == false){
             save.getSaveSounds(false);
             // display the system has saved
+            toast = Toast.makeText(context, text, duration);
+            toast.show();
         }
 
         if(musicY.isChecked() == true && musicN.isChecked() == false){
             save.getSaveMusic(true);
             // display the system has saved
+            toast = Toast.makeText(context, text, duration);
+            toast.show();
         }else if(musicN.isChecked() == true && musicY.isChecked() == false){
             save.getSaveMusic(false);
             // display the system has saved
+            toast = Toast.makeText(context, text, duration);
+            toast.show();
         }
     }
 }
