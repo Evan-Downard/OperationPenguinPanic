@@ -14,6 +14,8 @@ public class PlayerAsteroids extends GameObject{
     private double dxa;
     private boolean left;
     private boolean right;
+    private boolean up;
+    private boolean down;
     private boolean stopped;
 
     private boolean playing;
@@ -44,7 +46,13 @@ public class PlayerAsteroids extends GameObject{
 
     }
     public void setLeft(boolean b){left = b;}
+
     public void setRight(boolean c){right = c;}
+
+    public void setUp(boolean b) { up = b;}
+
+    public void setDown(boolean b) { down = b;}
+
     public void setStop(boolean d){stopped = d;}
 
     public void update()
@@ -59,14 +67,45 @@ public class PlayerAsteroids extends GameObject{
         animation.update();
 
         //Left and right movement
-        if(left && x > 0){
-            x -=8;
-        }
-        if(right && x < (MarathonGP.WIDTH-40)){
-            x +=8;
+        if(left){
+            x -= 8;
+            y += 0;
 
-        }else{
-            x +=0;
+            if (x < -100){                      // if the ship goes off screen to the left it spawns to the right of the screen
+                x = AsteroidsGP.WIDTH + 60;
+            }
+        }
+
+        else if(right){
+            x += 8;
+            y += 0;
+
+            if (x > AsteroidsGP.WIDTH + 100){   // if the ship goes off screen to the left it spawns to the right of the screen
+                x = -60;
+            }
+        }
+
+        else if (up){
+            y -= 8;
+            x += 0;
+
+            if (y < -100){                      // if the ship goes off screen to the left it spawns to the right of the screen
+                y = AsteroidsGP.HEIGHT + 60;
+            }
+        }
+
+        else if(down){
+            y += 8;
+            x += 0;
+
+            if (y > AsteroidsGP.HEIGHT + 100){   // if the ship goes off screen to the left it spawns to the right of the screen
+                y = -60;
+            }
+        }
+
+        else {
+            x += 0;
+            y += 0;
         }
     }
 

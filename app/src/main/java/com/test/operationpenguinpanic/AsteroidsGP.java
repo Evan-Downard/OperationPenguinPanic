@@ -224,7 +224,8 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
                     break;
                 }
                 //remove asteroid if it is way off the screen
-                if (asteroids.get(i).getY() < -100 || asteroids.get(i).getX() < -100 || asteroids.get(i).getX() > 1500 || asteroids.get(i).getY() > 2500){
+                if (asteroids.get(i).getY() < -100 || asteroids.get(i).getX() < -100 ||
+                        asteroids.get(i).getX() > 1500 || asteroids.get(i).getY() > 2500){
                         asteroids.remove(i);
                     break;
                 }
