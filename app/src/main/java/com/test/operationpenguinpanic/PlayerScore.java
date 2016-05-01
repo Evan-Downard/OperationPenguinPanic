@@ -6,7 +6,15 @@ package com.test.operationpenguinpanic;
 public class PlayerScore {
     private String name = "Player";
     private int score = 0;
-    private String penguin;
+    private String penguin = "Noraml";
+
+    public PlayerScore(){}
+
+    public PlayerScore(String n, int s, String p){
+        name = n;
+        score = s;
+        penguin = p;
+    }
 
     public String getName() {
         return name;
@@ -35,23 +43,35 @@ public class PlayerScore {
                 this.penguin = "Lady";
                 break;
             case 2:
-                this.penguin = "Mechanic";
-                break;
-            case 3:
                 this.penguin = "Super Penguin";
                 break;
-            case 4:
+            case 3:
                 this.penguin = "Ninja";
                 break;
+            case 4:
+                this.penguin = "Cyber";
+                break;
             case 5:
-                this.penguin = "Doot Doot";
+                this.penguin = "Pika-guin";
                 break;
             case 6:
-                this.penguin = "Super Saiyan";
+                this.penguin = "Doot Doot";
+                break;
+            case 7:
+                this.penguin = "Super Saiya";
                 break;
             default:
                 this.penguin = "Normal";
                 break;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o instanceof PlayerScore){
+            PlayerScore other = (PlayerScore) o;
+            return score == other.getScore() && name.contentEquals(other.getName());
+        }
+        return false;
     }
 }
