@@ -35,18 +35,21 @@ public class MainMenu extends AppCompatActivity {
     // int array of ship list
     int shipImages[][] = {{R.drawable.mach1,R.drawable.mach1blue,R.drawable.mach1green,
                     R.drawable.mach1black,R.drawable.mach1white,R.drawable.mach1silver,
-                    R.drawable.mach1gold},{R.drawable.mach3_red, R.drawable.mach3_blue,
-                    R.drawable.mach3_green,R.drawable.mach3_black, R.drawable.mach3_white,
-                    R.drawable.mach3_silver,R.drawable.mach3_gold}};
+                    R.drawable.mach1gold},{R.drawable.mach2,R.drawable.mach2_blue,
+                    R.drawable.mach2_green, R.drawable.mach2_black, R.drawable.mach2_white,
+                    R.drawable.mach2_silver, R.drawable.mach2_gold},{R.drawable.mach3_red,
+                    R.drawable.mach3_blue, R.drawable.mach3_green,R.drawable.mach3_black,
+                    R.drawable.mach3_white, R.drawable.mach3_silver,R.drawable.mach3_gold}};
 
     // in array of penguin list
     int penguinImages[] = {R.drawable.normalpenguin,R.drawable.ladypenguin,
-            R.drawable.superpenguin,R.drawable.ninjapenguin,
-            R.drawable.dootdootpenguin,R.drawable.ssp};
+            R.drawable.superpenguin,R.drawable.ninjapenguin, R.drawable.cyberpenguin,
+            R.drawable.pika_penguin, R.drawable.dootdootpenguin,R.drawable.ssp};
 
     // int array of cockpits of the ships
     int pitImages[] = {R.drawable.normalpenguin_pit, R.drawable.ladypenguin_pit,
-            R.drawable.superpenguin_pit, R.drawable.ninjapenguin_pit, R.drawable.dootdootpenguin_pit};
+            R.drawable.superpenguin_pit, R.drawable.ninjapenguin_pit, R.drawable.cyberpenguin_pit,
+            R.drawable.pika_penguin_pit, R.drawable.dootdootpenguin_pit};
 
     // for radio buttons
     RadioButton soundY;    RadioButton soundN;
@@ -101,7 +104,7 @@ public class MainMenu extends AppCompatActivity {
 
         color.setRotation(90);
 
-        if(j == 5){
+        if(j == 7){
             ssp.setImageResource(penguinImages[j]);
         }
         else {
@@ -205,9 +208,9 @@ public class MainMenu extends AppCompatActivity {
         ship = (ImageView) findViewById(R.id.changeShip);
         error = "Super Saiyan Penguin is the ship.";
         context = getApplicationContext();
-        if(j!=5) {
+        if(j!=7) {
             if (i == 0) {
-                i = 1;
+                i = 2;
                 if (ship != null) {
                     ship.setImageResource(shipImages[i][k]);
                 }
@@ -229,8 +232,8 @@ public class MainMenu extends AppCompatActivity {
         ship = (ImageView) findViewById(R.id.changeShip);
         error = "Super Saiyan Penguin is the ship.";
         context = getApplicationContext();
-        if(j!=5) {
-            if (i == 1) {
+        if(j!=7) {
+            if (i == 2) {
                 i = 0;
                 if (ship != null) {
                     ship.setImageResource(shipImages[i][k]);
@@ -256,15 +259,15 @@ public class MainMenu extends AppCompatActivity {
         ssp = (ImageView) findViewById(R.id.SSP);
 
         if(j==0){
-            j = 5;
-            p = 4;
+            j = 7;
+            p = 6;
                 if(ssp != null){
                     penguin.setImageResource(android.R.color.transparent);
                     ship.setImageResource(android.R.color.transparent);
                     cockpit.setImageResource(android.R.color.transparent);
                     ssp.setImageResource(penguinImages[j]);
                 }
-        }else if(j==5){
+        }else if(j==7){
             j = j -1;
             if(ssp != null){
                     ssp.setImageResource(android.R.color.transparent);
@@ -288,7 +291,7 @@ public class MainMenu extends AppCompatActivity {
         cockpit = (ImageView) findViewById(R.id.changePit);
         ssp = (ImageView) findViewById(R.id.SSP);
 
-        if (j == 5) {
+        if (j == 7) {
             j = 0;
             p = 0;
             if (ssp != null) {
@@ -297,7 +300,7 @@ public class MainMenu extends AppCompatActivity {
                 ship.setImageResource(shipImages[i][k]);
                 cockpit.setImageResource(pitImages[p]);
             }
-        } else if (j == 4) {
+        } else if (j == 6) {
             j = j + 1;
             if (ssp != null) {
                 ssp.setImageResource(penguinImages[j]);
@@ -320,7 +323,7 @@ public class MainMenu extends AppCompatActivity {
         ship = (ImageView) findViewById(R.id.changeShip);
         error = "Super Saiyan Penguin does not have color options.";
         context = getApplicationContext();
-        if (j != 5) {
+        if (j != 7) {
             if (k == 0) {
                 k = 6;
                 if (ship != null) {
@@ -344,7 +347,7 @@ public class MainMenu extends AppCompatActivity {
         ship = (ImageView) findViewById(R.id.changeShip);
         error = "Super Saiyan Penguin does not have color options.";
         context = getApplicationContext();
-        if (j != 5) {
+        if (j != 7) {
             if (k == 6) {
                 k = 0;
                 if (ship != null) {
