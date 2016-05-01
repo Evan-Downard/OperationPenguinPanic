@@ -96,8 +96,6 @@ public class GamePanelRacing_Medium extends SurfaceView implements SurfaceHolder
         // Initialize asteroids array list
         asteroids = new ArrayList<Projectile>();
 
-//        opponentStartTimer = System.nanoTime();
-
         // timers for race and asteroids
         raceStartTimer = System.nanoTime();
         asteroidStartTime = System.nanoTime();

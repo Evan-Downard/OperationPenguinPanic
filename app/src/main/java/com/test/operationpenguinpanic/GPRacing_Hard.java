@@ -97,8 +97,6 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
         // Initialize asteroids array list
         asteroids = new ArrayList<Projectile>();
 
-//        opponentStartTimer = System.nanoTime();
-
         // timers for race, asteroids and opponent
         raceStartTimer = System.nanoTime();
         asteroidStartTime = System.nanoTime();
