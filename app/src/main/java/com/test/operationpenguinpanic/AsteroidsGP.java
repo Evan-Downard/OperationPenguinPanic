@@ -101,18 +101,18 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
         color = MainMenu.sendPlayerColor();
         //Create background
         bg = new BackgroundAsteroids(BitmapFactory.decodeResource(getResources(), R.drawable.spacex));
-        //Create left control
+        //Create counterclockwise control
         counterClock = new Control(BitmapFactory.decodeResource(getResources(),
                 R.drawable.smallrotate), 15, AsteroidsGP.HEIGHT - 125, 0, 0);
-        //Create right control
+        //Create clockwise control
         clockWise = new Control(BitmapFactory.decodeResource(getResources(),
                 R.drawable.smallrotate), 60, AsteroidsGP.HEIGHT - 75, 0, 0);
         // create move control
         moveControl = new Control(BitmapFactory.decodeResource(getResources(),
-                R.drawable.smallrotate), AsteroidsGP.WIDTH - 60, AsteroidsGP.HEIGHT - 75, 0, 0);
+                R.drawable.smallrotate), AsteroidsGP.WIDTH - 120, AsteroidsGP.HEIGHT - 75, 0, 0);
         // create fire control
         fireControl = new Control(BitmapFactory.decodeResource(getResources(),
-                R.drawable.smallrotate), AsteroidsGP.WIDTH - 120, AsteroidsGP.HEIGHT - 125, 0, 0);
+                R.drawable.smallrotate), AsteroidsGP.WIDTH - 60, AsteroidsGP.HEIGHT - 125, 0, 0);
 
         //Create player
         //parameters: (Intial Position x, Initial Position y, size x, size y, num animation frames)
@@ -142,8 +142,8 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
                 player.setPlaying(true);
             }
 
-            if (x <= (screenWidth/4) - (screenWidth/16)) {// if the player touches the left of the screen the ship moves left
-                player.setLeft(true);
+            if (Math.abs(x - AsteroidsGP.WIDTH + 60) <= 30 && Math.abs(y - AsteroidsGP.HEIGHT - 125) <= 30) {// if the player touches the left of the screen the ship moves left
+                player.setShoot(true);
             }
             else if (x >= (screenWidth/4) + (screenWidth / 6)) {    // else it moves right
                 player.setRight(true);

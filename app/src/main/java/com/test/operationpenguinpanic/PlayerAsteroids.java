@@ -16,6 +16,7 @@ public class PlayerAsteroids extends GameObject{
     private boolean right;
     private boolean up;
     private boolean down;
+    private boolean shoot;
     private boolean stopped;
 
     private boolean playing;
@@ -54,6 +55,8 @@ public class PlayerAsteroids extends GameObject{
     public void setDown(boolean b) { down = b;}
 
     public void setStop(boolean d){stopped = d;}
+
+    public void setShoot(boolean b) { shoot = b;}
 
     public void update()
     {
