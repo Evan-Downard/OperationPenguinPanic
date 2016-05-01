@@ -1,5 +1,6 @@
 package com.test.operationpenguinpanic;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -9,6 +10,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.CheckBox;
@@ -80,6 +82,17 @@ public class MainMenu extends AppCompatActivity {
         musicY = (RadioButton) options.findViewById(R.id.MusicY);
         musicN = (RadioButton) options.findViewById(R.id.MusicN);
         */
+
+        Button pauseButton = (Button) findViewById(R.id.pause_btn);
+        pauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = new Dialog(MainMenu.this);
+                dialog.setTitle("Pause Menu");
+                dialog.setContentView(R.layout.pausemenu);
+                dialog.show();
+            }
+        });
 
     }
     //===============================================
