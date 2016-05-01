@@ -25,6 +25,17 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
     public static final int HEIGHT = 800;
     public static final int MOVESPEED = 25;
 
+    int shipImages[][] = {{R.drawable.mach1g,R.drawable.mach1blueg,R.drawable.mach1greeng,
+            R.drawable.mach1blackg,R.drawable.mach1whiteg,R.drawable.mach1silverg,
+            R.drawable.mach1goldg},{R.drawable.mach2g,R.drawable.mach2_blueg,
+            R.drawable.mach2_greeng, R.drawable.mach2_blackg, R.drawable.mach2_whiteg,
+            R.drawable.mach2_silverg, R.drawable.mach2_goldg},{R.drawable.mach3_redg,
+            R.drawable.mach3_blueg, R.drawable.mach3_greeng,R.drawable.mach3_blackg,
+            R.drawable.mach3_whiteg, R.drawable.mach3_silverg,R.drawable.mach3_goldg}};
+
+    int ship; int color;
+
+
     private MainThreadRacing thread;
     private BackgroundMarathon bg;
     private BackgroundMarathon l2;
@@ -64,7 +75,9 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-
+        // determining what the players ship is
+        ship = MainMenu.sendPlayerShip();
+        color = MainMenu.sendPlayerColor();
         //Create background
         bg = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.layer1));
         //1st Star Layer
@@ -78,7 +91,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
         rightControl = new Control(BitmapFactory.decodeResource(getResources(),
                 R.drawable.arrowright), (MarathonGP.WIDTH - MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
         // create player's spaceship
-        player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), R.drawable.gameship));
+        player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), shipImages[ship][color]));
         // create opponents
         opponentsEasy = new OpponentsEasy(BitmapFactory.decodeResource(getResources(), R.drawable.a_iship));
         // Initialize asteroids array list

@@ -56,7 +56,7 @@ public class PlayerMarathon extends GameObject{
             score++;
             startTime = System.nanoTime();
         }
-        animation.update();
+        //animation.update();
 
         //Left and right movement
         if(left && x > 0){

@@ -14,6 +14,8 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 
+
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -27,6 +29,15 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
 
     public static final int MOVESPEED = -30;
 
+    int shipImages[][] = {{R.drawable.mach1g,R.drawable.mach1blueg,R.drawable.mach1greeng,
+            R.drawable.mach1blackg,R.drawable.mach1whiteg,R.drawable.mach1silverg,
+            R.drawable.mach1goldg},{R.drawable.mach2g,R.drawable.mach2_blueg,
+            R.drawable.mach2_greeng, R.drawable.mach2_blackg, R.drawable.mach2_whiteg,
+            R.drawable.mach2_silverg, R.drawable.mach2_goldg},{R.drawable.mach3_redg,
+            R.drawable.mach3_blueg, R.drawable.mach3_greeng,R.drawable.mach3_blackg,
+            R.drawable.mach3_whiteg, R.drawable.mach3_silverg,R.drawable.mach3_goldg}};
+
+    int ship; int color;
 
     private long projectileStartTime;
     private MarathonThread thread;
@@ -50,9 +61,9 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
     final int screenWidth = display.heightPixels;
     final int screenHeight = display.widthPixels;
 
+
     public MarathonGP(Context context) {
         super(context);
-
 
         //add the callback to the surfaceholder to intercept events
         getHolder().addCallback(this);
@@ -87,7 +98,9 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-
+        // determining what the players ship is
+        ship = MainMenu.sendPlayerShip();
+        color = MainMenu.sendPlayerColor();
         //Create background
         bg = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.layer1));
         //1st Star Layer
@@ -99,7 +112,7 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
         //Create right control
         rightControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowright), (MarathonGP.WIDTH - MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
         //Create player
-        player = new PlayerMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.animship), screenWidth / 8, MarathonGP.HEIGHT - 150, 51, 58, 6);
+        player = new PlayerMarathon(BitmapFactory.decodeResource(getResources(), shipImages[ship][color]), screenWidth / 8, MarathonGP.HEIGHT - 150, 51, 58, 1);
 
 
         projectiles = new ArrayList<Projectile>();

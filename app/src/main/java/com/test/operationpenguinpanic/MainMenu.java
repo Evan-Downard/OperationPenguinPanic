@@ -23,7 +23,10 @@ public class MainMenu extends AppCompatActivity {
      PlayerScore playerScore = new PlayerScore();
 
     // initialization of variables
-    int i = 0; int j = 0; int k = 0; int p = 0;
+    public static int i = 0;
+    public static int j = 0;
+    public static int k = 0;
+    public static int p = 0;
     boolean music; boolean sound;
 
     Context context;
@@ -427,5 +430,13 @@ public class MainMenu extends AppCompatActivity {
             toast = Toast.makeText(context, text, duration);
             toast.show();
         }
+    }
+
+
+    public static int sendPlayerShip(){
+        return i;
+    }
+    public static int sendPlayerColor(){
+        return k;
     }
 }

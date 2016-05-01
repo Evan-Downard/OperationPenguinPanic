@@ -40,6 +40,15 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
     private Random rand = new Random();
     private boolean newGameCreated;
 
+    int shipImages[][] = {{R.drawable.mach1g,R.drawable.mach1blueg,R.drawable.mach1greeng,
+            R.drawable.mach1blackg,R.drawable.mach1whiteg,R.drawable.mach1silverg,
+            R.drawable.mach1goldg},{R.drawable.mach2g,R.drawable.mach2_blueg,
+            R.drawable.mach2_greeng, R.drawable.mach2_blackg, R.drawable.mach2_whiteg,
+            R.drawable.mach2_silverg, R.drawable.mach2_goldg},{R.drawable.mach3_redg,
+            R.drawable.mach3_blueg, R.drawable.mach3_greeng,R.drawable.mach3_blackg,
+            R.drawable.mach3_whiteg, R.drawable.mach3_silverg,R.drawable.mach3_goldg}};
+
+    int ship; int color;
 
     //Difficulty setting
     private int progressDenom = 20;
@@ -87,7 +96,9 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-
+        // determining what the players ship is
+        ship = MainMenu.sendPlayerShip();
+        color = MainMenu.sendPlayerColor();
         //Create background
         bg = new BackgroundAsteroids(BitmapFactory.decodeResource(getResources(), R.drawable.spacex));
         //Create left control
@@ -101,7 +112,7 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
 
         //Create player
         //parameters: (Intial Position x, Initial Position y, size x, size y, num animation frames)
-        player = new PlayerAsteroids(BitmapFactory.decodeResource(getResources(), R.drawable.gameship), screenWidth/8, screenHeight/3, 45, 58, 1);
+        player = new PlayerAsteroids(BitmapFactory.decodeResource(getResources(), shipImages[ship][color]), screenWidth/8, screenHeight/3, 45, 58, 1);
 
         asteroids = new ArrayList<Asteroid>();
         projectileStartTime = System.nanoTime();
