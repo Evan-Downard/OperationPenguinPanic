@@ -33,6 +33,8 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
     private BackgroundAsteroids bg;
     private Control leftControl;
     private Control rightControl;
+    private Control fireControl;
+    private Control moveControl;
     private PlayerAsteroids player;
     private ArrayList<Asteroid> asteroids;
     private Random rand = new Random();
@@ -89,9 +91,14 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
         //Create background
         bg = new BackgroundAsteroids(BitmapFactory.decodeResource(getResources(), R.drawable.spacex));
         //Create left control
-        leftControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowleft), (AsteroidsGP.WIDTH/4)-65, AsteroidsGP.HEIGHT - 75, 140, 69);
+        leftControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.smallrotate), 15, screenHeight - 125, 0, 0);
         //Create right control
-        rightControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowright), (AsteroidsGP.WIDTH - AsteroidsGP.WIDTH/4)-65, AsteroidsGP.HEIGHT - 75, 140, 69);
+        rightControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.smallrotate), 60, AsteroidsGP.HEIGHT - 75, 0, 0);
+        // create move control
+        //moveControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.smallrotate), (AsteroidsGP.WIDTH - AsteroidsGP.WIDTH/4)-65, AsteroidsGP.HEIGHT - 75, 45, 45);
+        // create fire control
+        //fireControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.smallrotate), (AsteroidsGP.WIDTH - AsteroidsGP.WIDTH/4)-65, AsteroidsGP.HEIGHT - 75, 45, 45);
+
         //Create player
         //parameters: (Intial Position x, Initial Position y, size x, size y, num animation frames)
         player = new PlayerAsteroids(BitmapFactory.decodeResource(getResources(), R.drawable.gameship), screenWidth/8, screenHeight/3, 45, 58, 1);
