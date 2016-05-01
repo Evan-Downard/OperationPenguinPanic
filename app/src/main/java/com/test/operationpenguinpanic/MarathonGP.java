@@ -29,6 +29,7 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
 
     public static final int MOVESPEED = -30;
 
+    //Jonny
     int shipImages[][] = {{R.drawable.mach1g,R.drawable.mach1blueg,R.drawable.mach1greeng,
             R.drawable.mach1blackg,R.drawable.mach1whiteg,R.drawable.mach1silverg,
             R.drawable.mach1goldg},{R.drawable.mach2g,R.drawable.mach2_blueg,
@@ -38,7 +39,7 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
             R.drawable.mach3_whiteg, R.drawable.mach3_silverg,R.drawable.mach3_goldg}};
 
     int ship; int color;
-
+    //Evan
     private long projectileStartTime;
     private MarathonThread thread;
     private BackgroundMarathon bg;
@@ -112,7 +113,7 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
         //Create right control
         rightControl = new Control(BitmapFactory.decodeResource(getResources(), R.drawable.arrowright), (MarathonGP.WIDTH - MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
         //Create player
-        player = new PlayerMarathon(BitmapFactory.decodeResource(getResources(), shipImages[ship][color]), screenWidth / 8, MarathonGP.HEIGHT - 150, 51, 58, 1);
+        player = new PlayerMarathon(BitmapFactory.decodeResource(getResources(), shipImages[ship][color]));
 
 
         projectiles = new ArrayList<Projectile>();
@@ -124,7 +125,7 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
         thread.start();
 
     }
-
+    //Evan
     //When the screen is touched
     //Controls
     @Override
@@ -173,7 +174,8 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
         }
         return super.onTouchEvent(event);
     }
-
+    //Evan
+    //update game every frame
     public void update() {
         if (player.getPlaying()) {
 
@@ -188,44 +190,71 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
                 System.out.println("creating projectile");
 
                 //Projectile Spawning
-                //first asteroid goes down the center of the screen forcing the player to move
                 if (projectiles.size() == 0) {
                     projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.
                             asteroid), HEIGHT, -20, 40, 40, player.getScore(), 1));
-                } else if (rand.nextDouble() <= 0.1) {
+                } else if (rand.nextDouble() <= 0.05) {
                     projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid),
-                            (int) (rand.nextDouble() * (screenWidth / 4)), -20, 40, 40, player.getScore(), 1));
-                } else if (rand.nextDouble() <= 0.2 && rand.nextDouble() > 0.1) {
-                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid8),
-                            (int) (rand.nextDouble() * (screenWidth / 4)), -20, 39, 30, player.getScore(), 1));
-                } else if (rand.nextDouble() <= 0.3 && rand.nextDouble() > 0.2) {
-                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid3),
-                            (int) (rand.nextDouble() * (screenWidth / 4)), -20, 60, 51, player.getScore(), 1));
-                } else if (rand.nextDouble() <= 0.4 && rand.nextDouble() > 0.3) {
+                            (int) (rand.nextDouble() * (screenWidth/3)), -50, 40, 40, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.1 && rand.nextDouble() > 0.05) {
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid1),
+                            (int) (rand.nextDouble() * (screenWidth/3)), -50, 60, 60, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.15 && rand.nextDouble() > 0.1) {
                     projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid2),
-                            (int) (rand.nextDouble() * (screenWidth / 4)), -20, 65, 65, player.getScore(), 1));
-                } else if (rand.nextDouble() <= 0.5 && rand.nextDouble() > 0.4) {
-                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej6),
-                            (int) (rand.nextDouble() * (screenWidth / 4)), -20, 87, 87, player.getScore(), 1));
-                } else if (rand.nextDouble() <= 0.6 && rand.nextDouble() > 0.5) {
-                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej5),
-                            (int) (rand.nextDouble() * (screenWidth / 4)), -20, 114, 121, player.getScore(), 1));
-                } else if (rand.nextDouble() <= 0.7 && rand.nextDouble() > 0.6) {
-                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej4),
-                            (int) (rand.nextDouble() * (screenWidth / 4)), -20, 43, 21, player.getScore(), 1));
-                } else if (rand.nextDouble() <= 0.8 && rand.nextDouble() > 0.7) {
-                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej3),
-                            (int) (rand.nextDouble() * (screenWidth / 4)), -20, 39, 160, player.getScore(), 1));
-                } else if (rand.nextDouble() <= 0.9 && rand.nextDouble() > 0.8) {
-                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej2),
-                            (int) (rand.nextDouble() * (screenWidth / 4)), -20, 87, 100, player.getScore(), 1));
-                } else if (rand.nextDouble() > 0.9) {
+                            (int) (rand.nextDouble() * (screenWidth / 3)), -50, 65, 65, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.2 && rand.nextDouble() > 0.15) {
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid3),
+                            (int) (rand.nextDouble() * (screenWidth/3)), -50, 60, 51, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.25 && rand.nextDouble() > 0.2) {
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid4),
+                            (int) (rand.nextDouble() * (screenWidth/3)), -50, 96, 78, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.3 && rand.nextDouble() > 0.25) {
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid5),
+                            (int) (rand.nextDouble() * (screenWidth/3)), -50, 83, 77, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.35 && rand.nextDouble() > 0.3) {
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid6),
+                            (int) (rand.nextDouble() * (screenWidth / 3)), -50, 53, 51, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.4 && rand.nextDouble() > 0.35) {
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid7),
+                            (int) (rand.nextDouble() * (screenWidth/3)), -50, 60, 51, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.45 && rand.nextDouble() > 0.4) {
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid8),
+                            (int) (rand.nextDouble() * (screenWidth/3)), -50, 39, 30, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.5 && rand.nextDouble() > 0.45) {
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid9),
+                            (int) (rand.nextDouble() * (screenWidth/3)), -50, 30, 23, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.55 && rand.nextDouble() > 0.5) {
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid10),
+                            (int) (rand.nextDouble() * (screenWidth / 3)), -50, 53, 51, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.6 && rand.nextDouble() > 0.55) {
                     projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej1),
-                            (int) (rand.nextDouble() * (screenWidth / 4)), -20, 65, 65, player.getScore(), 1));
+                            (int) (rand.nextDouble() * (screenWidth/3)), -50, 102, 83, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.65 && rand.nextDouble() > 0.6) {
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej2),
+                            (int) (rand.nextDouble() * (screenWidth/3)), -50, 87, 100, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.7 && rand.nextDouble() > 0.65) {
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej3),
+                            (int) (rand.nextDouble() * (screenWidth/3)), -50, 39, 30, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.75 && rand.nextDouble() > 0.7) {
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej4),
+                            (int) (rand.nextDouble() * (screenWidth / 3)), -50, 53, 51, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.8 && rand.nextDouble() > 0.75) {
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej5),
+                            (int) (rand.nextDouble() * (screenWidth/3)), -50, 60, 51, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.85 && rand.nextDouble() > 0.8) {
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej6),
+                            (int) (rand.nextDouble() * (screenWidth/3)), -50, 87, 87, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.9 && rand.nextDouble() > 0.85) {
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej7),
+                            (int) (rand.nextDouble() * (screenWidth/3)), -50, 39, 30, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.95 && rand.nextDouble() > 0.9) {
+                    projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.spacej8),
+                            (int) (rand.nextDouble() * (screenWidth / 3)), -50, 53, 51, player.getScore(), 1));
                 } else {
                     projectiles.add(new Projectile(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid1),
-                            (int) (rand.nextDouble() * (screenWidth / 4)), -20, 60, 60, player.getScore(), 1));
+                            (int) (rand.nextDouble() * (screenWidth/3)), -50, 60, 51, player.getScore(), 1));
                 }
+
 
                 projectileStartTime = System.nanoTime();
             }
@@ -248,10 +277,11 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
                     break;
                 }
                 //remove asteroid if it is way off the screen
-                if (projectiles.get(i).getY() < -25) {
+                if (projectiles.get(i).getY() > screenHeight) {
                     projectiles.remove(i);
                     break;
                 }
+
             }
         }
     }
@@ -271,14 +301,13 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
 
         if (canvas != null) {
             final int savedState = canvas.save();
-
             canvas.scale(scaleFactorX, scaleFactorY);
             bg.draw(canvas);
             l2.draw(canvas);
             l3.draw(canvas);
-            player.draw(canvas);
             leftControl.draw(canvas);
             rightControl.draw(canvas);
+            player.draw(canvas);
 
             //draw asteroids
             for (Projectile m : projectiles) {
@@ -290,24 +319,12 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
-    public void newGame() {
-
-        projectiles.clear();
-
-        //player.resetDY();
-        player.resetScore();
-        player.setX(WIDTH);
-
-        newGameCreated = true;
-
-    }
     public void drawText(Canvas canvas) {
         Paint paint = new Paint();
         paint.setColor(Color.WHITE);
         paint.setTextSize(30);
         paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
         //canvas.drawText("Tap to start", screenWidth / 8, screenHeight / 4, paint);
-        //canvas.drawText("PAUSED: Tap to start", screenWidth / 8, screenHeight / 4, paint);
         canvas.drawText("Score: " + (player.getScore() * 3), 10, HEIGHT - HEIGHT + 25, paint);
     }
 

@@ -1,46 +1,28 @@
 package com.test.operationpenguinpanic;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.util.DisplayMetrics;
+import android.graphics.Paint;
 
 //Evan
 public class PlayerMarathon extends GameObject{
-    private Bitmap spritesheet;
+    private Bitmap sprite;
     private int score;
-    private Context context;
 
     //acceleration
+    private boolean playing;
     private boolean left;
     private boolean right;
     private boolean stopped;
-
-    private boolean playing;
-    private Animation animation = new Animation();
     private long startTime;
 
 
-    public PlayerMarathon(Bitmap res, int x, int y, int w, int h, int numFrames) {
-
-        super.x = x;
-        super.y = y;
-        dx = 0;
-        score = 0;
-        height = h;
-        width = w;
-
-        Bitmap[] image = new Bitmap[numFrames];
-        spritesheet = res;
-
-        for (int i = 0; i < image.length; i++)
-        {
-            image[i] = Bitmap.createBitmap(spritesheet, i*width, 0, width, height);
-        }
-
-        animation.setFrames(image);
-        animation.setDelay(10);
-        startTime = System.nanoTime();
+    public PlayerMarathon(Bitmap res) {
+        sprite = res;
+        x = GamePanelRacing.WIDTH / 2;
+        y = GamePanelRacing.HEIGHT - GamePanelRacing.HEIGHT / 6;
+        height = sprite.getHeight();
+        width = sprite.getWidth();
 
     }
     public void setLeft(boolean b){left = b;}
@@ -56,7 +38,6 @@ public class PlayerMarathon extends GameObject{
             score++;
             startTime = System.nanoTime();
         }
-        //animation.update();
 
         //Left and right movement
         if(left && x > 0){
@@ -72,8 +53,8 @@ public class PlayerMarathon extends GameObject{
 
     public void draw(Canvas canvas)
     {
-
-        canvas.drawBitmap(animation.getImage(),x,y,null);
+        Paint paint = new Paint();
+        canvas.drawBitmap(sprite, x, y, paint);
     }
     public int getScore(){return score;}
     public boolean getPlaying(){return playing;}

@@ -43,8 +43,8 @@ public class PlayerRacing extends GameObject {
     }
 
     public void draw (Canvas canvas){
-        Paint paint = new Paint();
 
+        Paint paint = new Paint();
         canvas.drawBitmap(sprite, x, y, paint);
     }
 

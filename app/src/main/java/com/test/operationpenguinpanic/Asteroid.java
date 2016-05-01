@@ -12,7 +12,7 @@ public class Asteroid extends GameObject{
     private Random rand = new Random();
     private Animation animation = new Animation();
     private Bitmap spritesheet;
-
+    //(image, x coord, y coord, width, height, getScore, frames for animation)
     public Asteroid(Bitmap res, int x, int y, int w, int h, int s, int numFrames)
     {
         super.x = x;
@@ -40,7 +40,7 @@ public class Asteroid extends GameObject{
 
     }
     //Angles that the asteroids spawn
-    public void update()
+    public void south()
     {
         y+=speed;
         animation.update();
