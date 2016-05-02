@@ -80,7 +80,7 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
         color = MainMenu.sendPlayerColor();
         penguin = MainMenu.sendPlayerPen();
         //Create background
-        bg = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.layer1));
+        bg = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.spacex));
         //1st Star Layer
         l2 = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.layer2));
         //2nd Star Layer
