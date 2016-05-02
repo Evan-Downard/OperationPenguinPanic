@@ -29,6 +29,8 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
 
 
     private long projectileStartTime;
+    private long bossTimer;
+    private int wins =0;
     private AsteroidsThread thread;
     private BackgroundAsteroids bg;
     private Control counterClock;
@@ -36,6 +38,9 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
     private Control fireControl;
     private Control moveControl;
     private PlayerAsteroids player;
+    private Bosses seal;
+    private Bosses bear;
+    private Bosses orca;
     private ArrayList<Asteroid> asteroids;
     private Random rand = new Random();
     private boolean newGameCreated;
@@ -118,8 +123,14 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
         //parameters: (Intial Position x, Initial Position y, size x, size y, num animation frames)
         player = new PlayerAsteroids(BitmapFactory.decodeResource(getResources(), shipImages[ship][color]), screenWidth/8, screenHeight/3, 45, 58, 1);
 
+        //Bosses
+        seal = new Bosses(BitmapFactory.decodeResource(getResources(), R.drawable.sealyin));
+        bear = new Bosses(BitmapFactory.decodeResource(getResources(), R.drawable.polarbear));
+        orca = new Bosses(BitmapFactory.decodeResource(getResources(), R.drawable.orcagalaga));
+
         asteroids = new ArrayList<Asteroid>();
         projectileStartTime = System.nanoTime();
+        bossTimer = System.nanoTime();
 
         thread = new AsteroidsThread(getHolder(), this);
         //start the game loop
@@ -164,6 +175,12 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
 
             bg.update();
             player.update();
+            long time = (System.nanoTime()-bossTimer)/1000000000;
+            if(time >=15){
+                seal.update();
+                //bear.update();
+                //orca.update();
+            }
 
             long projectileElapsed = (System.nanoTime() - projectileStartTime) / 1000000;
 
@@ -303,6 +320,12 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
             clockWise.draw(canvas);
             fireControl.draw(canvas);
             moveControl.draw(canvas);
+            long time = (System.nanoTime()-bossTimer)/1000000000;
+            if(time >=15){
+                seal.draw(canvas);
+                //bear.draw(canvas);
+                //orca.draw(canvas);
+            }
 
             //draw asteroids
             for (Asteroid m : asteroids) {
