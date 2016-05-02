@@ -36,7 +36,7 @@ public class AsteroidsThread extends Thread{
             try {
                 canvas = this.surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder) {
-                    this.asteroidsGP.update();
+                    this.asteroidsGP.update(canvas);
                     this.asteroidsGP.draw(canvas);
                 }
             } catch (Exception e) {
