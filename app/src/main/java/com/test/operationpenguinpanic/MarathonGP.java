@@ -52,6 +52,8 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
     private Random rand = new Random();
     private boolean newGameCreated;
 
+    private Control pauseMenu;
+
 
     //Difficulty setting
     private int progressDenom = 20;
@@ -115,6 +117,8 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
         //Create player
         player = new PlayerMarathon(BitmapFactory.decodeResource(getResources(), shipImages[ship][color]));
 
+        pauseMenu = new Control(BitmapFactory.decodeResource(getResources(),
+                R.drawable.pausebutton), 0 , 0, WIDTH, WIDTH);
 
         projectiles = new ArrayList<Projectile>();
         projectileStartTime = System.nanoTime();

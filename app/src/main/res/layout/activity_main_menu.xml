@@ -117,12 +117,5 @@
         android:text="Web"
         android:textSize="15sp" />
 
-    <Button
-        android:id="@+id/pause_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@id/web"
-        android:text="Pause Button" />
 
 </RelativeLayout>
