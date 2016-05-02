@@ -100,7 +100,7 @@
         android:layout_marginBottom="25dp"
         android:text="Penguin Nova"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="50sp"
+        android:textSize="45sp"
         android:textStyle="bold" />
 
     <Button
