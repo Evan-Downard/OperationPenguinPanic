@@ -168,7 +168,9 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
             l2.update2();
             l3.update3();
             player.update();
-            opponentsEasy.update();
+            if (i != 0) {
+                opponentsEasy.update();
+            }
 
             long raceTime = (System.nanoTime() - raceStartTimer) / 1000000000;
             if ((opponentsEasy.getY() >= 2000) && (i > 0)) {        // if the opponent's y = 2000 and you haven't passed 5 spaceships
@@ -182,7 +184,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
                 resetGame();
             }
 
-            if (raceTime == 120) {                               // the race lasts 120 seconds
+            if (raceTime == 130) {                               // the race lasts 120 seconds
                 player.setPlaying(false);
             }
 

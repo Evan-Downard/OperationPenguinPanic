@@ -168,8 +168,8 @@ public class GamePanelRacing_Medium extends SurfaceView implements SurfaceHolder
             l3.update3();
             player.update();
 
-            if ((Math.abs(opponentsMedium.getX() - player.getX()) >= 20) ||
-                    (opponentsMedium.getY() <= (HEIGHT - HEIGHT/2)))
+            if (((Math.abs(opponentsMedium.getX() - player.getX()) >= 20) ||
+                    (opponentsMedium.getY() <= (HEIGHT - HEIGHT/2))) && (i != 0))
             {
                 opponentsMedium.update_y();
 

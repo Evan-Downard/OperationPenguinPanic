@@ -171,7 +171,7 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
             player.update();
 
             if ((Math.abs(opponentsHard.getX() - player.getX()) >= 20) ||
-                    (opponentsHard.getY() <= (HEIGHT - HEIGHT / 2))) {
+                    (opponentsHard.getY() <= (HEIGHT - HEIGHT / 2)) && (i != 0)) {
                 opponentsHard.update_y();
 
                 if ((opponentsHard.getY() >= (HEIGHT - HEIGHT / 2))

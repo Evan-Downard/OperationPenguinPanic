@@ -116,20 +116,19 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
         l3 = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.layer3));
         //Create counterclockwise control
         leftControl = new Control(BitmapFactory.decodeResource(getResources(),
-                R.drawable.smallrotate), AsteroidsGP.WIDTH / 30, AsteroidsGP.HEIGHT - AsteroidsGP.HEIGHT / 8, 0, 0);
+                R.drawable.smallrotate), 15, AsteroidsGP.HEIGHT - AsteroidsGP.HEIGHT / 8, 0, 0);
         //Create right control control
         rightControl = new Control(BitmapFactory.decodeResource(getResources(),
-                R.drawable.smallrotate), AsteroidsGP.WIDTH / 5, AsteroidsGP.HEIGHT - AsteroidsGP.HEIGHT / 8, 0, 0);
+                R.drawable.smallrotate), 95, AsteroidsGP.HEIGHT - AsteroidsGP.HEIGHT / 8, 0, 0);
         // create move control
         upControl = new Control(BitmapFactory.decodeResource(getResources(),
-                R.drawable.smallrotate), AsteroidsGP.WIDTH / 8 , AsteroidsGP.HEIGHT - AsteroidsGP.HEIGHT / 5, 0, 0);
+                R.drawable.smallrotate), 55 , 650, 0, 0);
         // create down control
         downControl = new Control(BitmapFactory.decodeResource(getResources(),
-                R.drawable.smallrotate), AsteroidsGP.WIDTH /8, AsteroidsGP.HEIGHT - AsteroidsGP.HEIGHT / 15, 0, 0);
+                R.drawable.smallrotate), 55, 750, 0, 0);
         // create fire control
         fireControl = new Control(BitmapFactory.decodeResource(getResources(),
-                R.drawable.smallrotate), AsteroidsGP.WIDTH - 60, AsteroidsGP.HEIGHT - AsteroidsGP.HEIGHT / 8, 0, 0);
-
+                R.drawable.smallrotate), 440, AsteroidsGP.HEIGHT - AsteroidsGP.HEIGHT / 8, 0, 0);
 
 
         //Create player
@@ -171,21 +170,22 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
                 player.setPlaying(true);
             }
 
-            if (Math.abs(x - AsteroidsGP.WIDTH + 60) <= 30 && Math.abs(y - (screenHeight - screenHeight / 8)) <= 30) {// if the player touches the left of the screen the ship moves left
+            if ((x < screenWidth) && (x > (2 * screenWidth / 3))) {// if the player touches the left of the screen the ship moves left
                 player.setShoot(true);
             }
-            else if (Math.abs(x - screenWidth / 5) <= 30 && Math.abs(y - (screenHeight - screenHeight / 8)) <= 30) {    // else it moves right
+            else if ((x < screenWidth / 2) && (x > screenWidth / 4)) {    // else it moves right
                 player.setRight(true);
             }
-            else if (Math.abs(x - screenWidth / 30) <= 30 && Math.abs(y - (screenHeight - screenHeight / 8)) <= 30 ) {
+            else if ((x < screenWidth / 4) && (x > 0)) {
                 player.setLeft(true);
             }
-            else if (Math.abs(x - screenWidth / 8) <= 30 && Math.abs(y - (screenHeight - screenHeight / 5.5)) <= 30) {
+         /*   else if ((x <= (screenWidth/2)) && (x >= (screenWidth / 3))) {
                 player.setUp(true);
             }
-            else if (Math.abs(x - screenWidth / 8) <= 30 && Math.abs(y - (screenHeight - screenHeight / 15)) <= 30) {
+            else if ((Math.abs(x - screenWidth / 8) <= 30) &&
+                    (Math.abs(y - (screenHeight - screenHeight / 15)) <= 30)) {
                 player.setDown(true);
-            }
+            }*/
             return true;
         }
 
@@ -390,11 +390,13 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
             fireControl.draw(canvas);
             upControl.draw(canvas);
             downControl.draw(canvas);
-            long time = (System.nanoTime()-bossTimer)/1000000000;
-            if(time >=15){
-                seal.draw(canvas);
-                //bear.draw(canvas);
-                //orca.draw(canvas);
+            if (player.getPlaying()) {
+                long time = (System.nanoTime() - bossTimer) / 1000000000;
+                if (time >= 15) {
+                    seal.draw(canvas);
+                    //bear.draw(canvas);
+                    //orca.draw(canvas);
+                }
             }
 
             //draw asteroids
