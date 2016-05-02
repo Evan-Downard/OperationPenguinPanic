@@ -444,11 +444,14 @@ public class MainMenu extends AppCompatActivity {
             toast.show();
         }
     }
-
-
+    //===========================================================
+    //Sends player save information of ship
+    //
+    // sends the location for ship
     public static int sendPlayerShip(){
         return i;
     }
+    // sends the location for color of ship
     public static int sendPlayerColor(){
         return k;
     }
