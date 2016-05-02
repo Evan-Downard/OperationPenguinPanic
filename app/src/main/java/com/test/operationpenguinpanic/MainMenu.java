@@ -25,17 +25,17 @@ public class MainMenu extends AppCompatActivity {
      PlayerScore playerScore = new PlayerScore();
 
     // initialization of variables
-    public static int i = 0;
-    public static int j = 0;
-    public static int k = 0;
-    public static int p = 0;
+    public static int i;    public static int tempi;
+    public static int j;    public static int tempj;
+    public static int k;    public static int tempk;
+    public static int p;
     boolean music; boolean sound;
 
     Context context;
     Toast toast; CharSequence text; CharSequence error;
     int duration = Toast.LENGTH_SHORT;
     // initialization of players save information
-    PlayerSave save = new PlayerSave();
+    //PlayerSave save = new PlayerSave();
 
     // int array of ship list
     int shipImages[][] = {{R.drawable.mach1,R.drawable.mach1blue,R.drawable.mach1green,
@@ -107,10 +107,10 @@ public class MainMenu extends AppCompatActivity {
     public void sendCustom(View view){
         setContentView(R.layout.customization_menu);
 
-        k = save.sendSaveColor();
-        j = save.sendSavePenguin();
-        i = save.sendSaveShip();
-        p = save.sendSavePit();
+        k = PlayerSave.sendSaveColor();
+        j = PlayerSave.sendSavePenguin();
+        i = PlayerSave.sendSaveShip();
+        p = PlayerSave.sendSavePit();
 
         ship = (ImageView) findViewById(R.id.changeShip);
         penguin = (ImageView) findViewById(R.id.changePenguin);
@@ -134,8 +134,8 @@ public class MainMenu extends AppCompatActivity {
     public void sendOption(View view){
         setContentView(R.layout.options_screen);
 
-        music = save.sendSaveMusic();
-        sound = save.sendSaveSounds();
+        music = PlayerSave.sendSaveMusic();
+        sound = PlayerSave.sendSaveSounds();
 
         soundY = (RadioButton) findViewById(R.id.SoundY);
         soundN = (RadioButton) findViewById(R.id.SoundN);
@@ -394,10 +394,10 @@ public class MainMenu extends AppCompatActivity {
         context = getApplicationContext();
 
         if(ship != null && penguin != null){
-            save.getSaveShip(i);
-            save.getSaveColor(k);
-            save.getSavePenguin(j);
-            save.getSavePit(p);
+            PlayerSave.getSaveShip(i);
+            PlayerSave.getSaveColor(k);
+            PlayerSave.getSavePenguin(j);
+            PlayerSave.getSavePit(p);
             playerScore.setPenguin(j);  //sets the saved penguin for player's penguin for score
             // displays that system has saved
             toast = Toast.makeText(context, text, duration);
@@ -421,24 +421,24 @@ public class MainMenu extends AppCompatActivity {
         context = getApplicationContext();
 
         if(soundY.isChecked() == true && soundN.isChecked() == false){
-            save.getSaveSounds(true);
+            PlayerSave.getSaveSounds(true);
             // display the system had saved
             toast = Toast.makeText(context, text, duration);
             toast.show();
         }else if(soundN.isChecked() == true && soundY.isChecked() == false){
-            save.getSaveSounds(false);
+            PlayerSave.getSaveSounds(false);
             // display the system has saved
             toast = Toast.makeText(context, text, duration);
             toast.show();
         }
 
         if(musicY.isChecked() == true && musicN.isChecked() == false){
-            save.getSaveMusic(true);
+            PlayerSave.getSaveMusic(true);
             // display the system has saved
             toast = Toast.makeText(context, text, duration);
             toast.show();
         }else if(musicN.isChecked() == true && musicY.isChecked() == false){
-            save.getSaveMusic(false);
+            PlayerSave.getSaveMusic(false);
             // display the system has saved
             toast = Toast.makeText(context, text, duration);
             toast.show();
@@ -449,14 +449,17 @@ public class MainMenu extends AppCompatActivity {
     //
     // sends the location for ship
     public static int sendPlayerShip(){
-        return i;
+        tempi = PlayerSave.sendSaveShip();
+        return tempi;
     }
     // sends the location for color of ship
     public static int sendPlayerColor(){
-        return k;
+        tempk = PlayerSave.sendSaveColor();
+        return tempk;
     }
     // sends the location for penguin
     public static int sendPlayerPen(){
-        return j;
+        tempj = PlayerSave.sendSavePenguin();
+        return tempj;
     }
 }
