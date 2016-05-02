@@ -55,11 +55,10 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
             R.drawable.mach3_blueg, R.drawable.mach3_greeng,R.drawable.mach3_blackg,
             R.drawable.mach3_whiteg, R.drawable.mach3_silverg,R.drawable.mach3_goldg}};
 
-    int ship; int color;
+    int ship; int color; int penguin;
 
     //Difficulty setting
     private int progressDenom = 20;
-
 
     //Getting screen size
     DisplayMetrics display = this.getResources().getDisplayMetrics();
@@ -106,6 +105,7 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
         // determining what the players ship is
         ship = MainMenu.sendPlayerShip();
         color = MainMenu.sendPlayerColor();
+        penguin = MainMenu.sendPlayerPen();
         //Create background
         bg = new BackgroundAsteroids(BitmapFactory.decodeResource(getResources(), R.drawable.spacex));
         //Create counterclockwise control
@@ -128,7 +128,12 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
 
         //Create player
         //parameters: (Intial Position x, Initial Position y, size x, size y, num animation frames)
-        player = new PlayerAsteroids(BitmapFactory.decodeResource(getResources(), shipImages[ship][color]));
+        if(penguin == 7){
+            // if player selects super saiyan penguin
+            player = new PlayerAsteroids(BitmapFactory.decodeResource(getResources(), R.drawable.ssp_flight));
+        }else {
+            player = new PlayerAsteroids(BitmapFactory.decodeResource(getResources(), shipImages[ship][color]));
+        }
 
         //Bosses
         seal = new Bosses(BitmapFactory.decodeResource(getResources(), R.drawable.sealyin));
