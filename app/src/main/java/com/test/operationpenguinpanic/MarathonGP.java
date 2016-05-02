@@ -285,7 +285,7 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
                     break;
                 }
                 //remove asteroid if it is way off the screen
-                if (projectiles.get(i).getY() > screenHeight) {
+                if (projectiles.get(i).getY() > screenHeight + 50) {
                     projectiles.remove(i);
                     break;
                 }
