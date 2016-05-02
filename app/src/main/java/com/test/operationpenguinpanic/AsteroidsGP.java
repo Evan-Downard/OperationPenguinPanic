@@ -34,6 +34,8 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
     private int wins =0;
     private AsteroidsThread thread;
     private BackgroundAsteroids bg;
+    private BackgroundMarathon l2;
+    private BackgroundMarathon l3;
     private Control leftControl;
     private Control rightControl;
     private Control fireControl;
@@ -108,6 +110,10 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
         penguin = MainMenu.sendPlayerPen();
         //Create background
         bg = new BackgroundAsteroids(BitmapFactory.decodeResource(getResources(), R.drawable.spacex));
+        //1st Star Layer
+        l2 = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.layer2));
+        //2nd Star Layer
+        l3 = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.layer3));
         //Create counterclockwise control
         leftControl = new Control(BitmapFactory.decodeResource(getResources(),
                 R.drawable.smallrotate), AsteroidsGP.WIDTH / 30, AsteroidsGP.HEIGHT - AsteroidsGP.HEIGHT / 8, 0, 0);
@@ -238,7 +244,9 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
     public void update(Canvas canvas) {
         if (player.getPlaying()) {
 
-            bg.update();
+            bg.update1();
+            l2.update2();
+            l3.update3();
             player.update();
             long time = (System.nanoTime()-bossTimer)/1000000000;
             if(time >=15){
@@ -374,6 +382,8 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
 
             canvas.scale(scaleFactorX, scaleFactorY);
             bg.draw(canvas);
+            l2.draw(canvas);
+            l3.draw(canvas);
             player.draw(canvas);
             leftControl.draw(canvas);
             rightControl.draw(canvas);
