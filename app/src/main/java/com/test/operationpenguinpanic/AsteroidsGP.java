@@ -34,10 +34,11 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
     private int wins =0;
     private AsteroidsThread thread;
     private BackgroundAsteroids bg;
-    private Control counterClock;
-    private Control clockWise;
+    private Control leftControl;
+    private Control rightControl;
     private Control fireControl;
-    private Control moveControl;
+    private Control upControl;
+    private Control downControl;
     private PlayerAsteroids player;
     private Bosses seal;
     private Bosses bear;
@@ -108,17 +109,22 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
         //Create background
         bg = new BackgroundAsteroids(BitmapFactory.decodeResource(getResources(), R.drawable.spacex));
         //Create counterclockwise control
-        counterClock = new Control(BitmapFactory.decodeResource(getResources(),
-                R.drawable.smallrotate), 15, AsteroidsGP.HEIGHT - 125, 0, 0);
-        //Create clockwise control
-        clockWise = new Control(BitmapFactory.decodeResource(getResources(),
-                R.drawable.smallrotate), 60, AsteroidsGP.HEIGHT - 75, 0, 0);
+        leftControl = new Control(BitmapFactory.decodeResource(getResources(),
+                R.drawable.smallrotate), AsteroidsGP.WIDTH / 30, AsteroidsGP.HEIGHT - AsteroidsGP.HEIGHT / 8, 0, 0);
+        //Create right control control
+        rightControl = new Control(BitmapFactory.decodeResource(getResources(),
+                R.drawable.smallrotate), AsteroidsGP.WIDTH / 5, AsteroidsGP.HEIGHT - AsteroidsGP.HEIGHT / 8, 0, 0);
         // create move control
-        moveControl = new Control(BitmapFactory.decodeResource(getResources(),
-                R.drawable.smallrotate), AsteroidsGP.WIDTH - 120, AsteroidsGP.HEIGHT - 75, 0, 0);
+        upControl = new Control(BitmapFactory.decodeResource(getResources(),
+                R.drawable.smallrotate), AsteroidsGP.WIDTH / 8 , AsteroidsGP.HEIGHT - AsteroidsGP.HEIGHT / 5, 0, 0);
+        // create down control
+        downControl = new Control(BitmapFactory.decodeResource(getResources(),
+                R.drawable.smallrotate), AsteroidsGP.WIDTH /8, AsteroidsGP.HEIGHT - AsteroidsGP.HEIGHT / 15, 0, 0);
         // create fire control
         fireControl = new Control(BitmapFactory.decodeResource(getResources(),
-                R.drawable.smallrotate), AsteroidsGP.WIDTH - 60, AsteroidsGP.HEIGHT - 125, 0, 0);
+                R.drawable.smallrotate), AsteroidsGP.WIDTH - 60, AsteroidsGP.HEIGHT - AsteroidsGP.HEIGHT / 8, 0, 0);
+
+
 
         //Create player
         //parameters: (Intial Position x, Initial Position y, size x, size y, num animation frames)
@@ -154,11 +160,20 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
                 player.setPlaying(true);
             }
 
-            if (Math.abs(x - AsteroidsGP.WIDTH + 60) <= 30 && Math.abs(y - AsteroidsGP.HEIGHT - 125) <= 30) {// if the player touches the left of the screen the ship moves left
+            if (Math.abs(x - AsteroidsGP.WIDTH + 60) <= 30 && Math.abs(y - (screenHeight - screenHeight / 8)) <= 30) {// if the player touches the left of the screen the ship moves left
                 player.setShoot(true);
             }
-            else if (x >= (screenWidth/4) + (screenWidth / 6)) {    // else it moves right
+            else if (Math.abs(x - screenWidth / 5) <= 30 && Math.abs(y - (screenHeight - screenHeight / 8)) <= 30) {    // else it moves right
                 player.setRight(true);
+            }
+            else if (Math.abs(x - screenWidth / 30) <= 30 && Math.abs(y - (screenHeight - screenHeight / 8)) <= 30 ) {
+                player.setLeft(true);
+            }
+            else if (Math.abs(x - screenWidth / 8) <= 30 && Math.abs(y - (screenHeight - screenHeight / 5.5)) <= 30) {
+                player.setUp(true);
+            }
+            else if (Math.abs(x - screenWidth / 8) <= 30 && Math.abs(y - (screenHeight - screenHeight / 15)) <= 30) {
+                player.setDown(true);
             }
             return true;
         }
@@ -166,6 +181,8 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
         if (event.getAction() == MotionEvent.ACTION_UP) {       // when he/she removes his/her finger the ship stops
             player.setRight(false);
             player.setLeft(false);
+            player.setDown(false);
+            player.setUp(false);
             return true;
         }
         return super.onTouchEvent(event);
@@ -353,10 +370,11 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
             canvas.scale(scaleFactorX, scaleFactorY);
             bg.draw(canvas);
             player.draw(canvas);
-            counterClock.draw(canvas);
-            clockWise.draw(canvas);
+            leftControl.draw(canvas);
+            rightControl.draw(canvas);
             fireControl.draw(canvas);
-            moveControl.draw(canvas);
+            upControl.draw(canvas);
+            downControl.draw(canvas);
             long time = (System.nanoTime()-bossTimer)/1000000000;
             if(time >=15){
                 seal.draw(canvas);
