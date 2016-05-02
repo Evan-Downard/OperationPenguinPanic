@@ -121,7 +121,7 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
 
         //Create player
         //parameters: (Intial Position x, Initial Position y, size x, size y, num animation frames)
-        player = new PlayerAsteroids(BitmapFactory.decodeResource(getResources(), shipImages[ship][color]), screenWidth/8, screenHeight/3, 45, 58, 1);
+        player = new PlayerAsteroids(BitmapFactory.decodeResource(getResources(), shipImages[ship][color]));
 
         //Bosses
         seal = new Bosses(BitmapFactory.decodeResource(getResources(), R.drawable.sealyin));

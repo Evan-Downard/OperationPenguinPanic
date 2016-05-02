@@ -1,48 +1,33 @@
 package com.test.operationpenguinpanic;
 
-
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 
+//Evan & Johny
 public class PlayerAsteroids extends GameObject{
-    private Bitmap spritesheet;
+    private Bitmap sprite;
     private int score;
-    private Context context;
 
     //acceleration
-    private double dxa;
+    private boolean playing;
     private boolean left;
     private boolean right;
     private boolean up;
     private boolean down;
     private boolean shoot;
     private boolean stopped;
-
-    private boolean playing;
-    private Animation animation = new Animation();
     private long startTime;
 
+    public PlayerAsteroids(Bitmap res) {
 
-    public PlayerAsteroids(Bitmap res, int x, int y, int w, int h, int numFrames) {
+        sprite = res;
+        x = GamePanelRacing.WIDTH / 2;
+        y = GamePanelRacing.HEIGHT - GamePanelRacing.HEIGHT / 6;
+        height = sprite.getHeight();
+        width = sprite.getWidth();
 
-        super.x = x;
-        super.y = y;
-        dx = 0;
-        score = 0;
-        height = h;
-        width = w;
 
-        Bitmap[] image = new Bitmap[numFrames];
-        spritesheet = res;
-
-        for (int i = 0; i < image.length; i++)
-        {
-            image[i] = Bitmap.createBitmap(spritesheet, i*width, 0, width, height);
-        }
-
-        animation.setFrames(image);
-        animation.setDelay(10);
         startTime = System.nanoTime();
 
     }
@@ -67,7 +52,6 @@ public class PlayerAsteroids extends GameObject{
             score++;
             startTime = System.nanoTime();
         }
-        animation.update();
 
         //Left and right movement
         if(left){
@@ -114,13 +98,12 @@ public class PlayerAsteroids extends GameObject{
 
     public void draw(Canvas canvas)
     {
-
-        canvas.drawBitmap(animation.getImage(),x,y,null);
+        Paint paint = new Paint();
+        canvas.drawBitmap(sprite, x, y, paint);
     }
     public int getScore(){return score;}
     public boolean getPlaying(){return playing;}
     public void setPlaying(boolean b){playing = b;}
-    public void resetDXA(){dxa = 0;}
     public void resetScore(){score = 0;}
 }
 
