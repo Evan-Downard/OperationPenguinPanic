@@ -190,7 +190,7 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
 
             long projectileElapsed = (System.nanoTime() - projectileStartTime) / 1000000;
             //Projectile spawns based on player score
-            if (projectileElapsed > (2000 - player.getScore() / 4)) {
+            if (projectileElapsed > (1000 - player.getScore() / 8)) {
                 System.out.println("creating projectile");
 
                 //Projectile Spawning
@@ -276,7 +276,6 @@ public class MarathonGP extends SurfaceView implements SurfaceHolder.Callback {
                     projectiles.clear();
                     player.setX(screenWidth/8);
                     player.setPlaying(false);
-
 
                     break;
                 }
