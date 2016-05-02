@@ -46,7 +46,7 @@ public class GamePanelRacing_Medium extends SurfaceView implements SurfaceHolder
             R.drawable.mach3_blueg, R.drawable.mach3_greeng,R.drawable.mach3_blackg,
             R.drawable.mach3_whiteg, R.drawable.mach3_silverg,R.drawable.mach3_goldg}};
 
-    int ship; int color;
+    int ship; int color; int penguin;
 
     //Getting screen size
     DisplayMetrics display = this.getResources().getDisplayMetrics();
@@ -77,6 +77,7 @@ public class GamePanelRacing_Medium extends SurfaceView implements SurfaceHolder
         // determining what the players ship is
         ship = MainMenu.sendPlayerShip();
         color = MainMenu.sendPlayerColor();
+        penguin = MainMenu.sendPlayerPen();
         // create new background
         bg = new BackgroundMarathon(BitmapFactory.decodeResource(getResources(), R.drawable.layer1));
         //1st Star Layer
@@ -90,7 +91,12 @@ public class GamePanelRacing_Medium extends SurfaceView implements SurfaceHolder
         rightControl = new Control(BitmapFactory.decodeResource(getResources(),
                 R.drawable.arrowright), (MarathonGP.WIDTH - MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
         // create player's spaceship
-        player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), shipImages[ship][color]));
+        if(penguin == 7){
+            // if player selects super saiyan penguin
+            player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), R.drawable.ssp_flight));
+        }else {
+            player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), shipImages[ship][color]));
+        }
         // create opponents
         opponentsMedium = new OpponentsMedium(BitmapFactory.decodeResource(getResources(), R.drawable.a_iship));
         // Initialize asteroids array list

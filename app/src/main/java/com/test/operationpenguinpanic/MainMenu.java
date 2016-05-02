@@ -455,4 +455,8 @@ public class MainMenu extends AppCompatActivity {
     public static int sendPlayerColor(){
         return k;
     }
+    // sends the location for penguin
+    public static int sendPlayerPen(){
+        return j;
+    }
 }
