@@ -4,56 +4,56 @@ package com.test.operationpenguinpanic;
  * Created by johnny on 4/11/16.
  */
 public class PlayerSave {
-    int ship = 0;       int color = 0;
-    int penguin = 0;    int pit = 0;
-    boolean music = true;
-    boolean sounds = true;
+    public static int ship;      public static int color;
+    public static int penguin;    public static int pit;
+    public static boolean music;
+    public static boolean sounds;
 
-    void getSaveShip(int playerShip){
+    public static void getSaveShip(int playerShip){
         ship = playerShip;
     }
 
-    int sendSaveShip(){
+    public static int sendSaveShip(){
         return ship;
     }
 
-    void getSaveColor(int playerColor){
+    public static void getSaveColor(int playerColor){
         color = playerColor;
     }
 
-    int sendSaveColor(){
+    public static int sendSaveColor(){
         return color;
     }
 
-    void getSavePenguin(int playerPenguin){
+    public static void getSavePenguin(int playerPenguin){
         penguin = playerPenguin;
     }
 
-    int sendSavePenguin(){
+    public static int sendSavePenguin(){
         return penguin;
     }
 
-    void getSavePit(int playerPit){
+    public static void getSavePit(int playerPit){
         pit = playerPit;
     }
 
-    int sendSavePit(){
+    public static int sendSavePit(){
         return pit;
     }
 
-    void getSaveMusic(boolean playerMusic){
+    public static void getSaveMusic(boolean playerMusic){
         music = playerMusic;
     }
 
-    boolean sendSaveMusic(){
+    public static boolean sendSaveMusic(){
         return music;
     }
 
-    void getSaveSounds(boolean playerSounds){
+    public static void getSaveSounds(boolean playerSounds){
         sounds = playerSounds;
     }
 
-    boolean sendSaveSounds(){
+    public static boolean sendSaveSounds(){
         return sounds;
     }
 
