@@ -197,49 +197,7 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
         }
         return super.onTouchEvent(event);
     }
-    public void asterLoop(int direction, Canvas canvas){
-        for (int i = 0; i < asteroids.size(); i++) {
-            //update asteroid
-            if(direction == 1) {
-                asteroids.get(i).south();
-            }else if(direction == 2){
-                asteroids.get(i).north();
-            }else if(direction == 3){
-                asteroids.get(i).east();
-            }else if(direction == 4){
-                asteroids.get(i).west();
-            }else if(direction == 5){
-                asteroids.get(i).ne();
-            }else if(direction == 6){
-                asteroids.get(i).nw();
-            }else if(direction == 7){
-                asteroids.get(i).sw();
-            }else if(direction == 8){
-                asteroids.get(i).se();
-            }else{
-                asteroids.get(i).south();
-            }
-            //if player and object collide stop playing
-            if (collision(asteroids.get(i), player)) {
-                asteroids.remove(i);
-                //saves score
-                bossTimer = System.nanoTime();
-                PlayerScore.setScore(player.getScore());
-                player.resetScore();
-                asteroids.clear();
-                player.setX(screenWidth / 8);
-                player.setPlaying(false);
 
-                break;
-            }
-            //remove asteroid if it is way off the screen
-            if (asteroids.get(i).getY() < -100 || asteroids.get(i).getX() < -100 || asteroids.get(i).getX() > 1500 || asteroids.get(i).getY() > 2500){
-
-                asteroids.remove(i);
-                break;
-            }
-        }
-    }
     public void update(Canvas canvas) {
         if (player.getPlaying()) {
 
@@ -329,37 +287,34 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
             }
 
             //loop through every asteroid and check collision and remove
-            int direction;
-            if (rand.nextDouble() < 0.125) {
-                direction = 1;
-                asterLoop(direction,canvas);
-            }else if(rand.nextDouble() < 0.25 && rand.nextDouble() >= 0.125){
-                direction = 2;
-                asterLoop(direction,canvas);
-            }else if(rand.nextDouble() < 0.375 && rand.nextDouble() >= 0.25){
-                direction = 3;
-                asterLoop(direction,canvas);
-            }else if(rand.nextDouble() < 0.5 && rand.nextDouble() >= 0.375){
-                direction = 4;
-                asterLoop(direction,canvas);
-            }else if(rand.nextDouble() < 0.625 && rand.nextDouble() >= 0.5){
-                direction = 5;
-                asterLoop(direction,canvas);
-            }else if(rand.nextDouble() < 0.75 && rand.nextDouble() >= 0.625){
-                direction = 6;
-                asterLoop(direction,canvas);
-            }else if(rand.nextDouble() < 0.875 && rand.nextDouble() >= 0.75){
-                direction = 7;
-                asterLoop(direction,canvas);
-            }else if(rand.nextDouble() < 1.0 && rand.nextDouble() >= 0.875){
-                direction = 8;
-                asterLoop(direction,canvas);
-            }else{
-                direction = 9;
-                asterLoop(direction,canvas);
+            //loop through every asteroid and check collision and remove
+            for (int i = 0; i < asteroids.size(); i++) {
+                //update asteroid
+                asteroids.get(i).south();
+
+                //if player and object collide stop playing
+                if (collision(asteroids.get(i), player)) {
+                    asteroids.remove(i);
+                    //saves score
+                    bossTimer = System.nanoTime();
+                    PlayerScore.setScore(player.getScore());
+                    player.resetScore();
+                    asteroids.clear();
+                    player.setX(screenWidth / 8);
+                    player.setPlaying(false);
+
+                    break;
+                }
+                //remove asteroid if it is way off the screen
+                if (asteroids.get(i).getY() < -100 || asteroids.get(i).getX() < -100 || asteroids.get(i).getX() > 1500 || asteroids.get(i).getY() > 2500){
+
+                    asteroids.remove(i);
+                    break;
+                }
             }
         }
     }
+
     public void clearBoss(Canvas canvas){
         canvas.drawColor(0, PorterDuff.Mode.CLEAR);
     }
