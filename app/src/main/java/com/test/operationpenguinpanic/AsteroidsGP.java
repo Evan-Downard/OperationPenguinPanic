@@ -31,7 +31,7 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
 
     private long projectileStartTime;
     private long bossTimer;
-    private int wins =0;
+    private int boss =0;
     private AsteroidsThread thread;
     private BackgroundAsteroids bg;
     private BackgroundMarathon l2;
@@ -207,7 +207,7 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
             player.update();
             long time = (System.nanoTime()-bossTimer)/1000000000;
             if(time >=15){
-                seal.update();
+                orca.update();
                 //bear.update();
                 //orca.update();
             }
@@ -221,9 +221,10 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
                 if (asteroids.size() == 0) {
                     asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.
                             asteroid), HEIGHT, -20, 40, 40, player.getScore(), 1));
-                } else if (rand.nextDouble() <= 0.05) {
-                    asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid),
-                            (int) ((-rand.nextDouble() * 100)), (int) (-rand.nextDouble()* 100), 40, 40, player.getScore(), 1));
+                } else if (rand.nextDouble() <= .4 && boss == 1) {
+                    System.out.println("Crystal Time");
+                    asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.cryst),
+                            (int) ((-rand.nextDouble() * 100)), (int) (-rand.nextDouble()* 100), 60, 60, player.getScore(), 1));
                 } else if (rand.nextDouble() <= 0.1 && rand.nextDouble() > 0.05) {
                     asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid1),
                             (int) ((rand.nextDouble() * 100) + screenWidth/4), (int) ((rand.nextDouble() * 100) + screenHeight/2), 60, 60, player.getScore(), 1));
@@ -296,6 +297,7 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
                 if (collision(asteroids.get(i), player)) {
                     asteroids.remove(i);
                     //saves score
+                    boss =0;
                     bossTimer = System.nanoTime();
                     PlayerScore.setScore(player.getScore());
                     player.resetScore();
@@ -347,7 +349,8 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
            */ if (player.getPlaying()) {
                 long time = (System.nanoTime() - bossTimer) / 1000000000;
                 if (time >= 15) {
-                    seal.draw(canvas);
+                    orca.draw(canvas);
+                    boss = 1;
                     //bear.draw(canvas);
                     //orca.draw(canvas);
                 }
