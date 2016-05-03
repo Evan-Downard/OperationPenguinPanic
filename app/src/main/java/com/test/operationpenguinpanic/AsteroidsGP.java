@@ -221,9 +221,9 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
                 if (asteroids.size() == 0) {
                     asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.
                             asteroid), HEIGHT, -20, 40, 40, player.getScore(), 1));
-                } else if (rand.nextDouble() <= 0.05) {
-                    asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid),
-                            (int) (rand.nextDouble() * (screenWidth/3)), -50, 40, 40, player.getScore(), 1));
+                } else if (rand.nextDouble() <= 0.4 && boss == 1) {
+                    asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.cryst),
+                            (int) (rand.nextDouble() * (screenWidth/3)), -50, 60, 60, player.getScore(), 1));
                 } else if (rand.nextDouble() <= 0.1 && rand.nextDouble() > 0.05) {
                     asteroids.add(new Asteroid(BitmapFactory.decodeResource(getResources(), R.drawable.asteroid1),
                             (int) (rand.nextDouble() * (screenWidth/3)), -50, 60, 60, player.getScore(), 1));
