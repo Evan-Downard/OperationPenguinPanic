@@ -1,6 +1,5 @@
 package com.test.operationpenguinpanic;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,16 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ImageView;
-import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.Toast;
-import com.test.operationpenguinpanic.PlayerSave;
-
 
 
 public class MainMenu extends AppCompatActivity {
@@ -73,15 +68,6 @@ public class MainMenu extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        /*
-        // for radio button
-        soundY = (RadioButton) options.findViewById(R.id.SoundY);
-        soundN = (RadioButton) options.findViewById(R.id.SoundN);
-        buttonY = (RadioButton) options.findViewById(R.id.ButtonY);
-        buttonN = (RadioButton) options.findViewById(R.id.ButtonN);
-        musicY = (RadioButton) options.findViewById(R.id.MusicY);
-        musicN = (RadioButton) options.findViewById(R.id.MusicN);
-        */
 
         Button pauseButton = (Button) findViewById(R.id.pause_btn);
         /*pauseButton.setOnClickListener(new View.OnClickListener(){

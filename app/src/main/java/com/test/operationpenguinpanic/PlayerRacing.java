@@ -53,6 +53,7 @@ public class PlayerRacing extends GameObject {
     }
 
     public void setPlaying(boolean b){
+
         playing = b;
     }
 

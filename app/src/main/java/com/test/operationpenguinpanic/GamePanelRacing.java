@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -34,6 +35,8 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
             R.drawable.mach3_whiteg, R.drawable.mach3_silverg,R.drawable.mach3_goldg}};
 
     int ship; int color; int penguin;
+
+
 
 
     private MainThreadRacing thread;
@@ -162,6 +165,7 @@ public class GamePanelRacing extends SurfaceView implements SurfaceHolder.Callba
     }
 
     public void update() {
+
 
         if (player.getPlaying()) {      // when the player touches the screen we begin updating
             bg.update1();
