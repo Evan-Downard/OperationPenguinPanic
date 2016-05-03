@@ -191,7 +191,7 @@ public class GamePanelRacing_Medium extends SurfaceView implements SurfaceHolder
                 resetGame();
             }
 
-            if (raceTime == 120) {                               // the race lasts 120 seconds
+            if (raceTime == 130) {                               // the race lasts 120 seconds
                 player.setPlaying(false);
             }
 

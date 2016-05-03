@@ -192,7 +192,7 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
                 resetGame();
             }
 
-            if (raceTime == 120) {                               // the race lasts 120 seconds
+            if (raceTime == 130) {                               // the race lasts 120 seconds
                 player.setPlaying(false);
             }
 

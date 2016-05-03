@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-//Evan & Johny
+//Evan, Johnny and Oswald
 public class PlayerAsteroids extends GameObject{
     private Bitmap sprite;
     private int score;
