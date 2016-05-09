@@ -5,26 +5,23 @@ import android.graphics.Canvas;
 
 import java.util.Random;
 
-//Controller for the projectiles on the asteroidGP
-public class Asteroid extends GameObject{
-    private int score;
+/**
+ * Created by Oswald on 5/4/2016.
+ */
+public class Bullets extends GameObject{
     private int speed;
-    private Random rand = new Random();
     private Animation animation = new Animation();
     private Bitmap spritesheet;
-    //(image, x coord, y coord, width, height, getScore, frames for animation)
-    public Asteroid(Bitmap res, int x, int y, int w, int h, int s, int numFrames)
+
+    public Bullets(Bitmap res, int x, int y, int w, int h, int numFrames)
     {
         super.x = x;
         super.y = y;
         width = w;
         height = h;
-        score = s;
 
-        speed = 7 + (int) (rand.nextDouble()*score/30);
+        speed = 30;
 
-        //cap projectile speed
-        if(speed>40)speed = 40;
 
         Bitmap[] image = new Bitmap[numFrames];
 
@@ -39,10 +36,9 @@ public class Asteroid extends GameObject{
         animation.setDelay(100 - speed);
 
     }
-    //Angles that the asteroids spawn
-    public void south()
-    {
-        y+=speed;
+    //Angles that the bullets spawn
+    public void update(){
+        y-=speed;
         animation.update();
     }
 
@@ -59,3 +55,4 @@ public class Asteroid extends GameObject{
         return width;
     }
 }
+

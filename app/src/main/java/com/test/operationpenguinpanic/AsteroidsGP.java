@@ -26,9 +26,6 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
     public static final int WIDTH = 500;
     public static final int HEIGHT = 800;
 
-    public static final int MOVESPEED = -5;
-
-
     private long projectileStartTime;
     private long bossTimer;
     private int boss =0;
@@ -36,18 +33,13 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
     private BackgroundAsteroids bg;
     private BackgroundMarathon l2;
     private BackgroundMarathon l3;
+    private Bullets bullets;
     private Control leftControl;
     private Control rightControl;
-    private Control fireControl;
-    private Control upControl;
-    private Control downControl;
     private PlayerAsteroids player;
-    private Bosses seal;
-    private Bosses bear;
     private Bosses orca;
     private ArrayList<Asteroid> asteroids;
     private Random rand = new Random();
-    private boolean newGameCreated;
 
     int shipImages[][] = {{R.drawable.mach1g,R.drawable.mach1blueg,R.drawable.mach1greeng,
             R.drawable.mach1blackg,R.drawable.mach1whiteg,R.drawable.mach1silverg,
@@ -120,16 +112,6 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
         //Create right control control
         rightControl = new Control(BitmapFactory.decodeResource(getResources(),
                 R.drawable.smallrotate), 95, AsteroidsGP.HEIGHT - AsteroidsGP.HEIGHT / 8, 0, 0);
-        // create move control
-        /*upControl = new Control(BitmapFactory.decodeResource(getResources(),
-                R.drawable.smallrotate), 55 , 650, 0, 0);
-        // create down control
-        downControl = new Control(BitmapFactory.decodeResource(getResources(),
-                R.drawable.smallrotate), 55, 750, 0, 0);
-        // create fire control
-        fireControl = new Control(BitmapFactory.decodeResource(getResources(),
-                R.drawable.smallrotate), 440, AsteroidsGP.HEIGHT - AsteroidsGP.HEIGHT / 8, 0, 0);
-*/
 
         //Create player
         //parameters: (Intial Position x, Initial Position y, size x, size y, num animation frames)
@@ -140,9 +122,11 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
             player = new PlayerAsteroids(BitmapFactory.decodeResource(getResources(), shipImages[ship][color]));
         }
 
+        //create bullets
+        bullets = new Bullets(BitmapFactory.decodeResource(getResources(), R.drawable.cryst),
+                player.getX(), player.getY(), 40, 40, 0);
+
         //Bosses
-        seal = new Bosses(BitmapFactory.decodeResource(getResources(), R.drawable.sealyin));
-        bear = new Bosses(BitmapFactory.decodeResource(getResources(), R.drawable.polarbear));
         orca = new Bosses(BitmapFactory.decodeResource(getResources(), R.drawable.orcagalaga));
 
         asteroids = new ArrayList<Asteroid>();
@@ -170,21 +154,17 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
                 player.setPlaying(true);
             }
 
-            if ((y > (screenHeight/4)) && (y < (screenHeight - screenHeight / 8))) {
-                player.setUp(true);
-            }
-            else if (((x < screenWidth / 4) && (x > screenWidth / 8))) {    // else it moves right
+            if (((x < screenWidth / 4) && (x > screenWidth / 8))) {    // else it moves right
                 player.setRight(true);
             }
             else if ((x < screenWidth / 8) && (x > 0)) {
                 player.setLeft(true);
             }
-            else if ((y > (screenHeight/4)) && (y < (screenHeight - screenHeight / 8))) {
-                player.setUp(true);
+            else if ((x > screenWidth / 4)) {
+                player.setShoot(true);
+                System.out.println(player.getShoot());
             }
-            else {
-                player.setDown(true);
-            }
+
             return true;
         }
 
@@ -193,6 +173,7 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
             player.setLeft(false);
             player.setDown(false);
             player.setUp(false);
+          //  player.setShoot(false);
             return true;
         }
         return super.onTouchEvent(event);
@@ -205,9 +186,14 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
             l2.update2();
             l3.update3();
             player.update();
+
+            if (player.getShoot()) {        // makes the bullet move toward the top of the screen
+                bullets.update();
+            }
+
             long time = (System.nanoTime()-bossTimer)/1000000000;
-            if(time >=15){
-                orca.update();
+            if(time >=15){              // the orca boss spawns after 15 seconds of game.
+                orca.update();          // The time is pretty short for test purposes.
                 //bear.update();
                 //orca.update();
             }
@@ -306,8 +292,14 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
 
                     break;
                 }
+
+                if (collision(asteroids.get(i), bullets)) {
+                    asteroids.remove(i);
+                    break;
+                }
                 //remove asteroid if it is way off the screen
-                if (asteroids.get(i).getY() < -100 || asteroids.get(i).getX() < -100 || asteroids.get(i).getX() > 1500 || asteroids.get(i).getY() > 2500){
+                if (asteroids.get(i).getY() < -100 || asteroids.get(i).getX() < -100 ||
+                        asteroids.get(i).getX() > 1500 || asteroids.get(i).getY() > 2500){
 
                     asteroids.remove(i);
                     break;
@@ -362,6 +354,9 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
 
             drawText(canvas);
             canvas.restoreToCount(savedState);
+        }
+        if (player.getShoot()) {
+            bullets.draw(canvas);
         }
     }
 

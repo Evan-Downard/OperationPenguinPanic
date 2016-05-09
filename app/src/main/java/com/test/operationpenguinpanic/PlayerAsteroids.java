@@ -39,7 +39,7 @@ public class PlayerAsteroids extends GameObject{
 
     public void setDown(boolean b) { down = b;}
 
-    public void setStop(boolean d){stopped = d;}
+    public boolean getShoot(){return shoot;}
 
     public void setShoot(boolean b) { shoot = b;}
 
