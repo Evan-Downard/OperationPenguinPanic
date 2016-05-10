@@ -39,6 +39,7 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
     private Random random;
     private int i;
 
+    // those are the different ships you can use to play any mode
     int shipImages[][] = {{R.drawable.mach1g,R.drawable.mach1blueg,R.drawable.mach1greeng,
             R.drawable.mach1blackg,R.drawable.mach1whiteg,R.drawable.mach1silverg,
             R.drawable.mach1goldg},{R.drawable.mach2g,R.drawable.mach2_blueg,
@@ -93,7 +94,7 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
                 R.drawable.arrowright), (MarathonGP.WIDTH - MarathonGP.WIDTH/4)-65, MarathonGP.HEIGHT - 75, 140, 69);
         // create player's spaceship
         if(penguin == 7){
-            // if player selects super saiyan penguin
+            // if player selects super saiyan penguin if cannot choose a ship cause ssp is the ship
             player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), R.drawable.ssp_flight));
         }else {
             player = new PlayerRacing(BitmapFactory.decodeResource(getResources(), shipImages[ship][color]));
@@ -107,8 +108,6 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
         raceStartTimer = System.nanoTime();
         asteroidStartTime = System.nanoTime();
         opponentTimer = System.nanoTime();
-
-
 
 
         // start game loop
@@ -249,7 +248,7 @@ public class GPRacing_Hard extends SurfaceView implements SurfaceHolder.Callback
         return (i + 1);
     }
 
-    public void drawText(Canvas canvas) {
+    public void drawText(Canvas canvas) {       // print the position of the player on the game screen
         Paint paint = new Paint();
         paint.setColor(Color.WHITE);
         paint.setTextSize(30);

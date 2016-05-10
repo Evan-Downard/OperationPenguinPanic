@@ -19,7 +19,7 @@ public class PlayerAsteroids extends GameObject{
     private boolean stopped;
     private long startTime;
 
-    public PlayerAsteroids(Bitmap res) {
+    public PlayerAsteroids(Bitmap res) {        // this is the initial position of the player
 
         sprite = res;
         x = GamePanelRacing.WIDTH / 2;
@@ -43,7 +43,7 @@ public class PlayerAsteroids extends GameObject{
 
     public void setShoot(boolean b) { shoot = b;}
 
-    public void update()
+    public void update()            // this method is used to control the direction the player can go in and how it works.
     {
         long elapsed = (System.nanoTime()-startTime)/1000000;
         //Score counter
@@ -96,7 +96,7 @@ public class PlayerAsteroids extends GameObject{
         }
     }
 
-    public void draw(Canvas canvas)
+    public void draw(Canvas canvas)     // draw method to draw the player
     {
         Paint paint = new Paint();
         canvas.drawBitmap(sprite, x, y, paint);

@@ -179,7 +179,7 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
         return super.onTouchEvent(event);
     }
 
-    public void update(Canvas canvas) {
+    public void update(Canvas canvas) {     // this method updates the game state everytime
         if (player.getPlaying()) {
 
             bg.update1();
@@ -311,7 +311,7 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
     public void clearBoss(Canvas canvas){
         canvas.drawColor(0, PorterDuff.Mode.CLEAR);
     }
-    public boolean collision(GameObject a, GameObject b) {
+    public boolean collision(GameObject a, GameObject b) {          // detect collision between 2 objects
         if (Rect.intersects(a.getRectangle(), b.getRectangle())) {
             return true;
         }
@@ -320,7 +320,7 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
 
     @SuppressLint("MissingSuperCall")
     @Override
-    public void draw(Canvas canvas) {
+    public void draw(Canvas canvas) {               // this method draws all of the object that are on the screen.
         final float scaleFactorX = getWidth() / (WIDTH * 1.f);
         final float scaleFactorY = getHeight() / (HEIGHT * 1.f);
 
@@ -334,16 +334,11 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
             player.draw(canvas);
             leftControl.draw(canvas);
             rightControl.draw(canvas);
-            /*fireControl.draw(canvas);
-            upControl.draw(canvas);
-            downControl.draw(canvas);
-           */ if (player.getPlaying()) {
+            if (player.getPlaying()) {
                 long time = (System.nanoTime() - bossTimer) / 1000000000;
                 if (time >= 15) {
                     orca.draw(canvas);
                     boss = 1;
-                    //bear.draw(canvas);
-                    //orca.draw(canvas);
                 }
             }
 
@@ -360,7 +355,7 @@ public class AsteroidsGP extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
-    public void drawText(Canvas canvas) {
+    public void drawText(Canvas canvas) {  // display the score of the player
         Paint paint = new Paint();
         paint.setColor(Color.WHITE);
         paint.setTextSize(30);
